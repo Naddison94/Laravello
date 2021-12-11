@@ -11,13 +11,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="flex justify-left items-center">
                         <div class="w-48 h-64 rounded-xl bg-gray-200 flex flex-col shadow">
-                            @if(Auth::id() == $user->id)
-                                <a href="{{ route ('profile-edit-avatar', ['id' => $user->id]) }}">
-                                    <img class="w-auto rounded-t-xl" src="{{  $user->avatar ? '/' . $user->avatar : 'https://avatars.githubusercontent.com/u/16485031?v=4' }}" alt="avatar" />
-                                </a>
-                            @else
-                                <img class="w-auto rounded-t-xl" src="{{  $user->avatar ? '/' . $user->avatar : 'https://avatars.githubusercontent.com/u/16485031?v=4' }}" alt="avatar" />
-                            @endif
+                            <img class="w-auto rounded-t-xl" src="{{  $user->avatar ? '/user/' . $user->id . '/avatar/' . $user->avatar : 'https://avatars.githubusercontent.com/u/16485031?v=4' }}" alt="avatar" />
                             <div class="text-center flex flex-col p-2">
                                 <span class="text-base font-bold"> {{ $user->name }}</span>
                                 <span class="text-xs italic">Software Engineer</span>
@@ -25,7 +19,13 @@
                         </div>
 
                         <div class="p-6">
-                            Last active: {{ \Carbon\Carbon::parse($user->last_active)->diffForHumans() }}
+                            <form action="{{ route('profile.update', ['id' => $user->id]) }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <label>Upload a new image</label>
+                                @include('components.upload-image')
+                                <hr>
+                                <x-button>Save</x-button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -33,4 +33,3 @@
         </div>
     </div>
 </x-app-layout>
-

@@ -30,6 +30,10 @@ Route::get('/profile/{id}', [ProfileController::class, 'show'])
     ->middleware(['auth'])
     ->name('profile');
 
-Route::get('/profile/edit/{id}', [AvatarController::class, 'create'])
+Route::get('/profile/edit/{id}', [ProfileController::class, 'edit'])
     ->middleware(['auth'])
-    ->name('profile-edit-avatar');
+    ->name('profile.edit');
+
+Route::post('/profile/update/{id}', [ProfileController::class, 'update'])
+    ->middleware(['auth'])
+    ->name('profile.update');
