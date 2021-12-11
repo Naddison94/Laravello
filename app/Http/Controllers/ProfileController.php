@@ -27,11 +27,10 @@ class ProfileController extends Controller
     public function update($user_id, Request $request)
     {
         $fileName = null;
-        //later abstract uploads into sub dirs that are a post id, or add some logic for duplicated files in the same dir
+
         if ($request->file('image')) {
             $fileName = $request->file('image')->getClientOriginalName();
         }
-
 
         $user = User::find($user_id);
         $user->avatar = $fileName;
@@ -40,6 +39,8 @@ class ProfileController extends Controller
             $request->image->move(public_path("/user/$user->id/avatar/"), $fileName);
         }
 
-        return view('profile.show', compact('user'))->with('success', 'Profile successfully updated');
+        session()->flash('success',  'Profile successfully updated.');
+
+        return view('profile.show', compact('user'));
     }
 }
