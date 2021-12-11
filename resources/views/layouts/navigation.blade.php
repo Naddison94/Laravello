@@ -16,10 +16,11 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    <x-nav-link a href="{{ route ('admin.dashboard') }}" :active="request()->routeIs('admin.dashboard')">
-                        {{ __('Admin Dashboard') }}
-                    </x-nav-link>
-
+                    @if(Session('admin') === true)
+                        <x-nav-link a href="{{ route ('admin.dashboard') }}" :active="request()->routeIs('admin.dashboard')">
+                            {{ __('Admin Dashboard') }}
+                        </x-nav-link>
+                    @endif
                     <x-nav-link a href="{{ route ('profile', ['id' => auth()->user()->id]) }}" :active="request()->routeIs('profile')">
                         {{ __('Profile') }}
                     </x-nav-link>

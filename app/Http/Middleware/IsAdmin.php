@@ -2,15 +2,13 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\UserAdmin;
 use Closure;
-use Illuminate\Support\Facades\Auth;
 
 class IsAdmin
 {
     public function handle($request, Closure $next)
     {
-        if (Auth::user() && UserAdmin::find(Auth::id())) {
+        if (Session('admin') === true) {
             return $next($request);
         }
 

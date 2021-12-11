@@ -15,7 +15,7 @@ class CreateUserAdmins extends Migration
     {
         Schema::create('user_admins', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignId('user_id');
+            $table->uuid('user_id');
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });

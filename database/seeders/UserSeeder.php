@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
            'id' => Str::uuid()->toString(),
            'name' => 'Naddison',
-           'email' => 'naddison@Laravello.co.uk',
+           'email' => 'naddison@laravello.co.uk',
            'password' => hash::make('kek'),
            'avatar' => 'kek.jpg',
            'last_active' => Carbon::now(),

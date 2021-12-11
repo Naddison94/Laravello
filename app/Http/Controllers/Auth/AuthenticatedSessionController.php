@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Models\User;
+use App\Models\UserAdmin;
 use App\Providers\RouteServiceProvider;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -37,6 +39,10 @@ class AuthenticatedSessionController extends Controller
         $user = User::find(Auth::id());
         $user->last_active = Carbon::now();
         $user->save();
+
+        if (UserAdmin::first('user_id', Auth::id())) {
+            Session::put('admin', true);
+        }
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }
