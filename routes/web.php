@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\AvatarController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
@@ -37,3 +38,7 @@ Route::get('/profile/edit/{id}', [ProfileController::class, 'edit'])
 Route::post('/profile/update/{id}', [ProfileController::class, 'update'])
     ->middleware(['auth'])
     ->name('profile.update');
+
+Route::get('/admin', [AdminDashboardController::class, 'show'])
+    ->middleware(['auth'])
+    ->name('admin.dashboard');
