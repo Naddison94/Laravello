@@ -40,6 +40,6 @@ class ProfileController extends Controller
             $request->image->move(public_path("/user/$user->id/avatar/"), $fileName);
         }
 
-        return $user;
+        return view('profile.show', compact('user'))->with('success', 'Profile successfully updated');
     }
 }
