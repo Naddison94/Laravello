@@ -29,6 +29,8 @@
 
             <!-- Page Content -->
             <main>
+                @include('components.success-message')
+                @include('components.error-message')
                 {{ $slot }}
             </main>
         </div>

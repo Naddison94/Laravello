@@ -27,6 +27,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
+})->middleware(['admin'])->name('admin.dashboard');
+
 Route::get('/profile/{id}', [ProfileController::class, 'show'])
     ->middleware(['auth'])
     ->name('profile');
@@ -38,7 +42,3 @@ Route::get('/profile/edit/{id}', [ProfileController::class, 'edit'])
 Route::post('/profile/update/{id}', [ProfileController::class, 'update'])
     ->middleware(['auth'])
     ->name('profile.update');
-
-Route::get('/admin', [AdminDashboardController::class, 'show'])
-    ->middleware(['auth'])
-    ->name('admin.dashboard');
