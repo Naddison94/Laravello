@@ -20,7 +20,7 @@
                         </div>
 
                         <div class="p-6">
-                            placeholder
+                            Last active: {{ \Carbon\Carbon::parse($user->last_active)->diffForHumans() }}
                         </div>
                     </div>
 
