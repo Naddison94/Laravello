@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('avatar')->nullable();
             $table->rememberToken();
+            $table->timestamp('last_active');
             $table->timestamp('deleted_at')->nullable();
             $table->uuid('deleted_by')->nullable();
             $table->timestamps();

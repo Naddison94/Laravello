@@ -22,6 +22,7 @@ class UserSeeder extends Seeder
            'name' => 'Naddison',
            'email' => 'naddison@Laravello.co.uk',
            'password' => hash::make('kek'),
+           'last_active' => Carbon::now(),
            'created_at' => Carbon::now(),
            'updated_at' => Carbon::now(),
         ]);
