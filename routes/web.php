@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AvatarController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -28,3 +29,7 @@ Route::get('/dashboard', function () {
 Route::get('/profile/{id}', [ProfileController::class, 'show'])
     ->middleware(['auth'])
     ->name('profile');
+
+Route::get('/profile/edit/{id}', [AvatarController::class, 'create'])
+    ->middleware(['auth'])
+    ->name('profile-edit-avatar');
