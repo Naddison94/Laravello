@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
-class UserSeeder extends Seeder
+class UserAdminSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,13 +17,9 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-           'id' => 'dd9920eb-1531-4eaa-ab8a-fbaaeb831d2c',
-           'name' => 'Naddison',
-           'email' => 'naddison@laravello.co.uk',
-           'password' => hash::make('kek'),
-           'avatar' => 'kek.jpg',
-           'last_active' => Carbon::now(),
+        DB::table('user_admins')->insert([
+           'id' => Str::uuid()->toString(),
+           'user_id' => 'dd9920eb-1531-4eaa-ab8a-fbaaeb831d2c',
            'created_at' => Carbon::now(),
            'updated_at' => Carbon::now(),
         ]);
