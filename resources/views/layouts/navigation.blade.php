@@ -21,8 +21,13 @@
                             {{ __('Admin Dashboard') }}
                         </x-nav-link>
                     @endif
+
                     <x-nav-link a href="{{ route ('profile', ['id' => auth()->user()->id]) }}" :active="request()->routeIs('profile')">
                         {{ __('Profile') }}
+                    </x-nav-link>
+
+                    <x-nav-link a href="{{ route ('posts') }}" :active="request()->routeIs('posts')">
+                        {{ __('Posts') }}
                     </x-nav-link>
                 </div>
             </div>

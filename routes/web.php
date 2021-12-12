@@ -1,9 +1,7 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminDashboardController;
-use App\Http\Controllers\AvatarController;
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Post\PostsController;
+use App\Http\Controllers\Profile\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,3 +40,7 @@ Route::get('/profile/edit/{id}', [ProfileController::class, 'edit'])
 Route::post('/profile/update/{id}', [ProfileController::class, 'update'])
     ->middleware(['auth'])
     ->name('profile.update');
+
+Route::get('/posts', [PostsController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('posts');
