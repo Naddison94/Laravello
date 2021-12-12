@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Post\PostsController;
+use App\Http\Controllers\Post\PostController;
 use App\Http\Controllers\Profile\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,15 +23,15 @@ require __DIR__.'/auth.php';
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth'])->name('dashboard.show');
 
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
-})->middleware(['admin'])->name('admin.dashboard');
+})->middleware(['admin'])->name('admin.dashboard.show');
 
 Route::get('/profile/{id}', [ProfileController::class, 'show'])
     ->middleware(['auth'])
-    ->name('profile');
+    ->name('profile.show');
 
 Route::get('/profile/edit/{id}', [ProfileController::class, 'edit'])
     ->middleware(['auth'])
@@ -41,6 +41,10 @@ Route::post('/profile/update/{id}', [ProfileController::class, 'update'])
     ->middleware(['auth'])
     ->name('profile.update');
 
-Route::get('/posts', [PostsController::class, 'index'])
+Route::get('/posts', [PostController::class, 'index'])
     ->middleware(['auth'])
-    ->name('posts');
+    ->name('post.index');
+
+Route::get('/post/create', [PostController::class, 'create'])
+    ->middleware(['auth'])
+    ->name('post.create');
