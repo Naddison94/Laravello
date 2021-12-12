@@ -1,9 +1,14 @@
 <?php
 
+use App\Models\Post;
 use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
-class PostCRUD
+class PostCreateReadUpdateDeleteTest extends TestCase
 {
+    use RefreshDatabase;
+
     private function fixtures(): array
     {
         $user = User::factory()->create();
@@ -14,7 +19,7 @@ class PostCRUD
 
     public function test_a_user_can_create_a_post()
     {
-
+        $fixtures = $this->fixtures();
     }
 
     public function test_a_user_can_view_a_post()
