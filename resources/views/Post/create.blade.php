@@ -11,22 +11,21 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        <div class="flex items-center justify-center mt-1">
+                            <x-input placeholder="Title" id="title" class="block mt-1 w-2/6" type="text" name="title" :value="old('title')" required autofocus />
+                        </div>
 
-{{--                        <label for="category_id">Select a category for this post</label>--}}
-{{--                        <select id="category_id" name="category_id">--}}
-{{--                            @foreach($categories as $category)--}}
-{{--                                <option value="<?= $category->id ?>"><?= $category->title ?></option>--}}
-{{--                            @endforeach--}}
-{{--                        </select>--}}
-{{--                        <hr>--}}
+                        @include('components.upload-image')
 
-                        <label for="title">Post Title</label>
-                        <input type="text" id="title" name="title"><br><br>
-                        <label for="body">Post Body:</label>
-                        <textarea id="body" name="body" cols="50" rows="8" >{{ old('body') }}</textarea><br><br>
-                        <label for="image">Select image:</label>
-                        <input type="file" id="image" name="image"><br><br>
-                        <input type="submit" value="Submit">
+                        <div class="flex items-center justify-center mt-1">
+                            <textarea class="block mt-1 w-2/6" name="body" rows="8" placeholder="Content"></textarea>
+                        </div>
+
+                        <div class="flex items-center justify-center mt-4">
+                            <x-button class="ml-4">
+                                {{ __('Create') }}
+                            </x-button>
+                        </div>
                     </form>
                 </div>
             </div>

@@ -21,34 +21,22 @@ Route::get('/', function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard.show');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard.show');
 
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware(['admin'])->name('admin.dashboard.show');
+    Route::get('/admin/dashboard', function () {
+        return view('admin.dashboard');
+    })->middleware(['admin'])->name('admin.dashboard.show');
 
-Route::get('/profile/{id}', [ProfileController::class, 'show'])
-    ->middleware(['auth'])
-    ->name('profile.show');
+    Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show');
+    Route::get('/profile/edit/{id}', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile/update/{id}', [ProfileController::class, 'update'])->name('profile.update');
 
-Route::get('/profile/edit/{id}', [ProfileController::class, 'edit'])
-    ->middleware(['auth'])
-    ->name('profile.edit');
+    Route::get('/posts', [PostController::class, 'index'])->name('post.index');
+    Route::get('/post/create', [PostController::class, 'create'])->name('post.create');
+    Route::post('/post/store', [PostController::class, 'store'])->name('post.store');
+});
 
-Route::post('/profile/update/{id}', [ProfileController::class, 'update'])
-    ->middleware(['auth'])
-    ->name('profile.update');
 
-Route::get('/posts', [PostController::class, 'index'])
-    ->middleware(['auth'])
-    ->name('post.index');
-
-Route::get('/post/create', [PostController::class, 'create'])
-    ->middleware(['auth'])
-    ->name('post.create');
-
-Route::post('/post/store', [PostController::class, 'store'])
-    ->middleware(['auth'])
-    ->name('post.store');

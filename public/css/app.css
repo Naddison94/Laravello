@@ -622,7 +622,7 @@ video {
 }
 
 input::-moz-placeholder, textarea::-moz-placeholder {
-  color: #6b7280;
+  color: ;
   opacity: 1;
 }
 
