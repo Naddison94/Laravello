@@ -10,23 +10,23 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::latest()->with('author')->paginate(2);
-        return view('posts.index', compact('posts'));
+        return view('post.index', compact('posts'));
     }
 
     public function show()
     {
         $posts = Post::latest()->with('author')->paginate(2);
-        return view('posts.index', compact('posts'));
+        return view('post.index', compact('posts'));
     }
 
     public function create()
     {
-
+        return view('post.create');
     }
 
     public function store()
     {
-
+        dd('123');
     }
 
     public function edit()
