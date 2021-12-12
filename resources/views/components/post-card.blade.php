@@ -1,13 +1,32 @@
-<div class="w-60 rounded-xl flex bg-gray-200 flex-col shadow">
-    <img class="w-auto rounded-t-xl" src="https://avatars.githubusercontent.com/u/16485031?v=4" alt="Card image cap">
-    <div class="text-center flex flex-col p-2">
-        <span>{{ $post->title }}</span>
-        <p>{{ $post->excerpt }}</p>
-    </div>
-
-    <div class="text-center flex flex-col p-2">
+<div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
+    <article class="overflow-hidden rounded-lg shadow-lg">
         <a href="#">
-            <span class="text-base font-bold">{{ $post->author->name }}</span>
+            <img alt="Placeholder" class="block h-auto w-full" src="https://picsum.photos/600/400/?random">
         </a>
-    </div>
+
+        <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+            <h1 class="text-lg">
+                <a class="no-underline hover:underline text-black" href="#">
+                    {{ $post->title }}
+                </a>
+            </h1>
+            <p class="text-grey-darker text-sm">
+                {{ $post->created_at->diffForHumans() }}
+            </p>
+        </header>
+
+        <footer class="flex items-center justify-between leading-none p-2 md:p-4">
+            <a class="flex items-center no-underline hover:underline text-black" href="#">
+                <img alt="avatar" class="block rounded-full xl:max-w-12 xl:max-h-12" src="{{  $post->author->avatar ? '/user/' . $post->author->id . '/avatar/' . $post->author->avatar : 'https://picsum.photos/32/32/?random' }}">
+                <p class="ml-2 text-sm">
+                    {{ $post->author->name }}
+                </p>
+            </a>
+            <a class="no-underline text-grey-darker hover:text-red-dark" href="#">
+                <span class="text-2xl">+</span>
+                <hr>
+                <span class="text-2xl">-</span>
+            </a>
+        </footer>
+    </article>
 </div>
