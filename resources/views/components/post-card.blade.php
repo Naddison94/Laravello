@@ -11,9 +11,11 @@
             </p>
         </header>
 
-        <a href="#">
-            <img alt="Placeholder" class="block h-auto w-full" src="https://picsum.photos/600/400/?random">
-        </a>
+        @if($post->img)
+            <a href="#">
+                <img alt="img" class="block h-auto w-full" src="/user/{{ $post->author->id }}/post/{{ $post->id }}/{{ $post->img }}">
+            </a>
+        @endif
 
         <footer class="flex items-center justify-between leading-none p-2 md:p-4">
             <a class="flex items-center no-underline hover:underline text-black" href="#">

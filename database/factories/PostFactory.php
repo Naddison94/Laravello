@@ -19,7 +19,6 @@ class PostFactory extends Factory
             'user_id' => Str::uuid()->toString(),
             'category_id' => Str::uuid()->toString(),
             'title' => 'Post title',
-            'excerpt' => 'Post excerpt',
             'body' => 'Post body',
             'img' => 'image.jpg',
         ];

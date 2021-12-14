@@ -27,9 +27,7 @@ class PostSeeder extends Seeder
             'user_id' => 'dd9920eb-1531-4eaa-ab8a-fbaaeb831d2c',
             'category_id' => 'dd9920eb-1531-4eaa-ab8a-fbaaeb831d2e',
             'title' => 'First post, seeded!',
-            'excerpt' => 'TTD',
             'body' => 'This is the body of the post',
-            'img' => 'default.jpg',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
