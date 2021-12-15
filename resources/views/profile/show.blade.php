@@ -17,17 +17,22 @@
         </div>
 
     @isset($posts)
-        My Posts
         <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="flex justify-center items-center">
-                        <div class="container mx-auto">
-                            @foreach($posts as $post)
-                                <div class="flex justify-center">
-                                    @include('components.post-card')
+                        <div class="p-6 bg-white border-b border-gray-200">
+                            My Posts
+                            <div x-data="{ open: false }">
+                                <button x-on:click="open = ! open">Toggle Dropdown</button>
+                                <div x-show="open">
+                                    @foreach($posts as $post)
+                                        <div class="flex justify-center">
+                                            @include('components.post-card')
+                                        </div>
+                                    @endforeach
+                                    {{ $posts->links() }}
                                 </div>
-                            @endforeach
-                            {{ $posts->links() }}
+                            </div>
                         </div>
                     </div>
                 </div>
