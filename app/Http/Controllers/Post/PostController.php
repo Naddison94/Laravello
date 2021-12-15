@@ -51,6 +51,8 @@ class PostController extends Controller
             $request->image->move(public_path('/user/' . $post->author->id . '/post/' . $post->id . DIRECTORY_SEPARATOR), $fileName);
         }
 
+        setUserActivity();
+
         return redirect(route('post.index'))->with('success', 'Post added.');
     }
 
@@ -82,6 +84,8 @@ class PostController extends Controller
             $request->image->move(public_path('/user/' . $post->author->id . '/post/' . $post->id . DIRECTORY_SEPARATOR), $fileName);
         }
 
+        setUserActivity();
+
         return view('post.show', compact('post'));
     }
 
@@ -104,6 +108,8 @@ class PostController extends Controller
         $post->save();
 
         session()->flash('success',  'Post deleted.');
+
+        setUserActivity();
 
         return redirect(route('dashboard.show'));
     }

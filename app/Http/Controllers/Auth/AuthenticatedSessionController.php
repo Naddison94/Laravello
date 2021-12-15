@@ -36,13 +36,11 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        $user = User::find(Auth::id());
-        $user->last_active = Carbon::now();
-        $user->save();
-
         if (UserAdmin::first('user_id', Auth::id())) {
             Session::put('admin', true);
         }
+
+        setUserActivity();
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }

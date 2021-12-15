@@ -44,6 +44,8 @@ class ProfileController extends Controller
 
         session()->flash('success',  'Profile successfully updated.');
 
+        setUserActivity();
+
         return view('profile.show', compact('user'));
     }
 }
