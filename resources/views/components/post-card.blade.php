@@ -1,13 +1,11 @@
-<div class=" lg:mb-4 lg:px-4">
+<div class="lg:mb-4 lg:px-4">
     <article class="overflow-hidden rounded-lg shadow-lg">
         <header class="flex items-center justify-between leading-tight p-2 md:p-4 bg-white">
             <h1 class="text-lg">
-                <a class="no-underline hover:underline text-black" href="{{ route('post.show', ['id' => $post->id]) }}">
-                    {{ $post->title }}
-                </a>
+                <a class="no-underline hover:underline text-black" href="{{ route('post.show', ['id' => $post->id]) }}">{{ $post->title }}</a>
                 @if(Auth::id() == $post->user_id)
-                    | <a href="{{ route('post.edit', ['id' => $post->id]) }}"><label class="text-green-500">edit</label></a>
-                    | <a href="{{ route('post.delete', ['id' => $post->id]) }}"><label class="text-red-500">delete</label></a>
+                    | <a class="no-underline hover:underline text-green-500" href="{{ route('post.edit', ['id' => $post->id]) }}"><label class="text-green-500">edit</label></a>
+                    | <a class="no-underline hover:underline text-red-500" href="{{ route('post.delete', ['id' => $post->id]) }}"><label class="text-red-500">delete</label></a>
                 @endif
             </h1>
             <p class="text-grey-darker text-sm">
@@ -16,9 +14,11 @@
         </header>
 
         @if($post->img)
-            <a href="#">
-                <img alt="img" class="block h-auto w-full" src="/user/{{ $post->author->id }}/post/{{ $post->id }}/{{ $post->img }}">
-            </a>
+            <div class="flex justify-center max-h-lg max-w-md">
+                <a href="#">
+                    <img alt="img" class="" src="/user/{{ $post->author->id }}/post/{{ $post->id }}/{{ $post->img }}">
+                </a>
+            </div>
         @endif
 
         <footer class="flex items-center justify-between leading-none p-2 md:p-4">
