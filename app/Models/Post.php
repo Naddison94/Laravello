@@ -2,25 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\Uuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 
 class Post extends Model
 {
-    use HasFactory;
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
-    public static function boot(){
-        parent::boot();
-
-        static::creating(function ($issue) {
-            $issue->id = Str::uuid();
-        });
-    }
+    use HasFactory, uuids;
 
     public $table = 'posts';
 
@@ -35,10 +23,6 @@ class Post extends Model
         'title',
         'body',
         'img',
-    ];
-
-    protected $casts = [
-        'id' => 'string',
     ];
 
     public function author()

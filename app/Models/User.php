@@ -8,24 +8,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, uuids, softdeletes;
-
-    public $incrementing = false;
-
-    protected $keyType = 'string';
-
-    public static function boot(){
-        parent::boot();
-
-        static::creating(function ($issue) {
-            $issue->id = Str::uuid();
-        });
-    }
 
     public $table = 'users';
 
@@ -59,7 +46,6 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'id' => 'string',
     ];
 
     public function isAdmin()
