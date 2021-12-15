@@ -40,6 +40,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/post/store', [PostController::class, 'store'])->name('post.store');
     Route::get('/post/edit/{id}', [PostController::class, 'edit'])->name('post.edit');
     Route::post('/post/update/{id}', [PostController::class, 'update'])->name('post.update');
+    Route::get('/post/delete/{id}', [PostController::class, 'delete'])->name('post.delete');
+    Route::post('/post/destroy/{id}', [PostController::class, 'destroy'])->name('post.destroy');
 });
 
 

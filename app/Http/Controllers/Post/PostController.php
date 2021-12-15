@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Post;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -82,5 +83,28 @@ class PostController extends Controller
         }
 
         return view('post.show', compact('post'));
+    }
+
+    public function delete($post_id)
+    {
+        return view('post.destroy', compact('post_id'));
+    }
+
+    public function destroy($post_id)
+    {
+        $post = Post::firstWhere('id', $post_id);
+
+        if (!isOwner($post->user_id)) {
+            session()->flash('error',  'You may only delete posts belonging to you.');
+            return redirect(route('dashboard.show'));
+        }
+
+        $post->deleted_at = Carbon::now();
+        $post->deleted_by = Auth::id();
+        $post->save();
+
+        session()->flash('success',  'Post deleted.');
+
+        return redirect(route('dashboard.show'));
     }
 }
