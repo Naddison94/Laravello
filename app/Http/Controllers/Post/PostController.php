@@ -48,16 +48,19 @@ class PostController extends Controller
         $post->img = $fileName;
 
         if ($post->save() && $fileName != false) {
-            $request->image->move(public_path('/user/' . $post->author->id . '/post/' . $post->id . '/'), $fileName);
+            $request->image->move(public_path('/user/' . $post->author->id . '/post/' . $post->id . DIRECTORY_SEPARATOR), $fileName);
         }
 
         return redirect(route('post.index'))->with('success', 'Post added.');
     }
 
-    public function edit()
+    public function edit($post_id)
     {
-        // todo authenticate the logged in user should have access
-        return view ('post.edit');
+        $route = isOwner($post_id) ? 'post.edit' : 'dashboard';
+
+        session()->flash('error',  'You may only edit posts belonging to you.') ?? $route == 'dashboard';
+
+        return view($route);
     }
 
     public function update()
