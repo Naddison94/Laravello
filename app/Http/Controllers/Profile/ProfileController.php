@@ -15,7 +15,7 @@ class ProfileController extends Controller
     public function show($user_id)
     {
         $user = User::find($user_id);
-        $posts = Post::latest()->where('user_id', $user_id)->limit(5)->get();
+        $posts = Post::latest()->where('user_id', $user_id)->paginate(3);
 
         return view('profile.show', compact('user', 'posts'));
     }
