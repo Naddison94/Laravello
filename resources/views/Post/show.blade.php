@@ -9,8 +9,11 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="flex justify-center items-center">
                 <div class="container mx-auto">
-                    <div class="flex justify-center">
+                    <div class="flex justify-left">
                         @include('components.post-card')
+                        <div class="flex justify-right w-2/3">
+                            @include('components.post-comments-card')
+                        </div>
                     </div>
                 </div>
             </div>

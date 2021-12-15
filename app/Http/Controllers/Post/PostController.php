@@ -13,13 +13,14 @@ class PostController extends Controller
 {
     public function index()
     {
+        // todo withCount comments
         $posts = Post::latest()->with('author')->paginate(8);
         return view('post.index', compact('posts'));
     }
 
     public function show($post_id)
     {
-        $post = Post::firstWhere('id', $post_id);
+        $post = Post::where('id', $post_id)->with('comments')->first();
         return view('post.show', compact('post'));
     }
 
@@ -58,7 +59,7 @@ class PostController extends Controller
 
     public function edit($post_id)
     {
-        $post = Post::firstWhere('id', $post_id);
+        $post = Post::find($post_id);
 
         if (!isOwner($post->user_id)) {
             session()->flash('error',  'You may only edit posts belonging to you.');
@@ -96,7 +97,7 @@ class PostController extends Controller
 
     public function destroy($post_id)
     {
-        $post = Post::firstWhere('id', $post_id);
+        $post = Post::find($post_id);
 
         if (!isOwner($post->user_id)) {
             session()->flash('error',  'You may only delete posts belonging to you.');
