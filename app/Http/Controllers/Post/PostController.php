@@ -39,10 +39,8 @@ class PostController extends Controller
             $fileName = $request->file('image')->getClientOriginalName();
         }
 
-        $uuid = Str::uuid()->toString();
-
         $post = new Post;
-        $post->id = $uuid;
+        $post->id = Str::uuid()->toString();
         $post->user_id = Auth::id();
         $post->category_id = $request->category_id ?: null;
         $post->title = $request->title;
@@ -50,7 +48,7 @@ class PostController extends Controller
         $post->img = $fileName;
 
         if ($post->save() && $fileName != false) {
-            $request->image->move(public_path('/user/' . $post->author->id . '/post/' . $uuid . '/'), $fileName);
+            $request->image->move(public_path('/user/' . $post->author->id . '/post/' . $post->id . '/'), $fileName);
         }
 
         return redirect(route('post.index'))->with('success', 'Post added.');
