@@ -34,7 +34,6 @@ class PostController extends Controller
         ]);
 
         $fileName = null;
-
         if ($request->file('image')) {
             $fileName = $request->file('image')->getClientOriginalName();
         }
@@ -56,15 +55,32 @@ class PostController extends Controller
 
     public function edit($post_id)
     {
-        $route = isOwner($post_id) ? 'post.edit' : 'dashboard';
+        $post = Post::firstWhere('id', $post_id);
 
-        session()->flash('error',  'You may only edit posts belonging to you.') ?? $route == 'dashboard';
+        if (!isOwner($post->user_id)) {
+            session()->flash('error',  'You may only edit posts belonging to you.');
+            return redirect(route('dashboard.show'));
+        }
 
-        return view($route);
+        return view('post.edit', compact('post'));
     }
 
-    public function update()
+    public function update($post_id, Request $request)
     {
-        //
+        $fileName = false;
+        if ($request->file('image')) {
+            $fileName = $request->file('image')->getClientOriginalName();
+        }
+
+        $post = Post::find($post_id);
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->img = $fileName ?: $post->img;
+
+        if ($post->save() && $fileName != false) {
+            $request->image->move(public_path('/user/' . $post->author->id . '/post/' . $post->id . DIRECTORY_SEPARATOR), $fileName);
+        }
+
+        return view('post.show', compact('post'));
     }
 }

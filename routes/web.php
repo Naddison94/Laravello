@@ -39,6 +39,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/post/{id}', [PostController::class, 'show'])->name('post.show');
     Route::post('/post/store', [PostController::class, 'store'])->name('post.store');
     Route::get('/post/edit/{id}', [PostController::class, 'edit'])->name('post.edit');
+    Route::post('/post/update/{id}', [PostController::class, 'update'])->name('post.update');
 });
 
 

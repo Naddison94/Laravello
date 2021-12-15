@@ -5,7 +5,7 @@
                 <a class="no-underline hover:underline text-black" href="{{ route('post.show', ['id' => $post->id]) }}">
                     {{ $post->title }}
                 </a>
-                @if(Auth::id() == $post->user_id)| <a href="{{ route('post.edit', ['id' => Auth::id()]) }}"><label class="text-green-500">edit</label></a> @endif
+                @if(Auth::id() == $post->user_id)| <a href="{{ route('post.edit', ['id' => $post->id]) }}"><label class="text-green-500">edit</label></a> @endif
             </h1>
             <p class="text-grey-darker text-sm">
                 {{ $post->created_at->diffForHumans() }}
