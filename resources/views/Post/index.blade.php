@@ -9,12 +9,11 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="flex justify-center items-center">
                 <div class="container mx-auto">
-                        @foreach($posts as $post)
+                    @foreach($posts as $post)
                         <div class="flex justify-center">
                             @include('components.post-card')
                         </div>
-                        @endforeach
-
+                    @endforeach
                     {{ $posts->links() }}
                 </div>
             </div>
