@@ -16,10 +16,10 @@ class PostController extends Controller
         return view('post.index', compact('posts'));
     }
 
-    public function show()
+    public function show($post_id)
     {
-        $posts = Post::latest()->with('author')->paginate(2);
-        return view('post.index', compact('posts'));
+        $post = Post::firstWhere('id', $post_id);
+        return view('post.show', compact('post'));
     }
 
     public function create()

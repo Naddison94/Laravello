@@ -2,7 +2,7 @@
     <article class="overflow-hidden rounded-lg shadow-lg">
         <header class="flex items-center justify-between leading-tight p-2 md:p-4 bg-white">
             <h1 class="text-lg">
-                <a class="no-underline hover:underline text-black " href="#">
+                <a class="no-underline hover:underline text-black" href="{{ route('post.show', ['id' => $post->id]) }}">
                     {{ $post->title }}
                 </a>
             </h1>

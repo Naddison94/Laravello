@@ -52,28 +52,45 @@ class PostCreateReadUpdateDeleteTest extends TestCase
         $response->assertStatus(200);
     }
 
-//    public function test_a_user_can_view_a_post()
-//    {
-//
-//    }
-//
-//    public function test_a_user_can_edit_a_post_belonging_to_them()
-//    {
-//
-//    }
-//
-//    public function test_a_user_can_not_edit_a_post_belonging_to_another_user()
-//    {
-//
-//    }
-//
-//    public function test_a_user_can_soft_delete_a_post()
-//    {
-//
-//    }
-//
-//    public function test_a_user_can_not_soft_delete_a_post_belonging_to_another_user()
-//    {
-//
-//    }
+    /*public function test_a_user_can_view_a_post()
+    {
+        $user = User::factory()->create();
+        $post = Post::factory()->create();
+
+        $this->post('/login', [
+            'login' => $user->email,
+            'password' => 'password',
+        ]);
+
+        $this->assertDatabaseHas('posts', ['id' => $post->id]);
+
+        $postController = new PostController;
+
+        $postController->show($post->id);
+        // todo can't find the model instance - return view with temp data?
+        $response = $this->get(route('post.show', ['id' => $post->id]));#
+
+        $response->assertStatus(200);
+    }*/
+
+
+    public function test_a_user_can_edit_a_post_belonging_to_them()
+    {
+
+    }
+
+    public function test_a_user_can_not_edit_a_post_belonging_to_another_user()
+    {
+
+    }
+
+    public function test_a_user_can_soft_delete_a_post()
+    {
+
+    }
+
+    public function test_a_user_can_not_soft_delete_a_post_belonging_to_another_user()
+    {
+
+    }
 }
