@@ -58,11 +58,12 @@ class PostController extends Controller
 
     public function edit()
     {
-
+        // todo authenticate the logged in user should have access
+        return view ('post.edit');
     }
 
     public function update()
     {
-
+        //
     }
 }
