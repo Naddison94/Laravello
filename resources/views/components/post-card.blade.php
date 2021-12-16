@@ -34,11 +34,7 @@
                     {{ $post->author->name }}
                 </p>
             </a>
-            <a class="no-underline text-grey-darker hover:text-red-dark" href="#">
-                <span class="text-2xl">+</span>
-                <hr>
-                <span class="text-2xl">-</span>
-            </a>
+            @include('components.post-ratings')
         </footer>
     </article>
 </div>
