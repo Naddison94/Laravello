@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Post\CommentController;
 use App\Http\Controllers\Post\PostController;
 use App\Http\Controllers\Profile\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -42,6 +43,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/post/update/{id}', [PostController::class, 'update'])->name('post.update');
     Route::get('/post/delete/{id}', [PostController::class, 'delete'])->name('post.delete');
     Route::post('/post/destroy/{id}', [PostController::class, 'destroy'])->name('post.destroy');
+
+    Route::post('/post/{id}/comment/store', [CommentController::class, 'store'])->name('post.comment.store');
 });
 
 

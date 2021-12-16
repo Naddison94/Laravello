@@ -1,24 +1,26 @@
 <div class="w-full bg-white p-2 pt-4 rounded shadow-lg">
-    <div class="flex ml-3">
-        <div class="mr-3">
-            <img src="{{ getUserAvatar(Auth::user()) }}" alt="" class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10">
-        </div>
-        <div>
-            <h1 class="font-semibold">{{ Auth::user()->name }}</h1>
-            <p class="text-xs text-gray-500">Leave a comment</p>
+    <form action="{{ route('post.comment.store', ['id' => $post->id]) }}" method="POST">
+        @csrf
+        <div class="flex ml-3">
+            <div class="mr-3">
+                <img src="{{ getUserAvatar(Auth::user()) }}" alt="" class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10">
+            </div>
+            <div>
+                <h1 class="font-semibold">{{ Auth::user()->name }}</h1>
+                <p class="text-xs text-gray-500">Leave a comment</p>
+            </div>
         </div>
 
-    </div>
-
-    <div class="mt-3 p-3 w-full">
-        <textarea rows="5" class="border p-2 rounded w-full" placeholder="Write something..."></textarea>
-    </div>
-
-    <div class="flex justify-between mx-3">
-        <div>
-            <x-button>Submit</x-button>
+        <div class="mt-3 p-3 w-full">
+            <textarea name="comment" rows="5" class="border p-2 rounded w-full" placeholder="Write something...">{{ old('comment') }}</textarea>
         </div>
-    </div>
+
+        <div class="flex justify-between mx-3">
+            <div>
+                <x-button>Submit</x-button>
+            </div>
+        </div>
+    </form>
 
     <div class="p-4 antialiased mx-auto max-w-screen-sm">
         <h3 class="mb-4 text-lg font-semibold text-gray-900">{{ $post->comments->count() }} Comments</h3>
