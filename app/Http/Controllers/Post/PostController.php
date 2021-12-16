@@ -88,7 +88,7 @@ class PostController extends Controller
 
         setUserActivity();
 
-        return view('post.show', compact('post'));
+        return redirect(route('post.show', ['id' => $post->id]));
     }
 
     public function delete($post_id)

@@ -21,6 +21,12 @@
             </div>
         @endif
 
+        @if(Route::is('post.show') && $post->body)
+            <div class="flex justify-center max-h-lg max-w-md p-2 m-2 bg-white rounded-lg shadow-lg" >
+                    {{ $post->body }}
+            </div>
+        @endif
+
         <footer class="flex items-center justify-between leading-none p-2 md:p-4">
             <a class="flex items-center no-underline hover:underline text-black" href="#">
                 <img alt="avatar" class="block rounded-full xl:max-w-12 xl:max-h-12" src="{{  $post->author->avatar ? '/user/' . $post->author->id . '/avatar/' . $post->author->avatar : 'https://picsum.photos/32/32/?random' }}">

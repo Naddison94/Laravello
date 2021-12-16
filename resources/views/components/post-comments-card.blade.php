@@ -31,9 +31,12 @@
 
                     <div class="flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
                         <strong>{{ $comment->author->name }}</strong> <span class="text-xs text-gray-400">{{ $comment->created_at->diffForHumans() }}</span>
-                        <p class="text-sm">
-                            {{ $comment->comment }}
-                        </p>
+                        <a class="no-underline text-grey-darker hover:text-red-dark float-right" href="#">
+                            <span class="text-2xl">+</span>
+                            <hr>
+                            <span class="text-2xl">-</span>
+                        </a>
+                        <p class="text-sm">{{ $comment->comment }}</p>
                         <div class="mt-4 flex items-center">
                             <div class="flex -space-x-2 mr-2">
                                 <img class="rounded-full w-6 h-6 border border-white" src="https://images.unsplash.com/photo-1554151228-14d9def656e4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80" alt="">
