@@ -7,6 +7,7 @@ use App\Models\Comment;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 
@@ -28,6 +29,35 @@ class CommentController extends controller
             setUserActivity();
 
             return redirect(route('post.show', ['id' => $post_id]))->with('success', 'Comment added.');
+        }
+    }
+
+    public function reply($comment_id, Request $request)
+    {
+        $rules = [
+            'reply' => 'required:reply|max:2'
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if($validator->fails()) {
+            session()->flash('comment_id', $comment_id);
+            $request->flash();
+            return back()->with('error', 'The reply must not be greater than 255 characters');
+        }
+
+        $post_id = Comment::find($comment_id)->value('post_id');
+
+        $comment = new Comment;
+        $comment->id = Str::uuid()->toString();
+        $comment->user_id = Auth::id();
+        $comment->post_id = $post_id;
+        $comment->reply_id = $comment_id;
+        $comment->comment = $request->reply;
+
+        if ($comment->save() ) {
+            setUserActivity();
+            return redirect(route('post.show', ['id' => $post_id]))->with('success', 'Reply added.');
         }
     }
 
