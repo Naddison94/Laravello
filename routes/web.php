@@ -44,7 +44,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/post/delete/{id}', [PostController::class, 'delete'])->name('post.delete');
     Route::post('/post/destroy/{id}', [PostController::class, 'destroy'])->name('post.destroy');
 
-    Route::post('/post/{id}/comment/store', [CommentController::class, 'store'])->name('post.comment.store');
+    Route::post('/post/{id}/comment/store', [CommentController::class, 's tore'])->name('comment.store');
+    Route::get('/comment/delete/{id}', [CommentController::class, 'delete'])->name('comment.delete');
+    Route::post('/comment/destroy/{id}', [CommentController::class, 'destroy'])->name('comment.destroy');
 });
 
 

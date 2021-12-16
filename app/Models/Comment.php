@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Comment extends Model
 {
-    use HasFactory, SoftDeletes, Uuids;
+    use HasFactory, Uuids, SoftDeletes;
 
     public $table = 'post_comments';
 

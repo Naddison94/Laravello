@@ -93,7 +93,7 @@ class PostController extends Controller
 
     public function delete($post_id)
     {
-        return view('post.destroy', compact('post_id'));
+        return view('post.delete', compact('post_id'));
     }
 
     public function destroy($post_id)
