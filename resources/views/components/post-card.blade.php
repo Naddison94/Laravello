@@ -29,7 +29,7 @@
 
         <footer class="flex items-center justify-between leading-none p-2 md:p-4">
             <a class="flex items-center no-underline hover:underline text-black" href="#">
-                <img alt="avatar" class="block rounded-full xl:max-w-12 xl:max-h-12" src="{{  $post->author->avatar ? '/user/' . $post->author->id . '/avatar/' . $post->author->avatar : 'https://picsum.photos/32/32/?random' }}">
+                <img alt="avatar" class="block rounded-full sm:w-14 sm:h-14" src="{{  $post->author->avatar ? '/user/' . $post->author->id . '/avatar/' . $post->author->avatar : 'https://picsum.photos/32/32/?random' }}">
                 <p class="ml-2 text-sm">
                     {{ $post->author->name }}
                 </p>

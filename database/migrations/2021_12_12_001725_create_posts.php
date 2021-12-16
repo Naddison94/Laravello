@@ -16,7 +16,7 @@ class CreatePosts extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('user_id');
-            $table->uuid('category_id')->nullable();
+            $table->integer('category_id')->nullable();
             $table->string('title');
             $table->text('body')->nullable();
             $table->string('img')->nullable();

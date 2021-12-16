@@ -12,9 +12,14 @@ class Comment extends Model
     use HasFactory, SoftDeletes, Uuids;
 
     public $table = 'post_comments';
-    
+
     public function author()
     {
         return $this->hasOne(User::class, 'id', 'user_id');
+    }
+
+    public function replies()
+    {
+        return $this->hasMany(Comment::class, 'reply_id')->whereNotNull('reply_id');
     }
 }

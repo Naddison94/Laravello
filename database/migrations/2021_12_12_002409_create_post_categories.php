@@ -14,7 +14,7 @@ class CreatePostCategories extends Migration
     public function up()
     {
         Schema::create('post_categories', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->increments('id');
             $table->string('title');
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();

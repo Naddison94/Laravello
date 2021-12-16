@@ -17,6 +17,7 @@ class CreatePostComments extends Migration
             $table->uuid('id')->primary();
             $table->uuid('user_id');
             $table->uuid('post_id');
+            $table->uuid('reply_id')->nullable();
             $table->text('comment');
             $table->timestamp('deleted_at')->nullable();
             $table->uuid('deleted_by')->nullable();

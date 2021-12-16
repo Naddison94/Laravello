@@ -18,7 +18,6 @@ class PostCategorySeeder extends Seeder
     public function run()
     {
         DB::table('post_categories')->insert([
-            'id' => 'dd9920eb-1531-4eaa-ab8a-fbaaeb831d2e',
             'title' => 'Default',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),

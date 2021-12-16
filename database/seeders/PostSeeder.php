@@ -25,7 +25,7 @@ class PostSeeder extends Seeder
         DB::table('posts')->insert([
             'id' => 'dd9920eb-1531-4eaa-ab8a-fbaaeb831d2b',
             'user_id' => 'dd9920eb-1531-4eaa-ab8a-fbaaeb831d2c',
-            'category_id' => 'dd9920eb-1531-4eaa-ab8a-fbaaeb831d2e',
+            'category_id' => 1,
             'title' => 'First post, seeded!',
             'body' => 'This is the body of the post',
             'created_at' => Carbon::now(),

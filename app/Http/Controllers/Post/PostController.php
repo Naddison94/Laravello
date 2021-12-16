@@ -20,8 +20,7 @@ class PostController extends Controller
 
     public function show($post_id)
     {
-        $post = Post::where('id', $post_id)->with('comments.author')->first();
-
+        $post = Post::where('id', $post_id)->with('comments.author', 'comments.replies.author')->first();
         return view('post.show', compact('post'));
     }
 
