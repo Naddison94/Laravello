@@ -21,6 +21,11 @@ function getFileName()
 
 }
 
+function getUserAvatar($user)
+{
+    return $user->avatar ? "/user/$user->id/avatar/$user->avatar" :  'https://picsum.photos/32/32/?random';
+}
+
 function resizeFile()
 {
 
