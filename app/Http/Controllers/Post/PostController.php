@@ -14,7 +14,6 @@ class PostController extends Controller
 {
     public function index()
     {
-        // todo withCount comments
         $posts = Post::latest()->with('author')->paginate(8);
         return view('post.index', compact('posts'));
     }
