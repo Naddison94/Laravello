@@ -2,7 +2,6 @@
 
 namespace App\Models\Task;
 
-use App\Models\User;
 use App\Traits\Uuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -27,10 +26,10 @@ class Task extends Model
 //        'img',
 //    ];
 //
-//    public function author()
-//    {
-//        return $this->belongsTo(User::class, 'user_id');
-//    }
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 //
 //    public function comments()
 //    {

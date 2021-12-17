@@ -40,3 +40,15 @@ function uploadFile()
 {
 
 }
+
+function getMonthlyMetrics($collections)
+{
+    $arrCurrentMonth = [];
+    foreach ($collections as $collection) {
+        if ($collection->created_at->format('M') == Carbon::now()->format('M')) {
+            $arrCurrentMonth = $collection;
+        }
+    }
+
+    return ($arrCurrentMonth);
+}
