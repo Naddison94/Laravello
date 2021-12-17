@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostRatings extends Migration
+class CreateTaskCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreatePostRatings extends Migration
      */
     public function up()
     {
-        Schema::create('post_ratings', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->uuid('user_id');
-            $table->uuid('post_id');
-            $table->tinyInteger('rating')->nullable();
-            $table->timestamp('deleted_at')->nullable();
+        Schema::create('task_comments', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ class CreatePostRatings extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('task_comments');
     }
 }

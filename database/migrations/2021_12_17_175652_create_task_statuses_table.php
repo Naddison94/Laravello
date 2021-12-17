@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserAdmins extends Migration
+class CreateTaskStatusesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateUserAdmins extends Migration
      */
     public function up()
     {
-        Schema::create('user_admins', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->uuid('user_id');
-            $table->timestamp('deleted_at')->nullable();
+        Schema::create('task_statuses', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ class CreateUserAdmins extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_admins');
+        Schema::dropIfExists('task_statuses');
     }
 }

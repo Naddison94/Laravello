@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostComments extends Migration
+class CreateUserAdminsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreatePostComments extends Migration
      */
     public function up()
     {
-        Schema::create('post_comments', function (Blueprint $table) {
+        Schema::create('user_admins', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('user_id');
-            $table->uuid('post_id');
-            $table->uuid('reply_id')->nullable();
-            $table->text('comment');
             $table->timestamp('deleted_at')->nullable();
-            $table->uuid('deleted_by')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ class CreatePostComments extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_comments');
+        Schema::dropIfExists('user_admins');
     }
 }
