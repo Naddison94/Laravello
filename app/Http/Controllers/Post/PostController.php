@@ -51,11 +51,11 @@ class PostController extends Controller
 
         if ($post->save() && $fileName != false) {
             $request->image->move(public_path('/user/' . $post->author->id . '/post/' . $post->id . DIRECTORY_SEPARATOR), $fileName);
-
-            setUserActivity();
-
-            return redirect(route('post.index'))->with('success', 'Post added.');
         }
+
+        setUserActivity();
+
+        return redirect(route('post.show', ['id' => $post->id]));
     }
 
     public function edit($post_id)
@@ -84,11 +84,11 @@ class PostController extends Controller
 
         if ($post->save() && $fileName != false) {
             $request->image->move(public_path('/user/' . $post->author->id . '/post/' . $post->id . DIRECTORY_SEPARATOR), $fileName);
-
-            setUserActivity();
-
-            return redirect(route('post.show', ['id' => $post->id]));
         }
+
+        setUserActivity();
+
+        return redirect(route('post.show', ['id' => $post->id]));
     }
 
     public function delete($post_id)

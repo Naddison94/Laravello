@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Post\CommentController;
 use App\Http\Controllers\Post\PostController;
 use App\Http\Controllers\Profile\ProfileController;
@@ -27,9 +28,7 @@ Route::middleware(['auth'])->group(function () {
         return view('dashboard');
     })->name('dashboard.show');
 
-    Route::get('/admin/dashboard', function () {
-        return view('admin.dashboard');
-    })->middleware(['admin'])->name('admin.dashboard.show');
+    Route::get('/admin/dashboard', [DashboardController::class, 'show'])->middleware(['admin'])->name('admin.dashboard.show');
 
     Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show');
     Route::get('/profile/edit/{id}', [ProfileController::class, 'edit'])->name('profile.edit');
