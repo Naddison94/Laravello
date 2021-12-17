@@ -18,7 +18,11 @@ class DatabaseSeeder extends Seeder
             UserAdminSeeder::class,
             PostCategorySeeder::class,
             PostSeeder::class,
-            PostCommentSeeder::class
+            PostCommentSeeder::class,
+            TaskCatergorySeeder::class,
+            TaskStatusSeeder::class,
+            TaskSeeder::class,
+            TaskCommentSeeder::class,
         ]);
     }
 }
