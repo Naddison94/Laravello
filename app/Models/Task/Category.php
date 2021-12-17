@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Task;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Ratings extends Model
+class Category extends Model
 {
     use HasFactory;
+
+    public $table = 'task_categories';
 }

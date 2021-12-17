@@ -15,12 +15,12 @@ class CreatePostCommentsTable extends Migration
     {
         Schema::create('post_comments', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('user_id');
             $table->uuid('post_id');
             $table->uuid('reply_id')->nullable();
+            $table->uuid('user_id');
             $table->text('comment');
-            $table->timestamp('deleted_at')->nullable();
             $table->uuid('deleted_by')->nullable();
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Post\Post;
 use App\Traits\Uuids;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

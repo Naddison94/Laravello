@@ -14,7 +14,9 @@ class CreateTaskStatusesTable extends Migration
     public function up()
     {
         Schema::create('task_statuses', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('title');
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }

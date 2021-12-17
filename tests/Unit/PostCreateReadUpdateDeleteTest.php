@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Post\PostController;
-use App\Models\Post;
+use App\Models\Post\Post;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Request;

@@ -20,8 +20,8 @@ class CreateTasksTable extends Migration
             $table->string('title');
             $table->text('body')->nullable();
             $table->string('img')->nullable();
-            $table->timestamp('deleted_at')->nullable();
             $table->uuid('deleted_by')->nullable();
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }

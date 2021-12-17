@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Post;
 
+use App\Models\User;
 use App\Traits\Uuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

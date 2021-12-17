@@ -14,7 +14,13 @@ class CreateTaskCommentsTable extends Migration
     public function up()
     {
         Schema::create('task_comments', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->uuid('task_id');
+            $table->uuid('reply_id')->nullable();
+            $table->uuid('user_id');
+            $table->text('comment');
+            $table->uuid('deleted_by')->nullable();
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }
