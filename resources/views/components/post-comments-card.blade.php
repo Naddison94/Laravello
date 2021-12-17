@@ -26,7 +26,7 @@
     <div class="p-4 antialiased mx-auto max-w-screen-sm">
         <h3 class="mb-4 text-lg font-semibold text-gray-900 ">{{ $post->comments->count() }} Comments</h3>
         <div class="space-y-4">
-            @foreach($post->comments as $comment)
+            @foreach($comments as $comment)
             <div class="flex">
                 <div class="flex-shrink-0 mr-3">
                     <img class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10" src="{{ getUserAvatar($comment->author) }}" alt="">
@@ -70,6 +70,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                 @endforeach
 
                             </div>
@@ -94,6 +95,7 @@
                 </div>
             </div>
             @endforeach
+            {{ $comments->links() }}
         </div>
     </div>
 </div>

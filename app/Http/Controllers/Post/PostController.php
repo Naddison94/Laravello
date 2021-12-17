@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Post;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use App\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -20,8 +21,9 @@ class PostController extends Controller
 
     public function show($post_id)
     {
-        $post = Post::where('id', $post_id)->with('comments.author', 'comments.replies.author')->first();
-        return view('post.show', compact('post'));
+        $post = Post::where('id', $post_id)->first();
+        $comments = Comment::where('post_id', $post_id)->whereNull('reply_id')->with('author', 'replies.author')->paginate(8);
+        return view('post.show', compact('post', 'comments'));
     }
 
     public function create()
@@ -55,7 +57,6 @@ class PostController extends Controller
 
             return redirect(route('post.index'))->with('success', 'Post added.');
         }
-
     }
 
     public function edit($post_id)

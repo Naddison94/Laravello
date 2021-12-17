@@ -35,7 +35,7 @@ class CommentController extends controller
     public function reply($comment_id, Request $request)
     {
         $rules = [
-            'reply' => 'required:reply|max:2'
+            'reply' => 'required:reply|max:255'
         ];
 
         $validator = Validator::make($request->all(), $rules);
