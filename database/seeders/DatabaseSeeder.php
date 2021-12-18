@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             PostCommentSeeder::class,
             TaskCatergorySeeder::class,
             TaskStatusSeeder::class,
+            TaskPrioritySeeder::class,
             TaskSeeder::class,
             TaskCommentSeeder::class,
         ]);
