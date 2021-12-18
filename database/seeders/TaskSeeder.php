@@ -20,6 +20,7 @@ class TaskSeeder extends Seeder
             'user_id' => 'dd9920eb-1531-4eaa-ab8a-fbaaeb831d2c',
             'category_id' => 3,
             'status_id' => 1,
+            'priority_id' => 1,
             'title' => 'This is a seeded task',
             'body' => 'This is the body of the task',
             'created_at' => Carbon::now(),
