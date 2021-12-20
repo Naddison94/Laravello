@@ -1,7 +1,7 @@
 <div class="md:col-span-2 xl:col-span-1">
     <div class="rounded bg-gray-200 p-3">
         <div class="flex justify-between py-1 text-black">
-            <h3 class="text-sm font-semibold">In progress</h3>
+            <h3 class="text-sm font-semibold">Completed</h3>
             <svg class="h-4 fill-current text-gray-600 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 10a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4z" /></svg>
         </div>
 
@@ -15,9 +15,9 @@
                 </tr>
                 </thead>
 
-                @forelse($tasks->in_progress as $task)
+                @forelse($tasks->completed as $task)
                     <tr class="bg-white hover:bg-gray-100 text-gray-700 border-b">
-                        <td style="width:50%" class="text-center text-sm font-semibold tracking-wide">
+                        <td style="width:50%" class="text-center text-text-xs font-semibold tracking-wide">
                             {{ $task->title }}
                         </td>
                         <td style="width:20%" class="text-center text-xs font-semibold tracking-wide ">
@@ -28,19 +28,23 @@
                         </td>
                     </tr>
                 @empty
-                    <tr>
-                        <td colspan="3">
-                            <div class="flex justify-center bg-white p-2 rounded mt-1 hover:bg-gray-50 border-b border-gray-100 cursor-pointer">
-                                -
-                            </div>
+                    <tr class="bg-white hover:bg-gray-100 text-gray-700 border-b">
+                        <td style="width:50%" class="text-center text-text-xs font-semibold tracking-wide">
+                           -
+                        </td>
+                        <td style="width:20%" class="text-center text-xs font-semibold tracking-wide ">
+                            -
+                        </td>
+                        <td style="width:30%" class="text-center text-xs font-semibold tracking-wide">
+                            -
                         </td>
                     </tr>
                 @endforelse
                 <tr>
                     <td colspan="3">
-                        @if($tasks->in_progress->count() > 8)
+                        @if($tasks->completed->count() > 8)
                             <div class="center w-full px-4 py-3 text-xs text-gray-500 border-t bg-gray-50">
-                                {{ $tasks->in_progress->links() }}
+                                {{ $tasks->completed->links() }}
                             </div>
                         @endif
                     </td>
