@@ -1,14 +1,14 @@
 <div class="md:col-span-2 xl:col-span-1">
-    <div class="rounded bg-gray-200 dark:bg-gray-800 p-3">
-        <div class="flex justify-between py-1 text-black dark:text-white">
+    <div class="rounded bg-gray-200 p-3">
+        <div class="flex justify-between py-1 text-black">
             <h3 class="text-sm font-semibold">Pending</h3>
-            <svg class="h-4 fill-current text-gray-600 dark:text-gray-500 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 10a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4z" /></svg>
+            <svg class="h-4 fill-current text-gray-600 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 10a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4z" /></svg>
         </div>
 
         <div class="text-sm text-black mt-2">
             <table class="table-fixed w-full">
                 <thead>
-                <tr class="text-xs font-semibold tracking-wide text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                <tr class="text-xs font-semibold tracking-wide text-gray-500 uppercase border-b bg-gray-50">
                     <th style="width:50%" class="px-4 py-3">Title</th>
                     <th style="width:20%" class="px-4 py-3">Priority</th>
                     <th style="width:30%" class="px-4 py-3">Category</th>
