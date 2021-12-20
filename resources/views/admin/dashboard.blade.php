@@ -137,7 +137,7 @@
 
                     <div class="grid grid-cols-1 shadow-lg md:grid-cols-2 xl:grid-cols-3 bg-gray-50 p-4 gap-4 text-black">
                         <div class="md:col-span-2 xl:col-span-3">
-                            <h3 class="text-lg font-semibold">Project Management</h3>
+                            <a class="no-underline hover:underline" href="{{ route('admin.task.index') }}"><h3 class="text-lg font-semibold">Project Management</h3></a>
                         </div>
                     @include('components.admin.dashboard.pending-task-table')
                     @include('components.admin.dashboard.in-progress-task-table')

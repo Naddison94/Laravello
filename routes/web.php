@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Post\CommentController;
 use App\Http\Controllers\Post\PostController;
 use App\Http\Controllers\Profile\ProfileController;
+use App\Http\Controllers\Task\TaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,8 @@ Route::middleware(['auth'])->group(function () {
     })->name('dashboard.show');
 
     Route::get('/admin/dashboard', [DashboardController::class, 'show'])->middleware(['admin'])->name('admin.dashboard.show');
+
+    Route::get('/admin/tasks', [TaskController::class, 'index'])->middleware(['admin'])->name('admin.task.index');
 
     Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show');
     Route::get('/profile/edit/{id}', [ProfileController::class, 'edit'])->name('profile.edit');
