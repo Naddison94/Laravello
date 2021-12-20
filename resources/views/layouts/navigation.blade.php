@@ -51,12 +51,60 @@
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown-link>
+                            <div>
+                                <div class="bg-white rounded overflow-hidden shadow-lg">
+                                    <div class="text-center p-4 border-b">
+                                        <img class="h-24 w-24 rounded-full mx-auto" src="{{ getUserAvatar(App\Models\User::where('id', '=', Auth::id())->first()) }}" alt="avatar"/>
+                                        <p class="text-lg font-semibold">{{ Auth::user()->name }}</p>
+                                    </div>
+                                    <div class="border-b">
+                                        <a href="#" class="px-4 py-2 hover:bg-gray-100 flex">
+                                            <div class="text-gray-800">
+                                                <svg
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    strokeWidth="1"
+                                                    viewBox="0 0 24 24"
+                                                    class="w-5 h-5">
+                                                    <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                                    <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                </svg>
+                                            </div>
+                                            <div class="pl-3">
+                                                <p class="text-sm font-medium text-gray-800 leading-none">Settings</p>
+                                                <p class="text-xs text-gray-500">Theme, privacy</p>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="px-4 py-2 hover:bg-gray-100 flex">
+                                            <div class="text-gray-800">
+                                                <svg
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    strokeWidth="1"
+                                                    viewBox="0 0 24 24"
+                                                    class="w-5 h-5">
+                                                    <path d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                            </div>
+                                            <div class="pl-3">
+                                                <p class="text-sm font-medium text-gray-800 leading-none">Edit profile</p>
+                                                <p class="text-xs text-gray-500">Avatar, username</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <x-dropdown-link :href="route('logout')"
+                                                onclick="event.preventDefault();
+                                                            this.closest('form').submit();">
+                                            {{ __('Log Out') }}
+                                        </x-dropdown-link>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </x-slot>
                 </x-dropdown>

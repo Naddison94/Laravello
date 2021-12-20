@@ -31,4 +31,9 @@ class Task extends Model
     {
         return $this->hasOne(Priority::class, 'id', 'priority_id');
     }
+
+    public function status()
+    {
+        return $this->hasOne(Status::class, 'id', 'status_id');
+    }
 }
