@@ -18,6 +18,7 @@
                 </div>
             </div>
         </div>
+        @include('components.alpine.scroll-to-top')
     </div>
 </x-app-layout>
 
