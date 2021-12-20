@@ -32,20 +32,17 @@ class DashboardController
         $recentActivity = $recentActivity->merge(Post::latest()->with('author')->limit(4)->get());
         $recentActivity = $recentActivity->merge(Comment::latest()->with('author')->limit(4)->get());
 
-        foreach ($recentActivity as $activity) {
-            if ($activity instanceof User) {
-                $recent[] = ['message' => 'A user named ' . $activity->name . ' has joined the site' . ' ' .  $activity->created_at->diffForHumans() . '.', 'img_class' => 'user'];
-            }
+        // sort the data by created_at
+        $recentActivitySorted = $recentActivity->sortBy(function($created_at) {
+            return $created_at;
+        })->values()->sortBy('created_at')->all();
 
-            if ($activity instanceof Post) {
-                $recent[] = ['message' => $activity->author->name . ' created the post: ' . $activity->title . ' ' . $activity->created_at->diffForHumans() . '.', 'img_class' => 'post'];
-            }
+        // remove older data from the array to prevent stale data hanging around
+        //        $recentActivitySpliced = array_splice($recentActivitySorted, 0);
 
-            if ($activity instanceof Comment) {
-                $recent[] = ['message' => $activity->author->name . ' has commented: ' . $activity->comment . ' ' . $activity->created_at->diffForHumans() . '.', 'img_class' => 'comment'];
-            }
-        }
+        // reverse the array to show desc in view
+        $recentActivity = array_reverse($recentActivitySorted);
 
-        return view('admin.dashboard', compact('users', 'posts', 'tasks', 'comments', 'recent'));
+        return view('admin.dashboard', compact('users', 'posts', 'tasks', 'comments', 'recentActivity'));
     }
 }

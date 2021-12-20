@@ -23,4 +23,9 @@ class Comment extends Model
     {
         return $this->hasMany(Comment::class, 'reply_id')->whereNotNull('reply_id');
     }
+
+    public function post()
+    {
+        return $this->hasOne(Post::class, 'id', 'post_id');
+    }
 }
