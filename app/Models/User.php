@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Post\Comment;
 use App\Models\Post\Post;
 use App\Traits\Uuids;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -51,11 +52,16 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        $this->hasOne(UserAdmin::class, 'user_id', 'id');
+        return $this->hasOne(UserAdmin::class, 'user_id', 'id');
     }
 
     public function posts()
     {
-        $this->hasMany(Post::class, 'user_id', 'id');
+        return $this->hasMany(Post::class, 'user_id', 'id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'user_id', 'id');
     }
 }

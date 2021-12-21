@@ -14,10 +14,8 @@ class ProfileController extends Controller
 
     public function show($user_id)
     {
-        $user = User::find($user_id);
-        $posts = Post::latest()->where('user_id', $user_id)->paginate(3);
-
-        return view('profile.show', compact('user', 'posts'));
+        $user = User::where('id', $user_id)->with('posts', 'comments')->first();
+        return view('profile.show', compact('user'));
     }
 
     public function edit($user_id)
