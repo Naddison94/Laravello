@@ -1,7 +1,7 @@
 <div class="md:col-span-2 xl:col-span-1">
     <div class="rounded bg-gray-200 p-3">
         <div class="flex justify-between py-1 text-black">
-            <h3 class="text-sm font-semibold">In progress</h3>
+            <span class="px-4 py-1 text-sm text-blue-500 rounded-full bg-blue-50">In progress</span>
             <svg class="h-4 fill-current text-gray-600 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 10a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4z" /></svg>
         </div>
 

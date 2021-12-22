@@ -1,7 +1,7 @@
 <div class="md:col-span-2 xl:col-span-1">
     <div class="rounded bg-gray-200 p-3">
         <div class="flex justify-between py-1 text-black">
-            <h3 class="text-sm font-semibold">Completed</h3>
+            <span class="px-4 py-1 text-sm text-green-500 rounded-full bg-green-50">Completed</span>
             <svg class="h-4 fill-current text-gray-600 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 10a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4z" /></svg>
         </div>
 
@@ -17,7 +17,7 @@
 
                 @forelse($tasks->completed as $task)
                     <tr class="bg-white hover:bg-gray-100 text-gray-700 border-b">
-                        <td style="width:50%" class="text-center text-text-xs font-semibold tracking-wide">
+                        <td style="width:50%" class="text-center text-xs font-semibold tracking-wide">
                             {{ $task->title }}
                         </td>
                         <td style="width:20%" class="text-center text-xs font-semibold tracking-wide ">

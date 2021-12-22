@@ -45,6 +45,14 @@
                         </tr>
                         </tbody>
                     @endforeach
+
+                    <tr>
+                        <td colspan="6">
+                            <div class="center w-full px-4 py-3 text-xs text-gray-500 border-t bg-gray-50">
+                                {{ $tasks->links() }}
+                            </div>
+                        </td>
+                    </tr>
                 </table>
             </div>
         </div>

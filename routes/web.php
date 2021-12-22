@@ -32,6 +32,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/dashboard', [DashboardController::class, 'show'])->middleware(['admin'])->name('admin.dashboard.show');
 
     Route::get('/admin/tasks', [TaskController::class, 'index'])->middleware(['admin'])->name('admin.task.index');
+    Route::get('/admin/task/create', [TaskController::class, 'create'])->middleware(['admin'])->name('admin.task.create');
+    Route::post('/admin/task/store', [TaskController::class, 'store'])->middleware(['admin'])->name('admin.task.store');
 
     Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show');
     Route::get('/profile/edit/{id}', [ProfileController::class, 'edit'])->name('profile.edit');
