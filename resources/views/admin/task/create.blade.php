@@ -17,11 +17,11 @@
                                     <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="title">
                                         Title
                                     </label>
-                                    <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" id="title" type="text" placeholder="Title">
+                                    <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" id="title" name="title" type="text" value="{{ old('title') }}" placeholder="Title">
                                     <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="description">
                                         Description
                                     </label>
-                                    <textarea rows="5" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="body" placeholder="Description"></textarea>
+                                    <textarea rows="5" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" name="body" id="body" placeholder="Description">{{ old('body') }}</textarea>
                                 </div>
 
                                 <div class="w-full">
@@ -29,21 +29,26 @@
                                         <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="category">
                                             Category
                                         </label>
-                                        <select class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" id="category">
+                                        <select class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" name="category_id" id="category">
                                             @foreach($categories as $category)
-                                                <option value="<?= $category->id ?>"><?= $category->title ?></option>
+                                                <option value="{{ $category->id }}"
+                                                    {{ (collect(old('category_id'))->contains($category->id)) ? 'selected':'' }}  />
+                                                {{ $category->title }}
+
                                             @endforeach
                                         </select>
-    {{--                                        <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" id="title" type="text" placeholder="Category">--}}
                                     </div>
 
                                     <div class="px-3 mb-6 pt-1 md:mb-0">
                                         <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="status">
                                             Status
                                         </label>
-                                        <select class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" id="status">
-                                            @foreach($statuses as $status)
-                                                <option value="<?= $status->id ?>"><?= $status->title ?></option>
+                                        <select class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" name="status_id" id="status">
+                                            @foreach($statuses as $key => $status)
+                                                <option value="{{ $status->id }}"
+                                                    {{ (collect(old('status_id'))->contains($status->id)) ? 'selected':'' }}  />
+                                                {{ $status->title }}
+
                                             @endforeach
                                         </select>
                                         </div>
@@ -52,9 +57,12 @@
                                         <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="priority">
                                             Priority
                                         </label>
-                                        <select class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" id="priority">
+                                        <select class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" name="priority_id" id="priority">
                                             @foreach($priorities as $priority)
-                                                <option value="<?= $priority->id ?>"><?= $priority->title ?></option>
+                                                <option value="{{ $priority->id }}"
+                                                    {{ (collect(old('priority_id'))->contains($priority->id)) ? 'selected':'' }}  />
+                                                {{ $priority->title }}
+
                                             @endforeach
                                         </select>
                                     </div>
@@ -62,7 +70,11 @@
                             </div>
 
                         </div>
-                        <input class="hover:bg-blue-50 w-1/12" type="submit">
+                        <div class="flex items-center justify-center mt-4">
+                            <x-button class="ml-4">
+                                {{ __('Create') }}
+                            </x-button>
+                        </div>
                     </form>
                 </div>
             </div>

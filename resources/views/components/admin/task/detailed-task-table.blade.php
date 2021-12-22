@@ -9,6 +9,7 @@
                         <th class="px-3 py-3 text-xs font-normal text-gray-500 uppercase align-middle">Body</th>
                         <th class="px-3 py-3 text-xs font-normal text-gray-500 uppercase align-middle">Category</th>
                         <th class="px-3 py-3 text-xs font-normal text-gray-500 uppercase align-middle">Status</th>
+                        <th class="px-3 py-3 text-xs font-normal text-gray-500 uppercase align-middle">Priority</th>
                         <th class="px-3 py-3 text-xs font-normal text-gray-500 uppercase align-middle">Created_at</th>
                         <th class="px-3 py-3 text-xs font-normal text-gray-500 uppercase align-middle">Actions</th>
                     </tr>
@@ -32,6 +33,7 @@
                                     @break
                             @endswitch
                             </td>
+                            <td class="px-3 py-4 text-gray-500 text-center">{{ $task->priority->title }}</td>
                             <td class="px-3 py-4 text-center text-gray-500 ">{{ $task->created_at->diffForHumans() }}</td>
                             <td class="w-20 px-3 py-2 text-center text-gray-500 ">
                                 <div class="flex place-content-center">

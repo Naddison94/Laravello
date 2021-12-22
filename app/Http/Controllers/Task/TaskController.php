@@ -8,6 +8,8 @@ use App\Models\Task\Priority;
 use App\Models\Task\Status;
 use App\Models\Task\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class TaskController extends Controller
 {
@@ -32,6 +34,23 @@ class TaskController extends Controller
 
     public function store(Request $request)
     {
-        dd($request);
+        $validated = $request->validate([
+            'title' => 'required:tasks|max:80',
+            'body' => 'required:tasks|max:255'
+        ]);
+
+        $task = new Task();
+        $task->title = $request->title;
+        $task->body = $request->body;
+        $task->user_id = Auth::id();
+        $task->category_id = $request->category_id;
+        $task->status_id = $request->status_id;
+        $task->priority_id = $request->priority_id;
+        $task->save();
+
+        setUserActivity();
+
+        // todo change this to show once show is implemented
+        return redirect(route('admin.task.index'));
     }
 }
