@@ -1,5 +1,5 @@
 <div class="w-full bg-white p-2 pt-4 rounded shadow-lg">
-    <form action="{{ route('comment.store', ['id' => $post->id]) }}" method="POST">
+    <form action="{{ route('post.comment.store', ['id' => $post->id]) }}" method="POST">
         @csrf
         <div class="flex ml-3">
             <div class="mr-3">
@@ -34,7 +34,9 @@
                 <div class="flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
                     <strong>{{$comment->author->name}}</strong>
                     @if(Auth::id() == $comment->user_id)
-                        <a class="no-underline hover:underline text-red-500 float-right" href="{{ route('comment.delete', ['id' => $comment->id]) }}"><label class="text-red-500">delete</label></a>
+                        <a class="no-underline hover:underline text-red-500 float-right" href="{{ route('post.comment.delete', ['id' => $comment->id]) }}">
+                            <label class="text-red-500">delete</label>
+                        </a>
                     @endif
                     <span class="text-xs text-gray-400">
                         {{ $comment->created_at->diffForHumans() }}
@@ -61,7 +63,7 @@
 
                                             <div class="flex-1 bg-gray-100 rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
                                                 @if(Auth::id() == $reply->user_id)
-                                                    <a class="no-underline hover:underline text-red-500 float-right" href="{{ route('comment.delete', ['id' => $reply->id]) }}"><label class="text-red-500">Delete</label></a>
+                                                    <a class="no-underline hover:underline text-red-500 float-right" href="{{ route('post.comment.delete', ['id' => $reply->id]) }}"><label class="text-red-500">Delete</label></a>
                                                 @endif
                                                 <strong>{{ $reply->author->name }}</strong> <span class="text-xs text-gray-400">{{ $reply->created_at->diffForHumans() }}</span>
                                                 <p class="text-xs sm:text-sm">
@@ -81,7 +83,7 @@
                                     </div>
                                 </button>
                                 <div x-show="open" class="text-sm min-w-full">
-                                    <form action="{{ route('comment.reply', ['id' => $comment->id]) }}" method="POST">
+                                    <form action="{{ route('post.comment.reply', ['id' => $comment->id]) }}" method="POST">
                                         @csrf
                                         <textarea rows="5" class="border p-2 rounded w-full" name="reply" placeholder="Reply">@if($comment->id == session('comment_id')) {{ old('reply') }} @endif</textarea>
                                         <div class="flex justify-between mt-3">

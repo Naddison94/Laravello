@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Profile;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\User\User;
@@ -11,7 +11,7 @@ class ProfileController extends Controller
     public function show($user_id)
     {
         $user = User::where('id', $user_id)->withCount('posts', 'comments', 'friends')->first();
-        return view('profile.show', compact('user'));
+        return view('user.profile.show', compact('user'));
     }
 
     public function edit($user_id)
@@ -39,6 +39,6 @@ class ProfileController extends Controller
 
         setUserActivity();
 
-        return view('profile.show', compact('user'));
+        return view('user.profile.show', compact('user'));
     }
 }

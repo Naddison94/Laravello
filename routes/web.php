@@ -4,7 +4,8 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Task\TaskController;
 use App\Http\Controllers\Post\CommentController;
 use App\Http\Controllers\Post\PostController;
-use App\Http\Controllers\Profile\ProfileController;
+use App\Http\Controllers\User\ProfileController;
+use App\Http\Controllers\User\FriendsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,9 +42,11 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/admin/task/destroy/{id}', [TaskController::class, 'destroy'])->name('admin.task.destroy');
     });
 
-    Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show');
-    Route::get('/profile/edit/{id}', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::post('/profile/update/{id}', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('user.profile.show');
+    Route::get('/profile/edit/{id}', [ProfileController::class, 'edit'])->name('user.profile.edit');
+    Route::post('/profile/update/{id}', [ProfileController::class, 'update'])->name('user.profile.update');
+
+    Route::get('/friends/{id}', [FriendsController::class, 'index'])->name('user.friends.index');
 
     Route::get('/posts', [PostController::class, 'index'])->name('post.index');
     Route::get('/post/create', [PostController::class, 'create'])->name('post.create');
@@ -54,10 +57,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/post/delete/{id}', [PostController::class, 'delete'])->name('post.delete');
     Route::post('/post/destroy/{id}', [PostController::class, 'destroy'])->name('post.destroy');
 
-    Route::post('/post/{id}/comment/store', [CommentController::class, 'store'])->name('comment.store');
-    Route::post('/comment/{id}/reply', [CommentController::class, 'reply'])->name('comment.reply');
-    Route::get('/comment/delete/{id}', [CommentController::class, 'delete'])->name('comment.delete');
-    Route::post('/comment/destroy/{id}', [CommentController::class, 'destroy'])->name('comment.destroy');
+    Route::post('/post/{id}/comment/store', [CommentController::class, 'store'])->name('post.comment.store');
+    Route::post('/comment/{id}/reply', [CommentController::class, 'reply'])->name('post.comment.reply');
+    Route::get('/comment/delete/{id}', [CommentController::class, 'delete'])->name('post.comment.delete');
+    Route::post('/comment/destroy/{id}', [CommentController::class, 'destroy'])->name('post.comment.destroy');
 });
 
 

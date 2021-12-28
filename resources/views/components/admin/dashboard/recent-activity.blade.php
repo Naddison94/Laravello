@@ -21,7 +21,7 @@
                             <div class="flex-grow flex items-center border-b border-gray-100 text-sm text-gray-600 py-2">
                                 <div class="flex-grow flex justify-between items-center">
                                     <div class="self-center">
-                                        <label class="font-medium"><a class="text-green-500 decoration-green no-underline hover:underline" href="{{ route('profile.show', ['id' => $activity->id]) }}"><strong>{{ $activity->name }}</strong></a> registered {{ $activity->created_at->diffForHumans() }}</label>
+                                        <label class="font-medium"><a class="text-green-500 decoration-green no-underline hover:underline" href="{{ route('user.profile.show', ['id' => $activity->id]) }}"><strong>{{ $activity->name }}</strong></a> registered {{ $activity->created_at->diffForHumans() }}</label>
                                     </div>
                                 </div>
                             </div>
@@ -34,7 +34,7 @@
                             <div class="flex-grow flex items-center border-b border-gray-100 text-sm text-gray-600 py-2">
                                 <div class="flex-grow flex justify-between items-center">
                                     <div class="self-center">
-                                        <label class="font-medium text-gray-800 hover:text-gray-900"><a class="text-green-500 decoration-green no-underline hover:underline" href="{{ route('profile.show', ['id' => $activity->author->id]) }}"><strong>{{ $activity->author->name }}</strong></a> created the post <a class="text-red-500 decoration-red no-underline hover:underline" href="{{ route('post.show', ['id' => $activity->id]) }}"><strong>{{ $activity->title }} </strong></a> {{ $activity->created_at->diffForHumans() }}</label>
+                                        <label class="font-medium text-gray-800 hover:text-gray-900"><a class="text-green-500 decoration-green no-underline hover:underline" href="{{ route('user.profile.show', ['id' => $activity->author->id]) }}"><strong>{{ $activity->author->name }}</strong></a> created the post <a class="text-red-500 decoration-red no-underline hover:underline" href="{{ route('post.show', ['id' => $activity->id]) }}"><strong>{{ $activity->title }} </strong></a> {{ $activity->created_at->diffForHumans() }}</label>
                                     </div>
                                 </div>
                             </div>
@@ -47,11 +47,11 @@
                                 <div class="flex-grow flex justify-between items-center">
                                     <div class="self-center">
                                         <label class="font-medium text-gray-800 hover:text-gray-900">
-                                            <a class="text-green-500 decoration-green no-underline hover:underline" href="{{ route('profile.show', ['id' => $activity->author->id]) }}">
+                                            <a class="text-green-500 decoration-green no-underline hover:underline" href="{{ route('user.profile.show', ['id' => $activity->author->id]) }}">
                                                 <strong>{{ $activity->author->name }}</strong>
                                             </a>
                                             @if($activity->reply_id)
-                                                replied to <a class="text-green-500 decoration-green no-underline hover:underline" href="{{ route('profile.show', ['id' => $activity->author->id]) }}"><strong>{{ $activity->reply->author->name }}</strong></a>'s comment <a class="text-indigo-500 no-underline hover:underline" href="#"><strong>{{ $activity->reply->comment }}</strong></a> with
+                                                replied to <a class="text-green-500 decoration-green no-underline hover:underline" href="{{ route('user.profile.show', ['id' => $activity->author->id]) }}"><strong>{{ $activity->reply->author->name }}</strong></a>'s comment <a class="text-indigo-500 no-underline hover:underline" href="#"><strong>{{ $activity->reply->comment }}</strong></a> with
                                             @else
                                                 commented
                                             @endif

@@ -22,7 +22,7 @@
                         </x-nav-link>
                     @endif
 
-                    <x-nav-link a href="{{ route ('profile.show', ['id' => auth()->user()->id]) }}" :active="request()->routeIs('profile')">
+                    <x-nav-link a href="{{ route ('user.profile.show', ['id' => auth()->user()->id]) }}" :active="request()->routeIs('profile')">
                         {{ __('Profile') }}
                     </x-nav-link>
 

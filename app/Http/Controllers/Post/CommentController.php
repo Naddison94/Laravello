@@ -62,7 +62,7 @@ class CommentController extends controller
 
     public function delete($comment_id)
     {
-        return view('comment.delete', compact('comment_id'));
+        return view('post.comment.delete', compact('comment_id'));
     }
 
     public function destroy($comment_id)
