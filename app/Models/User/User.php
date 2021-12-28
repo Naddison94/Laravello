@@ -67,6 +67,6 @@ class User extends Authenticatable
 
     public function friends()
     {
-        return $this->hasMany(Friends::class, 'user_id', 'id');
+        return $this->hasMany(Friends::class, 'owner_user_id', 'id');
     }
 }

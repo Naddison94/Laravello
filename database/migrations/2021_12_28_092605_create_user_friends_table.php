@@ -15,7 +15,8 @@ class CreateUserFriendsTable extends Migration
     {
         Schema::create('user_friends', function (Blueprint $table) {
             $table->increments('id');
-            $table->uuid('user_id');
+            $table->uuid('owner_user_id');
+            $table->uuid('friend_user_id');
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
