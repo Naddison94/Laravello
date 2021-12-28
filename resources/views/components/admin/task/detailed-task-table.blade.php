@@ -2,7 +2,7 @@
     <div class="w-full mx-auto">
         <div class="px-4 mx-auto">
             <div class="min-w-full my-4 overflow-x-auto border rounded-md shadow-sm">
-                <table class="min-w-full bg-white rounded whitespace-nowrap">
+                <table class="min-w-full bg-white rounded">
                     <thead class="border-b bg-gray-50">
                         <tr>
                             <th class="px-3 py-3 text-xs font-semibold text-gray-500 uppercase align-middle">Title</th>
@@ -20,7 +20,7 @@
                                 <td class="px-3 py-4 text-gray-500 text-center">{{ $task->title }}</td>
                                 <td class="px-3 py-4 text-gray-500 text-center">{{ $task->body }}</td>
                                 <td class="px-3 py-4 text-gray-500 text-center">{{ $task->category->title }}</td>
-                                <td class="px-3 py-4 text-center">
+                                <td class="px-3 py-4 text-center whitespace-nowrap">
                                     @switch($task->status_id)
                                         @case($task->status_id === 1)
                                             <span class="px-4 py-1 text-sm text-yellow-500 rounded-full bg-yellow-50">Pending</span>
@@ -36,9 +36,6 @@
                                 <td class="px-3 py-4 text-gray-500 text-center">{{ $task->priority->title }}</td>
                                 <td class="px-3 py-4 text-center text-gray-500 ">{{ $task->created_at->diffForHumans() }}</td>
                                 <td class="w-20 px-3 py-2 text-center text-gray-500 ">
-
-
-
                                     <div class="hidden sm:flex sm:items-center sm:ml-6">
                                         <x-dropdown align="right" width="48">
                                             <x-slot name="trigger">

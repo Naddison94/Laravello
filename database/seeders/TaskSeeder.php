@@ -19,7 +19,7 @@ class TaskSeeder extends Seeder
             'id' => 'dd9920eb-1531-4eaa-ab8a-fbbaeb831d2a',
             'user_id' => 'dd9920eb-1531-4eaa-ab8a-fbaaeb831d2c',
             'category_id' => 3,
-            'status_id' => 1,
+            'status_id' => 3,
             'priority_id' => 1,
             'title' => 'This is a seeded task',
             'body' => 'This is the body of the task',

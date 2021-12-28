@@ -17,7 +17,7 @@
                 <div class="text-center px-14">
                     <h2 class="text-gray-800 text-3xl font-bold">{{ $user->name }}</h2>
                     <p class="text-gray-400 mt-2">Last active: {{ \Carbon\Carbon::parse($user->last_active)->diffForHumans() }}</p>
-                    <p class="mt-2 text-gray-600">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
+                    <p class="mt-2 text-gray-600">{{ $user->bio }}</p>
                 </div>
                 <hr class="mt-6" />
                 <div class="flex  bg-gray-50 ">
