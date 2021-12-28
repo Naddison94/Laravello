@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="pl-6 bg-white border-b border-gray-200">
                     <div>
-                        <form action="{{ route('profile.update', ['id' => $user->id]) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('user.profile.update', ['id' => $user->id]) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @include('components.upload-image')
                             <div class="flex items-center justify-center my-4">

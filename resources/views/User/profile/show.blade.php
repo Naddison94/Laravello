@@ -11,7 +11,11 @@
                 <img class="w-full" src="https://images.unsplash.com/photo-1605379399642-870262d3d051?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80" alt="" />
             </div>
             <div class="flex justify-center px-5  -mt-12">
-                <a href="{{ route ('user.profile.edit', ['id' => $user->id]) }}"><img class="h-32 w-32 bg-white p-2 rounded-full" src="{{ getUserAvatar($user) }}" alt="avatar"/></a>
+                @if(isOwner($user->id))
+                    <a href="{{ route ('user.profile.edit', ['id' => $user->id]) }}"><img class="h-32 w-32 bg-white p-2 rounded-full" src="{{ getUserAvatar($user) }}" alt="avatar"/></a>
+                @else
+                    <img class="h-32 w-32 bg-white p-2 rounded-full" src="{{ getUserAvatar($user) }}" alt="avatar"/>
+                @endif
             </div>
             <div>
                 <div class="text-center px-14">

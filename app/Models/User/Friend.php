@@ -5,7 +5,7 @@ namespace App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Friends extends Model
+class Friend extends Model
 {
     use SoftDeletes;
 
@@ -13,6 +13,6 @@ class Friends extends Model
 
     public function user()
     {
-        return $this->hasOne(User::class, 'id', 'owner_user_id');
+        return $this->hasOne(User::class, 'id', 'friend_user_id');
     }
 }

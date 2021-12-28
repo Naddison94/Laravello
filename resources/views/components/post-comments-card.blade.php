@@ -7,7 +7,9 @@
             </div>
 
             <div>
-                <h1 class="font-semibold">{{ Auth::user()->name }}</h1>
+                <a href="{{ route ('user.profile.show', ['id' => $post->author->id]) }}">
+                    <h1 class="font-semibold hover:underline">{{ Auth::user()->name }}</h1>
+                </a>
                 <p class="text-xs text-gray-500">Leave a comment</p>
             </div>
         </div>
@@ -32,7 +34,9 @@
                     <img class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10" src="{{ getUserAvatar($comment->author) }}" alt="">
                 </div>
                 <div class="flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
-                    <strong>{{$comment->author->name}}</strong>
+                    <a href="{{ route ('user.profile.show', ['id' => $post->author->id]) }}">
+                        <strong class="hover:underline">{{$comment->author->name}}</strong>
+                    </a>
                     @if(Auth::id() == $comment->user_id)
                         <a class="no-underline hover:underline text-red-500 float-right" href="{{ route('post.comment.delete', ['id' => $comment->id]) }}">
                             <label class="text-red-500">delete</label>
@@ -65,7 +69,9 @@
                                                 @if(Auth::id() == $reply->user_id)
                                                     <a class="no-underline hover:underline text-red-500 float-right" href="{{ route('post.comment.delete', ['id' => $reply->id]) }}"><label class="text-red-500">Delete</label></a>
                                                 @endif
-                                                <strong>{{ $reply->author->name }}</strong> <span class="text-xs text-gray-400">{{ $reply->created_at->diffForHumans() }}</span>
+                                                <a href="{{ route ('user.profile.show', ['id' => $post->author->id]) }}">
+                                                    <strong class="hover:underline">{{ $reply->author->name }}</strong> <span class="text-xs text-gray-400">{{ $reply->created_at->diffForHumans() }}</span>
+                                                </a>
                                                 <p class="text-xs sm:text-sm">
                                                     {{ $reply->comment }}
                                                 </p>

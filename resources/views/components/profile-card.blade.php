@@ -1,4 +1,4 @@
-<div class="card border w-96 hover:shadow-none relative flex flex-col mx-auto shadow-lg">
+<div class="card border w-96 hover:shadow-lg relative flex flex-col mx-auto">
     <div class="h-24 overflow-hidden" >
         <img class="w-full top-0" src="{{ getUserBanner($friend->user) }}" alt="banner" />
     </div>
