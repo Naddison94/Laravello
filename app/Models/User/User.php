@@ -54,6 +54,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(Admin::class, 'user_id', 'id');
     }
+    
+    public function isFriend($friend_user_id) {
+        return $this->friends()->where('friend_user_id', $friend_user_id)->first();
+    }
 
     public function posts()
     {
