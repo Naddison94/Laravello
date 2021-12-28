@@ -17,13 +17,13 @@
 
                 @forelse($tasks->in_progress as $task)
                     <tr class="bg-white hover:bg-gray-100 text-gray-700 border-b">
-                        <td style="width:50%" class="text-center text-xs font-semibold tracking-wide">
+                        <td style="width:50%" class="px-3 py-4 text-gray-500 text-center">
                             {{ $task->title }}
                         </td>
-                        <td style="width:20%" class="text-center text-xs font-semibold tracking-wide ">
+                        <td style="width:20%" class="px-3 py-4 text-gray-500 text-center">
                             {{ $task->priority->title }}
                         </td>
-                        <td style="width:30%" class="text-center text-xs font-semibold tracking-wide">
+                        <td style="width:30%" class="px-3 py-4 text-gray-500 text-center">
                             {{ $task->category->title }}
                         </td>
                     </tr>
@@ -42,7 +42,7 @@
                 @endforelse
                 <tr>
                     <td colspan="3">
-                        @if($tasks->in_progress->count() > 8)
+                        @if($tasks->in_progress->count() > 7)
                             <div class="center w-full px-4 py-3 text-xs text-gray-500 border-t bg-gray-50">
                                 {{ $tasks->in_progress->links() }}
                             </div>

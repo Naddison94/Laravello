@@ -141,9 +141,9 @@
                               Project Management
                             </a>
                         </div>
-                    @include('components.admin.dashboard.pending-task-table')
-                    @include('components.admin.dashboard.in-progress-task-table')
-                    @include('components.admin.dashboard.completed-task-table')
+                        @include('components.admin.dashboard.pending-task-table')
+                        @include('components.admin.dashboard.in-progress-task-table')
+                        @include('components.admin.dashboard.completed-task-table')
                     </div>
                     @include('components.admin.dashboard.recent-activity')
                 </div>
