@@ -109,7 +109,7 @@ class PostController extends Controller
         $post->deleted_by = Auth::id();
         $post->save();
 
-        session()->flash('success',  'Post deleted.');
+        session()->flash('success', 'Post deleted.');
 
         setUserActivity();
 

@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\Task\TaskController;
 use App\Http\Controllers\Post\CommentController;
 use App\Http\Controllers\Post\PostController;
 use App\Http\Controllers\Profile\ProfileController;
-use App\Http\Controllers\Task\TaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,11 +29,17 @@ Route::middleware(['auth'])->group(function () {
         return view('dashboard');
     })->name('dashboard.show');
 
-    Route::get('/admin/dashboard', [DashboardController::class, 'show'])->middleware(['admin'])->name('admin.dashboard.show');
+    Route::middleware(['admin'])->group(function () {
+        Route::get('/admin/dashboard', [DashboardController::class, 'show'])->name('admin.dashboard.show');
 
-    Route::get('/admin/tasks', [TaskController::class, 'index'])->middleware(['admin'])->name('admin.task.index');
-    Route::get('/admin/task/create', [TaskController::class, 'create'])->middleware(['admin'])->name('admin.task.create');
-    Route::post('/admin/task/store', [TaskController::class, 'store'])->middleware(['admin'])->name('admin.task.store');
+        Route::get('/admin/tasks', [TaskController::class, 'index'])->name('admin.task.index');
+        Route::get('/admin/task/create', [TaskController::class, 'create'])->name('admin.task.create');
+        Route::post('/admin/task/store', [TaskController::class, 'store'])->name('admin.task.store');
+        Route::get('/admin/task/edit/{id}', [TaskController::class, 'edit'])->name('admin.task.edit');
+        Route::post('/admin/task/update/{id}', [TaskController::class, 'update'])->name('admin.task.update');
+        Route::get('/admin/task/delete/{id}', [TaskController::class, 'delete'])->name('admin.task.delete');
+        Route::post('/admin/task/destroy/{id}', [TaskController::class, 'destroy'])->name('admin.task.destroy');
+    });
 
     Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show');
     Route::get('/profile/edit/{id}', [ProfileController::class, 'edit'])->name('profile.edit');
