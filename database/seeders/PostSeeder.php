@@ -21,6 +21,7 @@ class PostSeeder extends Seeder
             'category_id' => 1,
             'title' => 'First post, seeded!',
             'body' => 'This is the body of the post',
+            'img' => 'kakashi-rin.jpg',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
