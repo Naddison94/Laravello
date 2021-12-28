@@ -36,7 +36,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        if (Admin::first('user_id', Auth::id())) {
+        if (Admin::where('user_id', Auth::id())->first()) {
             Session::put('admin', true);
         }
 

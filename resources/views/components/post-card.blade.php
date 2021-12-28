@@ -3,14 +3,30 @@
         <header class="flex items-center justify-between leading-tight p-2 md:p-4 bg-white">
             <h1 class="text-lg">
                 <a class="no-underline hover:underline text-black" href="{{ route('post.show', ['id' => $post->id]) }}">{{ $post->title }}</a>
-                @if(Auth::id() == $post->user_id)
-                    | <a class="no-underline hover:underline text-green-500" href="{{ route('post.edit', ['id' => $post->id]) }}"><label class="text-green-500">edit</label></a>
-                    | <a class="no-underline hover:underline text-red-500" href="{{ route('post.delete', ['id' => $post->id]) }}"><label class="text-red-500">delete</label></a>
-                @endif
             </h1>
-            <p class="text-grey-darker text-sm">
-                {{ $post->created_at->diffForHumans() }}
-            </p>
+
+            <div>
+                @if(Auth::id() == $post->user_id)
+                    <div class="hidden sm:flex sm:items-center sm:ml-6">
+                        <x-dropdown align="right">
+                            <x-slot name="trigger">
+                                <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                                    @include('components.icons.triple-dots')
+                                </button>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                <a class="block p-4 text-center text-gray-700 hover:bg-green-500 hover:text-white" href="{{ route('post.edit', ['id' => $post->id]) }}">edit</a>
+                                <a class="block p-4 text-center text-gray-700 hover:bg-red-500 hover:text-white" href="{{ route('post.delete', ['id' => $post->id]) }}">delete</a>
+                            </x-slot>
+                        </x-dropdown>
+                    </div>
+                @endif
+                <p class="text-grey-darker text-sm">
+                    {{ $post->created_at->diffForHumans() }}
+                </p>
+            </div>
+
         </header>
 
         @if($post->img)

@@ -12,21 +12,22 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard.show')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('dashboard.show')" :active="request()->routeIs('dashboard.show')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
+
                     @if(Session('admin') === true)
-                        <x-nav-link a href="{{ route ('admin.dashboard.show') }}" :active="request()->routeIs('admin.dashboard')">
+                        <x-nav-link a href="{{ route ('admin.dashboard.show') }}" :active="request()->routeIs('admin.dashboard.show')">
                             {{ __('Admin Dashboard') }}
                         </x-nav-link>
                     @endif
 
-                    <x-nav-link a href="{{ route ('user.profile.show', ['id' => auth()->user()->id]) }}" :active="request()->routeIs('profile')">
+                    <x-nav-link a href="{{ route ('user.profile.show', ['id' => auth()->user()->id]) }}" :active="request()->routeIs('user.profile.show')">
                         {{ __('Profile') }}
                     </x-nav-link>
 
-                    <x-nav-link a href="{{ route ('post.index') }}" :active="request()->routeIs('posts')">
+                    <x-nav-link a href="{{ route ('post.index') }}" :active="request()->routeIs('post.index')">
                         {{ __('Posts') }}
                     </x-nav-link>
                 </div>
