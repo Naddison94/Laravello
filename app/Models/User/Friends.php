@@ -1,10 +1,13 @@
 <?php
 
+namespace App\Models\User;
 
-namespace App\Models;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-
-class Friends
+class Friends extends Model
 {
+    use SoftDeletes;
 
+    public $table = 'user_friends';
 }

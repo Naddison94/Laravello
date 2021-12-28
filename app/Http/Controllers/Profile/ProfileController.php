@@ -4,13 +4,10 @@ namespace App\Http\Controllers\Profile;
 
 use App\Http\Controllers\Controller;
 use App\Models\User\User;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    use softdeletes;
-
     public function show($user_id)
     {
         $user = User::where('id', $user_id)->withCount('posts', 'comments', 'friends')->first();
@@ -20,7 +17,6 @@ class ProfileController extends Controller
     public function edit($user_id)
     {
         $user = User::find($user_id);
-
         return view('profile.edit', compact('user'));
     }
 

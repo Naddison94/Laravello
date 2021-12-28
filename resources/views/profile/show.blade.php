@@ -30,7 +30,7 @@
                     </div>
                     <div class="border"></div>
                     <div class="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer">
-                        <p> <span class="font-semibold">69</span> Friends</p>
+                        <p> <span class="font-semibold">{{ $user->friends_count }}</span> Friends</p>
                     </div>
                 </div>
             </div>
