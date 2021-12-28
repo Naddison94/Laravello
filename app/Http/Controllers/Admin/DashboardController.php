@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Post\Post;
 use App\Models\Post\Comment;
 use App\Models\Task\Task;
-use App\Models\User;
+use App\Models\User\User;
 use Illuminate\Support\Collection;
 
 class DashboardController

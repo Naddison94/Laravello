@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Profile;
 
 use App\Http\Controllers\Controller;
-use App\Models\Post\Post;
-use App\Models\User;
+use App\Models\User\User;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 
@@ -14,7 +13,7 @@ class ProfileController extends Controller
 
     public function show($user_id)
     {
-        $user = User::where('id', $user_id)->with('posts', 'comments')->first();
+        $user = User::where('id', $user_id)->withCount('posts', 'comments', 'friends')->first();
         return view('profile.show', compact('user'));
     }
 

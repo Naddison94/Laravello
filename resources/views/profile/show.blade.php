@@ -22,11 +22,11 @@
                 <hr class="mt-6" />
                 <div class="flex  bg-gray-50 ">
                     <div class="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer">
-                        <p><span class="font-semibold">{{ $user->posts->count() }}</span> Posts</p>
+                        <p><span class="font-semibold">{{ $user->posts_count }}</span> Posts</p>
                     </div>
                     <div class="border"></div>
                     <div class="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer">
-                        <p> <span class="font-semibold">{{ $user->comments->count() }} </span> Comments</p>
+                        <p> <span class="font-semibold">{{ $user->comments_count }} </span> Comments</p>
                     </div>
                     <div class="border"></div>
                     <div class="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer">

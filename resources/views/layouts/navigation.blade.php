@@ -54,7 +54,7 @@
                             <div>
                                 <div class="bg-white rounded overflow-hidden shadow-lg">
                                     <div class="text-center p-4 border-b">
-                                        <img class="h-24 w-24 rounded-full mx-auto" src="{{ getUserAvatar(App\Models\User::where('id', '=', Auth::id())->first()) }}" alt="avatar"/>
+                                        <img class="h-24 w-24 rounded-full mx-auto" src="{{ getUserAvatar(App\Models\User\User::where('id', '=', Auth::id())->first()) }}" alt="avatar"/>
                                         <p class="text-lg font-semibold">{{ Auth::user()->name }}</p>
                                     </div>
                                     <div class="border-b">

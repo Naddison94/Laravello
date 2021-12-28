@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\User;
 
 use App\Models\Post\Comment;
 use App\Models\Post\Post;
@@ -52,7 +52,7 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        return $this->hasOne(UserAdmin::class, 'user_id', 'id');
+        return $this->hasOne(Admin::class, 'user_id', 'id');
     }
 
     public function posts()
@@ -63,5 +63,10 @@ class User extends Authenticatable
     public function comments()
     {
         return $this->hasMany(Comment::class, 'user_id', 'id');
+    }
+
+    public function friends()
+    {
+        return $this->hasMany(Friends::class, 'user_id', 'id');
     }
 }

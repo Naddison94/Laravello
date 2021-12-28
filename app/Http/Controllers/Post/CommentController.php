@@ -27,7 +27,6 @@ class CommentController extends controller
 
         if ($comment->save() ) {
             setUserActivity();
-
             return redirect(route('post.show', ['id' => $post_id]))->with('success', 'Comment added.');
         }
     }
@@ -85,5 +84,4 @@ class CommentController extends controller
 
         return redirect(route('post.show', ['id' => $comment->post_id]));
     }
-
 }
