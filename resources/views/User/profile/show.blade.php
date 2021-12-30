@@ -25,13 +25,13 @@
                     @if(Auth::id() != $user->id)
                         @if(!Auth::user()->isFriend($user->id))
                             <a href="{{ route('user.friend.create', ['owner_user_id' => Auth::id(), 'friend_user_id' => $user->id]) }}">
-                                <button class="justify-center focus:outline-none space-between bg-gray-800 hover:bg-blue-900 font-medium p-2 rounded inline-flex items-center">
+                                <button class="justify-center focus:outline-none space-between bg-green-700 font-medium p-2 rounded inline-flex items-center">
                                     <svg class="w-4 h-4" fill='#FFF' stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="white"><path d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path></svg>
                                 </button>
                             </a>
                         @else
                             <a href="{{ route('user.friend.delete', ['owner_user_id' => Auth::id(), 'friend_user_id' => $user->id]) }}">
-                                <button class="justify-center focus:outline-none space-between bg-gray-800 hover:bg-red-900 font-medium p-2 rounded inline-flex items-center">
+                                <button class="justify-center focus:outline-none space-between bg-red-700 font-medium p-2 rounded inline-flex items-center">
                                     <svg class="w-4 h-4" fill='#FFF' stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="white"><path d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path></svg>
                                 </button>
                             </a>

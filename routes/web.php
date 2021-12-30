@@ -48,9 +48,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/user/{owner_user_id}/friends', [FriendController::class, 'index'])->name('user.friend.index');
     Route::get('/user/{owner_user_id}/add/{friend_user_id}', [FriendController::class, 'create'])->name('user.friend.create');
-    Route::post('/user/{owner_user_id}/update/{friend_user_id}', [FriendController::class, 'update'])->name('user.friend.update');
     Route::get('/user/{owner_user_id}/delete/{friend_user_id}', [FriendController::class, 'delete'])->name('user.friend.delete');
-    Route::get('/user/{owner_user_id}/destroy/{friend_user_id}', [FriendController::class, 'destroy'])->name('user.friend.destroy');
 
     Route::get('/posts', [PostController::class, 'index'])->name('post.index');
     Route::get('/post/create', [PostController::class, 'create'])->name('post.create');
