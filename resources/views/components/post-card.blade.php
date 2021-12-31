@@ -3,6 +3,7 @@
         <header class="flex items-center justify-between leading-tight p-2 md:p-4 bg-white">
             <h1 class="text-lg">
                 <a class="no-underline hover:underline text-black" href="{{ route('post.show', ['id' => $post->id]) }}">{{ $post->title }}</a>
+                <p class="text-sm text-gray-400">{{ $post->category->title }}</p>
             </h1>
 
             <div>
@@ -26,7 +27,6 @@
                     {{ $post->created_at->diffForHumans() }}
                 </p>
             </div>
-
         </header>
 
         @if($post->img)

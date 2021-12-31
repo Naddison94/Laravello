@@ -34,6 +34,11 @@ class Post extends Model
 
     public function comments()
     {
-        return $this->hasMany(Comment::class, 'post_id')->whereNull('reply_id')->latest();
+        return $this->hasMany(Comment::class, 'post_id')->latest();
+    }
+
+    public function category()
+    {
+        return $this->hasOne(Category::class, 'id', 'category_id');
     }
 }

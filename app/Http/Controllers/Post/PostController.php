@@ -14,13 +14,13 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::latest()->with('author')->paginate(8);
+        $posts = Post::latest()->with('author')->withCount('comments')->paginate(8);
         return view('post.index', compact('posts'));
     }
 
     public function show($post_id)
     {
-        $post = Post::where('id', $post_id)->first();
+        $post = Post::where('id', $post_id)->withCount('comments')->first();
         $comments = Comment::where('post_id', $post_id)->whereNull('reply_id')->with('author', 'replies.author')->paginate(8);
         return view('post.show', compact('post', 'comments'));
     }

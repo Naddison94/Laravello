@@ -28,7 +28,7 @@
                 <div class="container mx-auto">
                     @foreach($posts as $post)
                         <div class="flex justify-center">
-                            @include('components.post-card')
+                            @include('components.post-card-v2')
                         </div>
                     @endforeach
                     {{ $posts->links() }}
