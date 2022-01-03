@@ -42,7 +42,7 @@ class ProfileController extends Controller
 
         setUserActivity();
 
-        return view('user.profile.show', compact('user'));
+        return redirect()->route('user.profile.show', ['id' => $user_id]);
     }
 
     public function posts($user_id)
