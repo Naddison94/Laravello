@@ -11,12 +11,6 @@ use Carbon\Carbon;
 
 class FriendController extends Controller
 {
-    public function index($user_id)
-    {
-        $friends = Friend::where('owner_user_id', $user_id)->paginate(20);
-        return view('user.friend.index', compact('friends'));
-    }
-
     public function create($owner_user_id, $friend_user_id, AddFriendRequest $request)
     {
         $request->validate($owner_user_id, $friend_user_id);

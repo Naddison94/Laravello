@@ -43,15 +43,19 @@
                 <hr class="mt-6"/>
                 <div class="flex  bg-gray-50 ">
                     <div class="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer">
-                        <p><span class="font-semibold">{{ $user->posts_count }}</span> Posts</p>
+                        <a href="{{ route('user.profile.posts', ['id' => $user->id]) }}">
+                            <p><span class="font-semibold">{{ $user->posts_count }}</span> Posts</p>
+                        </a>
                     </div>
                     <div class="border"></div>
                     <div class="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer">
-                        <p> <span class="font-semibold">{{ $user->comments_count }} </span> Comments</p>
+                        <a href="{{ route('user.profile.comments', ['id' => $user->id]) }}">
+                            <p><span class="font-semibold">{{ $user->comments_count }} </span> Comments</p>
+                        </a>
                     </div>
                     <div class="border"></div>
                     <div class="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer">
-                        <a href="{{ route('user.friend.index', ['owner_user_id' => $user->id]) }}">
+                        <a href="{{ route('user.profile.friends', ['owner_user_id' => $user->id]) }}">
                             <p><span class="font-semibold">{{ $user->friends_count }}</span> Friends</p>
                         </a>
                     </div>

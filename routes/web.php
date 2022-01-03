@@ -45,8 +45,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('user.profile.show');
     Route::get('/profile/edit/{id}', [ProfileController::class, 'edit'])->name('user.profile.edit');
     Route::post('/profile/update/{id}', [ProfileController::class, 'update'])->name('user.profile.update');
+    Route::get('/profile/{owner_user_id}/friends', [ProfileController::class, 'friends'])->name('user.profile.friends');
+    Route::get('/profile/{id}/comments', [ProfileController::class, 'comments'])->name('user.profile.comments');
+    Route::get('/profile/{id}/posts', [ProfileController::class, 'posts'])->name('user.profile.posts');
 
-    Route::get('/user/{owner_user_id}/friends', [FriendController::class, 'index'])->name('user.friend.index');
     Route::get('/user/{owner_user_id}/add/{friend_user_id}', [FriendController::class, 'create'])->name('user.friend.create');
     Route::get('/user/{owner_user_id}/delete/{friend_user_id}', [FriendController::class, 'delete'])->name('user.friend.delete');
 
