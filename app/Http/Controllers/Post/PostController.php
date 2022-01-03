@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Post;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post\Category;
 use App\Models\Post\Comment;
 use App\Models\Post\Post;
 use Carbon\Carbon;
@@ -27,7 +28,8 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('post.create');
+        $categories = Category::all();
+        return view('post.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -44,7 +46,7 @@ class PostController extends Controller
         $post = new Post;
         $post->id = Str::uuid()->toString();
         $post->user_id = Auth::id();
-        $post->category_id = $request->category_id ?: null;
+        $post->category_id = $request->category_id;
         $post->title = $request->title;
         $post->body = $request->body;
         $post->img = $fileName;

@@ -47,10 +47,12 @@
 
                 <div class="border-b border-gray-100"></div>
                 <a href="{{ route('post.show', ['id' => $post->id]) }}">
-                    <div class="text-gray-400 font-medium text-sm m-2 p-2"><img alt="img" class="" src="/user/{{ $post->author->id }}/post/{{ $post->id }}/{{ $post->img }}"></div>
+                    @if($post->img)
+                        <div class="text-gray-400 font-medium text-sm m-2 p-2"><img alt="img" class="" src="/user/{{ $post->author->id }}/post/{{ $post->id }}/{{ $post->img }}"></div>
+                    @endif
                 </a>
-                <a class="no-underline hover:underline text-black" href="{{ route('post.show', ['id' => $post->id]) }}">
-                    <div class='text-gray-600 font-semibold text-lg mb-2 mx-3 px-2'>{{ $post->title }}</div>
+                <a class="text-gray-600 font-semibold text-lg mb-2 mx-3 px-2 hover:underline" href="{{ route('post.show', ['id' => $post->id]) }}">
+                   {{ $post->title }}
                 </a>
 
                 @if(Route::is('post.show') && $post->body)

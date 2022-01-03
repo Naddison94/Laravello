@@ -1,5 +1,5 @@
-<div x-data="showImage()" class="flex items-center justify-center m-4">
-    <div class="bg-white rounded-lg shadow-xl md:w-3/12">
+<div x-data="showImage()" class="flex">
+    <div class="bg-white rounded-lg shadow-xl">
         <div class="m-4">
             <label class="flex justify-center inline-block mb-2 text-gray-500">Upload Image</label>
             <div class="flex items-center justify-center w-full">
@@ -21,6 +21,7 @@
         </div>
     </div>
 </div>
+
 <script>
     function showImage() {
         return {
