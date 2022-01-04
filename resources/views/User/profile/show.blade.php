@@ -20,7 +20,6 @@
             <div>
                 <div class="text-center px-14">
                     <h2 class="inline-block text-gray-800 text-3xl font-bold">{{ $user->name }}</h2>
-
                     @if(Auth::id() != $user->id)
                         @if(!Auth::user()->isFriend($user->id))
                             <a href="{{ route('user.friend.create', ['owner_user_id' => Auth::id(), 'friend_user_id' => $user->id]) }}">

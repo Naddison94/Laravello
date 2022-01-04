@@ -62,7 +62,7 @@ class ProfileController extends Controller
 
     public function posts($user_id)
     {
-        $posts = Post::latest()->where('user_id', $user_id)->paginate(8);
+        $posts = Post::latest()->where('user_id', $user_id)->withCount('comments')->paginate(8);
         return view('user.profile.post.index', compact('posts'));
     }
 
