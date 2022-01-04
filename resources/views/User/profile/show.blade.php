@@ -5,7 +5,6 @@
         </h2>
     </x-slot>
 
-
     <div class="py-12 bg-gray-100 flex flex-wrap items-center justify-center">
         <div class="container lg:w-2/6 xl:w-2/7 sm:w-full md:w-2/3 bg-white  shadow-lg transform duration-200 easy-in-out">
             <div class=" h-32 overflow-hidden" >
@@ -13,7 +12,7 @@
             </div>
             <div class="flex justify-center px-5  -mt-12">
                 @if(isOwner($user->id))
-                    <a href="{{ route ('user.profile.edit', ['id' => $user->id]) }}"><img class="h-32 w-32 bg-white p-2 rounded-full" src="{{ getUserAvatar($user) }}" alt="avatar"/></a>
+                    <a href="{{ route ('user.profile.edit', ['id' => $user->id]) }}"><img class="h-32 w-32 bg-white p-2 rounded-full hover:bg-blue-50" src="{{ getUserAvatar($user) }}" alt="avatar"/></a>
                 @else
                     <img class="h-32 w-32 bg-white p-2 rounded-full" src="{{ getUserAvatar($user) }}" alt="avatar"/>
                 @endif
@@ -59,6 +58,11 @@
                             <p><span class="font-semibold">{{ $user->friends_count }}</span> Friends</p>
                         </a>
                     </div>
+                </div>
+            </div>
+            <div class="w-full">
+                <div>
+                    @include('components.recent-activity')
                 </div>
             </div>
         </div>

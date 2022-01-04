@@ -26,6 +26,23 @@
                                 </div>
                             </div>
                             @break
+                            @case($activity instanceof App\Models\User\Friend)
+                            <div class="w-9 h-9 rounded-full flex-shrink-0 bg-green-500 my-2 mr-3">
+                                <svg class="w-9 h-9 fill-current text-light-blue-50" viewBox="0 0 36 36"><path d="M23 11v2.085c-2.841.401-4.41 2.462-5.8 4.315-1.449 1.932-2.7 3.6-5.2 3.6h-1v2h1c3.5 0 5.253-2.338 6.8-4.4 1.449-1.932 2.7-3.6 5.2-3.6h3l-4-4zM15.406 16.455c.066-.087.125-.162.194-.254.314-.419.656-.872 1.033-1.33C15.475 13.802 14.038 13 12 13h-1v2h1c1.471 0 2.505.586 3.406 1.455zM24 21c-1.471 0-2.505-.586-3.406-1.455-.066.087-.125.162-.194.254-.316.422-.656.873-1.028 1.328.959.878 2.108 1.573 3.628 1.788V25l4-4h-3z"></path></svg>
+                            </div>
+                            <div class="flex-grow flex items-center border-b border-gray-100 text-sm text-gray-600 py-2">
+                                <div class="flex-grow flex justify-between items-center">
+                                    <div class="self-center">
+                                        <label class="font-medium">
+                                            <a  href="{{ route('user.profile.show', ['id' => $activity->owner_user_id]) }}" class="text-green-500 decoration-green no-underline hover:underline"><strong>{{ $activity->owner->name }}</strong></a>
+                                            became friends with
+                                            <a  href="{{ route('user.profile.show', ['id' => $activity->friend_user_id]) }}" class="text-green-500 decoration-green no-underline hover:underline"><strong>{{ $activity->user->name }}</strong></a>
+                                            {{ $activity->created_at->diffForHumans() }}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            @break
                         @case($activity instanceof App\Models\Post\Post)
                             <div class="w-9 h-9 rounded-full flex-shrink-0 bg-red-500 my-2 mr-3">
                                 <svg class="w-9 h-9 fill-current text-red-50" viewBox="0 0 36 36"><path d="M25 24H11a1 1 0 01-1-1v-5h2v4h12v-4h2v5a1 1 0 01-1 1zM14 13h8v2h-8z"></path></svg>

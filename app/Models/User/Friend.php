@@ -12,4 +12,9 @@ class Friend extends Model
     {
         return $this->hasOne(User::class, 'id', 'friend_user_id');
     }
+
+    public function owner()
+    {
+        return $this->hasOne(User::class, 'id', 'owner_user_id');
+    }
 }

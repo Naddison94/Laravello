@@ -8,13 +8,28 @@ use App\Models\Post\Post;
 use App\Models\User\Friend;
 use App\Models\User\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class ProfileController extends Controller
 {
     public function show($user_id)
     {
         $user = User::where('id', $user_id)->withCount('posts', 'comments', 'friends')->first();
-        return view('user.profile.show', compact('user'));
+
+        $recentActivity = new Collection;
+        $recentActivity = $recentActivity->merge(Friend::latest()->where('owner_user_id', $user_id)->limit(4)->get());
+        $recentActivity = $recentActivity->merge(Post::latest()->where('user_id', $user_id)->with('author')->limit(4)->get());
+        $recentActivity = $recentActivity->merge(Comment::latest()->where('user_id', $user_id)->with('author')->limit(4)->get());
+
+        // sort the data by created_at
+        $recentActivitySorted = $recentActivity->sortBy(function($created_at) {
+            return $created_at;
+        })->values()->sortBy('created_at')->all();
+
+        // reverse the array to show desc in view
+        $recentActivity = array_reverse($recentActivitySorted);
+
+        return view('user.profile.show', compact('user', 'recentActivity'));
     }
 
     public function edit($user_id)

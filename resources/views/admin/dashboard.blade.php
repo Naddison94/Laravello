@@ -147,7 +147,7 @@
                         @include('components.admin.dashboard.in-progress-task-table')
                         @include('components.admin.dashboard.completed-task-table')
                     </div>
-                    @include('components.admin.dashboard.recent-activity')
+                    @include('components.recent-activity')
                 </div>
             </div>
         </div>
