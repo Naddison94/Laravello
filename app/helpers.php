@@ -2,6 +2,7 @@
 
 use App\Models\User\User;
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 
 function isOwner($id)
@@ -48,14 +49,15 @@ function uploadFile()
 
 }
 
-function getMonthlyMetrics($collections)
+function getMonthlyMetrics($collection, $currentMonth)
 {
-    $arrCurrentMonth = [];
-    foreach ($collections as $collection) {
-        if ($collection->created_at->format('M') == Carbon::now()->format('M')) {
-            $arrCurrentMonth = $collection;
+    $metrics = new Collection;
+    foreach ($collection as $c) {
+        if ($c->created_at->format('M') == $currentMonth) {
+            $metrics[] = $c;
+//            dd($c->created_at->format('M'));
         }
     }
 
-    return ($arrCurrentMonth);
+    return $metrics;
 }
