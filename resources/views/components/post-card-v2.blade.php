@@ -5,7 +5,7 @@
                 <header class="flex justify-between leading-tight p-2 md:p-4 bg-white">
                     <div class="flex flex-row">
                         <a class="flex items-center no-underline hover:underline text-black" href="{{ route ('user.profile.show', ['id' => $post->author->id]) }}">
-                            <img alt="avatar" class="block rounded-full sm:w-14 sm:h-14" src="{{  $post->author->avatar ? '/user/' . $post->author->id . '/avatar/' . $post->author->avatar : 'https://picsum.photos/32/32/?random' }}">
+                            <img alt="avatar" class="block rounded-full sm:w-14 sm:h-14" src="{{ getUserAvatar($post->author) }}">
                         </a>
 
                         <div class="flex flex-col mb-2 ml-4 mt-1">
@@ -48,7 +48,7 @@
                 <div class="border-b border-gray-100"></div>
                 <a href="{{ route('post.show', ['id' => $post->id]) }}">
                     @if($post->img)
-                        <div class="text-gray-400 font-medium text-sm m-2 p-2 max-h-lg max-w-md"><img alt="img" class="" src="/user/{{ $post->author->id }}/post/{{ $post->id }}/{{ $post->img }}"></div>
+                        <div class="text-gray-400 font-medium text-sm m-2 p-2"><img alt="img" class="" src="/user/{{ $post->author->id }}/post/{{ $post->id }}/{{ $post->img }}"></div>
                     @endif
                 </a>
                 <a class="text-gray-600 font-semibold text-lg mb-2 mx-3 px-2 hover:underline" href="{{ route('post.show', ['id' => $post->id]) }}">

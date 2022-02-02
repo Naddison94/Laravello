@@ -7,23 +7,32 @@ use App\Http\Controllers\Post\PostController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\FriendController;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use Inertia\Inertia;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 require __DIR__.'/auth.php';
+
+
+Route::get('inertia/home', function () {
+    return Inertia::render('Home');
+})->name('inertia.home');
+
+Route::get('inertia/users', function () {
+    sleep(2);
+    return Inertia::render('Users');
+})->name('inertia.users');
+
+Route::get('inertia/settings', function () {
+    return Inertia::render('Settings');
+})->name('inertia.users');
+
+Route::post('inertia/logout', function () {
+    dd('Simulated logging out with inertia');
+})->name('inertia.logout');
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
