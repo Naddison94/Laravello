@@ -38,7 +38,7 @@ class PostController extends Controller
             'title' => 'required:posts|max:80'
         ]);
 
-        $fileName = null;
+        $fileName = false;
         if ($request->file('image')) {
             $fileName = $request->file('image')->getClientOriginalName();
         }
@@ -75,6 +75,7 @@ class PostController extends Controller
     public function update($post_id, Request $request)
     {
         $fileName = false;
+        dd($request->file('image'));
         if ($request->file('image')) {
             $fileName = $request->file('image')->getClientOriginalName();
         }

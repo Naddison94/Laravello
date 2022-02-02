@@ -55,7 +55,6 @@ function getMonthlyMetrics($collection, $currentMonth)
     foreach ($collection as $c) {
         if ($c->created_at->format('M') == $currentMonth) {
             $metrics[] = $c;
-//            dd($c->created_at->format('M'));
         }
     }
 

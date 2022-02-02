@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <form action="{{ route('post.store') }}" method="POST">
+                    <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="bg-gray-50 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2">
                             <div class="-mx-3 md:flex">
@@ -43,7 +43,6 @@
                                         </label>
                                         @include('components.upload-image')
                                     </div>
-
                                 </div>
                             </div>
                         </div>
