@@ -27,6 +27,13 @@ class Post extends Model
         'img',
     ];
 
+    public function scopeFilter($query)
+    {
+        if (request('search')) {
+            $query->where('title', 'ilike', '%' . request('search') . '%');
+        }
+    }
+
     public function author()
     {
         return $this->belongsTo(User::class, 'user_id');
