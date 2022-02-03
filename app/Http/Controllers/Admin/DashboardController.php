@@ -13,6 +13,7 @@ class DashboardController
 {
     Public function show()
     {
+        // check the eloquent series in drive to see how I can better get the metrics
         $currentMonth = Carbon::now()->format('M');
 
         $users = User::paginate(4, ['*'] ,'users');
@@ -25,7 +26,9 @@ class DashboardController
         $comments->metrics = getMonthlyMetrics($comments, $currentMonth);
 
         $tasks = Task::with('category', 'priority')->get();
+
         $tasks->metrics = getMonthlyMetrics($tasks, $currentMonth);
+
         $tasks->pending = Task::where('status_id', '=', 1)->paginate(8, ['*'] ,'pending');
         $tasks->in_progress = Task::where('status_id', '=', 2)->paginate(8, ['*'] ,'in_progress');
         $tasks->completed = Task::where('status_id', '=', 3)->paginate(8, ['*'] ,'completed');

@@ -1,8 +1,8 @@
 <template>
     <Layout>
-
+        <h1 class="text-4xl font-bold">Home</h1>
     </Layout>
-    <h1 class="text-4xl font-bold">Home</h1>
+ re-index pelease
 </template>
 
 <script>

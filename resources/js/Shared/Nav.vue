@@ -1,6 +1,6 @@
 <template>
-    <nav>
-        <ul>
+    <nav class="ml-6">
+        <ul class="flex">
             <li>
                 <NavLink href="/inertia/home" :active="$page.component === 'Home'">
                     Home
@@ -19,9 +19,7 @@
                 </NavLink>
             </li>
 
-
-
-            <li><Link href="/inertia/logout" class="text-blue-500 hover:underline" method="post" as="button">Log out</link></li>
+<!--            <li><NavLink href="/inertia/logout" class="text-blue-500 hover:underline" method="post" as="button">Log out</Navlink></li>-->
         </ul>
     </nav>
 </template>
