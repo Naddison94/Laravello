@@ -25,7 +25,7 @@
                         </div>
                     </div>
 
-                    <div class="">
+                    <div>
                         @if(Auth::id() == $post->user_id)
                             <div class="hidden sm:flex sm:items-center sm:ml-6">
                                 <x-dropdown align="right">
@@ -34,6 +34,7 @@
                                             @include('components.icons.triple-dots')
                                         </button>
                                     </x-slot>
+
 
                                     <x-slot name="content">
                                         <a class="block p-4 text-center text-gray-700 hover:bg-green-500 hover:text-white" href="{{ route('post.edit', ['id' => $post->id]) }}">edit</a>

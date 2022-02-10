@@ -37,9 +37,14 @@
                     <a href="{{ route ('user.profile.show', ['id' => $post->author->id]) }}">
                         <strong class="hover:underline">{{$comment->author->name}}</strong>
                     </a>
+
+
                     @if(Auth::id() == $comment->user_id)
                         <a class="no-underline hover:underline text-red-500 float-right" href="{{ route('post.comment.delete', ['id' => $comment->id]) }}">
-                            <label class="text-red-500">delete</label>
+{{--                            <label class="text-red-500">delete</label>--}}
+                            <div class="h-6 w-6">
+                                @include('components.icons.bin')
+                            </div>
                         </a>
                     @endif
                     <span class="text-xs text-gray-400">
@@ -67,7 +72,12 @@
 
                                             <div class="flex-1 bg-gray-100 rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
                                                 @if(Auth::id() == $reply->user_id)
-                                                    <a class="no-underline hover:underline text-red-500 float-right" href="{{ route('post.comment.delete', ['id' => $reply->id]) }}"><label class="text-red-500">Delete</label></a>
+                                                    <a class="no-underline hover:underline text-red-500 float-right" href="{{ route('post.comment.delete', ['id' => $reply->id]) }}">
+{{--                                                        <label class="text-red-500">Delete</label>--}}
+                                                        <div class="h-6 w-6">
+                                                            @include('components.icons.bin')
+                                                        </div>
+                                                    </a>
                                                 @endif
                                                 <a href="{{ route ('user.profile.show', ['id' => $post->author->id]) }}">
                                                     <strong class="hover:underline">{{ $reply->author->name }}</strong> <span class="text-xs text-gray-400">{{ $reply->created_at->diffForHumans() }}</span>
