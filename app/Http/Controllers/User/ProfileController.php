@@ -40,18 +40,23 @@ class ProfileController extends Controller
 
     public function update($user_id, Request $request)
     {
-        $fileName = null;
+        $user = User::find($user_id);
 
         if ($request->file('image')) {
-            $fileName = $request->file('image')->getClientOriginalName();
+            $fileNameAvatar = $request->file('image')->getClientOriginalName();
+            $request->image->move(public_path("/user/$user->id/avatar/"), $fileNameAvatar);
+            $user->avatar = $fileNameAvatar;
         }
 
-        $user = User::find($user_id);
-        $user->avatar = $fileName;
-
-        if ($user->save() && $fileName != false) {
-            $request->image->move(public_path("/user/$user->id/avatar/"), $fileName);
+        if ($request->file('banner')) {
+            $fileNameBanner = $request->file('banner')->getClientOriginalName();
+            $request->banner->move(public_path("/user/$user->id/banner/"), $fileNameBanner);
+            $user->banner = $fileNameBanner;
         }
+
+        $user->bio = $request->bio;
+        if ($request->defaultBanner) $user->banner = null;
+        $user->save();
 
         session()->flash('success',  'Profile successfully updated.');
 

@@ -8,21 +8,11 @@
     <div class="py-12 flex flex-wrap items-center justify-center">
         <div class="container lg:w-2/6 xl:w-2/7 sm:w-full md:w-2/3 bg-white  shadow-lg transform duration-200 easy-in-out">
             <div class=" h-32 overflow-hidden" >
-                <img class="w-full" src="https://images.unsplash.com/photo-1605379399642-870262d3d051?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80" alt="" />
+                <img class="w-full" src="{{ getUserBanner($user) }}" alt="" />
             </div>
             <div class="flex justify-center -mt-12">
-                @if(isOwner($user->id))
-                    <a href="{{ route ('user.profile.edit', ['id' => $user->id]) }}">
-                        @if(isOwner($user->id))
-                            <a href="{{ route ('user.profile.edit', ['id' => $user->id]) }}"><img class="h-32 w-32 bg-white p-2 rounded-full hover:bg-blue-300" src="{{ getUserAvatar($user) }}" alt="avatar"/></a>
-                        @else
-                            <img class="h-32 w-32 bg-white p-2 rounded-full" src="{{ getUserAvatar($user) }}" alt="avatar"/>
-                        @endif
-{{--                        <div class="group relative">--}}
-{{--                            <img class="h-32 w-32 bg-white p-2 rounded-full hover:bg-blue-50 object-cover" src="{{ getUserAvatar($user) }}" alt="avatar"/>--}}
-{{--                            <span class="h-32 w-32 bg-white p-2 rounded-full hover:bg-blue-50 object-cover absolute bottom-0 p-10 group-hover:opacity-100 group-hover:text-blue-500 text-3xl opacity-0 hover:bg-opacity-60">Edit</span>--}}
-{{--                        </div>--}}
-                    </a>
+                @if (isOwner($user->id))
+                    <a href="{{ route ('user.profile.edit', ['id' => $user->id]) }}"><img class="h-32 w-32 bg-white p-2 rounded-full hover:bg-blue-300" src="{{ getUserAvatar($user) }}" alt="avatar"/></a>
                 @else
                     <img class="h-32 w-32 bg-white p-2 rounded-full" src="{{ getUserAvatar($user) }}" alt="avatar"/>
                 @endif
@@ -48,31 +38,31 @@
                     <p class="text-gray-400 mt-2">Last active: {{ \Carbon\Carbon::parse($user->last_active)->diffForHumans() }}</p>
                     <p class="mt-2 text-gray-600">{{ $user->bio }}</p>
                 </div>
-                <hr class="mt-6"/>
-                <div class="flex  bg-gray-50 ">
-                    <div class="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer">
-                        <a href="{{ route('user.profile.posts', ['id' => $user->id]) }}">
-                            <p><span class="font-semibold">{{ $user->posts_count }}</span> Posts</p>
-                        </a>
-                    </div>
-                    <div class="border"></div>
-                    <div class="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer">
-                        <a href="{{ route('user.profile.comments', ['id' => $user->id]) }}">
-                            <p><span class="font-semibold">{{ $user->comments_count }} </span> Comments</p>
-                        </a>
-                    </div>
-                    <div class="border"></div>
-                    <div class="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer">
-                        <a href="{{ route('user.profile.friends', ['owner_user_id' => $user->id]) }}">
-                            <p><span class="font-semibold">{{ $user->friends_count }}</span> Friends</p>
-                        </a>
+
+                <div class="mt-6">
+                    <div class="flex bg-gray-50 ">
+                        <div class="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer border">
+                            <a href="{{ route('user.profile.posts', ['id' => $user->id]) }}">
+                                <p><span class="font-semibold">{{ $user->posts_count }}</span> Posts</p>
+                            </a>
+                        </div>
+
+                        <div class="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer border">
+                            <a href="{{ route('user.profile.comments', ['id' => $user->id]) }}">
+                                <p><span class="font-semibold">{{ $user->comments_count }} </span> Comments</p>
+                            </a>
+                        </div>
+
+                        <div class="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer border">
+                            <a href="{{ route('user.profile.friends', ['owner_user_id' => $user->id]) }}">
+                                <p><span class="font-semibold">{{ $user->friends_count }}</span> Friends</p>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="w-full">
-                <div>
-                    @include('components.recent-activity')
-                </div>
+            <div>
+                @include('components.recent-activity')
             </div>
         </div>
     </div>
