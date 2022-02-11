@@ -12,7 +12,12 @@
             </div>
             <div class="flex justify-center px-5  -mt-12">
                 @if(isOwner($user->id))
-                    <a href="{{ route ('user.profile.edit', ['id' => $user->id]) }}"><img class="h-32 w-32 bg-white p-2 rounded-full hover:bg-blue-50" src="{{ getUserAvatar($user) }}" alt="avatar"/></a>
+                    <a href="{{ route ('user.profile.edit', ['id' => $user->id]) }}">
+                        <div class="group relative">
+                            <img class="h-32 w-32 bg-white p-2 rounded-full hover:bg-blue-50 object-cover" src="{{ getUserAvatar($user) }}" alt="avatar"/>
+                            <span class="h-32 w-32 bg-white p-2 rounded-full hover:bg-blue-50 object-cover absolute bottom-0 p-10 group-hover:opacity-100 group-hover:text-blue-500 text-3xl opacity-0 hover:bg-opacity-60">Edit</span>
+                        </div>
+                    </a>
                 @else
                     <img class="h-32 w-32 bg-white p-2 rounded-full" src="{{ getUserAvatar($user) }}" alt="avatar"/>
                 @endif
