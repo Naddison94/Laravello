@@ -12,6 +12,7 @@
                     <a href="{{ route('post.create') }}">
                         <button>Create a post</button>
                     </a>
+                    @include('components.modal.create-post')
                 </div>
             </div>
         </div>
