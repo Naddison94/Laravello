@@ -3,11 +3,12 @@
         @csrf
         <div class="flex ml-3">
             <div class="mr-3">
-                <img src="{{ getUserAvatar(Auth::user()) }}" alt="" class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10">
+                <a href="{{ route ('user.profile.show', ['id' => Auth::user()->id]) }}">
+                    <img src="{{ getUserAvatar(Auth::user()) }}" alt="" class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10">
+                </a>
             </div>
-
             <div>
-                <a href="{{ route ('user.profile.show', ['id' => $post->author->id]) }}">
+                <a href="{{ route ('user.profile.show', ['id' => Auth::user()->id]) }}">
                     <h1 class="font-semibold hover:underline">{{ Auth::user()->name }}</h1>
                 </a>
                 <p class="text-xs text-gray-500">Leave a comment</p>
@@ -31,7 +32,9 @@
             @foreach($comments as $comment)
             <div class="flex">
                 <div class="flex-shrink-0 mr-3">
-                    <img class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10" src="{{ getUserAvatar($comment->author) }}" alt="">
+                    <a href="{{ route ('user.profile.show', ['id' => $comment->author]) }}">
+                        <img class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10" src="{{ getUserAvatar($comment->author) }}" alt="">
+                    </a>
                 </div>
                 <div class="flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
                     <a href="{{ route ('user.profile.show', ['id' => $post->author->id]) }}">
@@ -67,7 +70,9 @@
                                     <div class="space-y-4 pt-4">
                                         <div class="flex px-2">
                                             <div class="flex-shrink-0 mr-3">
-                                                <img class="mt-3 rounded-full w-6 h-6 sm:w-8 sm:h-8" src="{{ getUserAvatar($reply->author) }}" alt="">
+                                                <a href="{{ route ('user.profile.show', ['id' => $reply->author]) }}">
+                                                    <img class="mt-3 rounded-full w-6 h-6 sm:w-8 sm:h-8" src="{{ getUserAvatar($reply->author) }}" alt="">
+                                                </a>
                                             </div>
 
                                             <div class="flex-1 bg-gray-100 rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
