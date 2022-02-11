@@ -10,13 +10,18 @@
             <div class=" h-32 overflow-hidden" >
                 <img class="w-full" src="https://images.unsplash.com/photo-1605379399642-870262d3d051?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80" alt="" />
             </div>
-            <div class="flex justify-center px-5  -mt-12">
+            <div class="flex justify-center -mt-12">
                 @if(isOwner($user->id))
                     <a href="{{ route ('user.profile.edit', ['id' => $user->id]) }}">
-                        <div class="group relative">
-                            <img class="h-32 w-32 bg-white p-2 rounded-full hover:bg-blue-50 object-cover" src="{{ getUserAvatar($user) }}" alt="avatar"/>
-                            <span class="h-32 w-32 bg-white p-2 rounded-full hover:bg-blue-50 object-cover absolute bottom-0 p-10 group-hover:opacity-100 group-hover:text-blue-500 text-3xl opacity-0 hover:bg-opacity-60">Edit</span>
-                        </div>
+                        @if(isOwner($user->id))
+                            <a href="{{ route ('user.profile.edit', ['id' => $user->id]) }}"><img class="h-32 w-32 bg-white p-2 rounded-full hover:bg-blue-300" src="{{ getUserAvatar($user) }}" alt="avatar"/></a>
+                        @else
+                            <img class="h-32 w-32 bg-white p-2 rounded-full" src="{{ getUserAvatar($user) }}" alt="avatar"/>
+                        @endif
+{{--                        <div class="group relative">--}}
+{{--                            <img class="h-32 w-32 bg-white p-2 rounded-full hover:bg-blue-50 object-cover" src="{{ getUserAvatar($user) }}" alt="avatar"/>--}}
+{{--                            <span class="h-32 w-32 bg-white p-2 rounded-full hover:bg-blue-50 object-cover absolute bottom-0 p-10 group-hover:opacity-100 group-hover:text-blue-500 text-3xl opacity-0 hover:bg-opacity-60">Edit</span>--}}
+{{--                        </div>--}}
                     </a>
                 @else
                     <img class="h-32 w-32 bg-white p-2 rounded-full" src="{{ getUserAvatar($user) }}" alt="avatar"/>
