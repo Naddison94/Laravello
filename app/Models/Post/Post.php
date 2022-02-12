@@ -31,10 +31,6 @@ class Post extends Model
     {
         $like = env('DB_CONNECTION') == 'pgsql' ? 'ilike' : 'like';
 
-//        $query->where('category_id', '=', request('category_id'));
-
-
-
         if (request('search') || request('category_id')) {
             $query->where('title', $like, '%' . request('search') . '%')
             ->where('category_id', '=', request('category_id'));
