@@ -16,7 +16,8 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::latest()->with('author')->withCount('comments')->filter()->paginate(8);
-        return view('post.index', compact('posts'));
+        $categories = Category::all();
+        return view('post.index', compact('posts', 'categories'));
     }
 
     public function show($post_id)
