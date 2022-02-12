@@ -1,7 +1,7 @@
 <form>
     <div class="pb-4 flex items-center max-w-md mx-auto rounded-full">
         <div class="w-full">
-            <input type="text" name="search" class="w-full py-1 text-gray-900 rounded-full focus:outline-none" placeholder="search">
+            <input type="text" name="search" class="w-full py-1 text-gray-900 rounded-full focus:outline-none" placeholder="search" value="{{ app('request')->input('search') }}">
         </div>
         <div>
             <button type="submit" class="flex items-center justify-center w-12 h-12 text-gray-100 rounded-full bg-purple-500" >
