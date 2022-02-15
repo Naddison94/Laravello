@@ -31,10 +31,9 @@ class Post extends Model
     {
         $like = env('DB_CONNECTION') == 'pgsql' ? 'ilike' : 'like';
 
-        if (request('search') || request('category_id')) {
-            $query->where('title', $like, '%' . request('search') . '%')
-            ->where('category_id', '=', request('category_id'));
-        }
+        if (request('search')) $query->where('title', $like, '%' . request('search') . '%');
+        if (request('category')) $query->whereIn('category_id',  request('category'));
+        if (request('search') && (request('category'))) $query->where('title', $like, '%' . request('search') . '%')->whereIn('category_id', request('category'));
     }
 
     public function author()

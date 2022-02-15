@@ -9,12 +9,23 @@
     <div class="space-y-6">
         @foreach($categories as $category)
             <div class="flex items-center">
-                <input name="category_id[]" checked value="{{ $category->id }}" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
-                <label class="ml-3 min-w-0 flex-1 text-gray-500">{{ $category->title }}</label>
+                @php $checked = false @endphp
+                @if(request('category'))
+                    @foreach(request('category') as $key => $categoryId)
+                        @if($categoryId == $category->id) @php $checked = true @endphp @endif
+                    @endforeach
+                @endif
+
+                @if($checked)
+                    <input name="category[]" value="{{ $category->id }}" checked type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                @else
+                    <input name="category[]" value="{{ $category->id }}" type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500">
+                @endif
+                    <label class="ml-3 min-w-0 flex-1 text-gray-500">{{ $category->title }}</label>
             </div>
         @endforeach
         <x-button>
-            {{ __('Update') }}
+            {{ __('Search') }}
         </x-button>
     </div>
 </div>
