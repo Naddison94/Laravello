@@ -8,7 +8,6 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 
 
 class CommentController extends controller
@@ -20,7 +19,6 @@ class CommentController extends controller
         ]);
 
         $comment = new Comment;
-        $comment->id = Str::uuid()->toString();
         $comment->user_id = Auth::id();
         $comment->post_id = $post_id;
         $comment->comment = $request->comment;
@@ -48,7 +46,6 @@ class CommentController extends controller
         $post_id = Comment::find($comment_id)->value('post_id');
 
         $comment = new Comment;
-        $comment->id = Str::uuid()->toString();
         $comment->user_id = Auth::id();
         $comment->post_id = $post_id;
         $comment->reply_id = $comment_id;

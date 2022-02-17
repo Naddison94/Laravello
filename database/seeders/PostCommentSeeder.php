@@ -16,10 +16,9 @@ class PostCommentSeeder extends Seeder
      */
     public function run()
     {
-        $comment_id = Str::uuid()->toString();
         DB::table('post_comments')->insert([
             [
-                'id' => $comment_id,
+                'id' => 1,
                 'user_id' => 'dd9920eb-1531-4eaa-ab8a-fbaaeb831d2c',
                 'post_id' => 'dd9920eb-1531-4eaa-ab8a-fbaaeb831d2b',
                 'reply_id' => null,
@@ -28,10 +27,10 @@ class PostCommentSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'id' => Str::uuid()->toString(),
+                'id' => 2,
                 'user_id' => 'dd9920eb-1531-4eaa-ab8a-fbaaeb831d2c',
                 'post_id' => 'dd9920eb-1531-4eaa-ab8a-fbaaeb831d2b',
-                'reply_id' => $comment_id,
+                'reply_id' => 1,
                 'comment' => 'This is a reply!',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),

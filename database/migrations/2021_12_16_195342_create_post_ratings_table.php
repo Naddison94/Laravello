@@ -14,7 +14,7 @@ class CreatePostRatingsTable extends Migration
     public function up()
     {
         Schema::create('post_ratings', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->increments('id');
             $table->uuid('user_id');
             $table->uuid('post_id');
             $table->tinyInteger('rating')->nullable();

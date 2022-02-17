@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Comment extends Model
 {
-    use HasFactory, Uuids, SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     public $table = 'task_comments';
 

@@ -16,7 +16,7 @@ class TaskSeeder extends Seeder
     public function run()
     {
         DB::table('tasks')->insert([
-            'id' => 'dd9920eb-1531-4eaa-ab8a-fbbaeb831d2a',
+            'id' => 1,
             'user_id' => 'dd9920eb-1531-4eaa-ab8a-fbaaeb831d2c',
             'category_id' => 3,
             'status_id' => 3,

@@ -14,10 +14,10 @@ class CreatePostCommentsTable extends Migration
     public function up()
     {
         Schema::create('post_comments', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->increments('id');
             $table->uuid('post_id');
-            $table->uuid('reply_id')->nullable();
             $table->uuid('user_id');
+            $table->integer('reply_id')->nullable();
             $table->text('comment');
             $table->uuid('deleted_by')->nullable();
             $table->timestamp('deleted_at')->nullable();
