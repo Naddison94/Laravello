@@ -15,10 +15,23 @@ class PostCategorySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('post_categories')->insert([
-            'title' => 'Default',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ]);
+        DB::table('post_categories')->insert(
+            [
+                [
+                    'title' => 'Memes',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ],
+                [
+                    'title' => 'Gaming',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ],
+                [
+                    'title' => 'Programming',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ]
+            ]);
     }
 }
