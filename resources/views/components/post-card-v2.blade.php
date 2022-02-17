@@ -64,17 +64,13 @@
                     <div class="mt-3 mx-5 flex flex-row">
                         <div class='flex text-gray-700 font-normal text-sm rounded-md mb-2 mr-4 items-center'>Comments:<div class="ml-1 text-gray-400 font-thin text-ms">{{ $post->comments_count }}</div></div>
                     </div>
-                    <div class="mt-3 mx-5 w-full flex justify-end">
-                        <div class='flex text-gray-700 font-normal text-sm rounded-md mb-2 mr-4 items-center'>
-                            @include('components.upvote')
 
-                            <div class="m-1 pt-1 text-gray-400 font-thin text-ms">
-                                120
-                            </div>
+                    @livewire('post.ratings', [
+                    'post_id' => $post->id,
+                    'upvotes' => $post->upvotes_count,
+                    'downvotes' => $post->downvotes_count
+                    ])
 
-                            @include('components.downvote')
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

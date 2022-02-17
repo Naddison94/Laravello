@@ -46,6 +46,16 @@ class Post extends Model
         return $this->hasMany(Comment::class, 'post_id')->latest();
     }
 
+    public function upvotes()
+    {
+        return $this->hasMany(Rating::class)->where('upvote', '=', 1);
+    }
+
+    public function downvotes()
+    {
+        return $this->hasMany(Rating::class)->where('downvote', '=', 1);
+    }
+
     public function category()
     {
         return $this->hasOne(Category::class, 'id', 'category_id');

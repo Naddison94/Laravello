@@ -17,7 +17,8 @@ class CreatePostRatingsTable extends Migration
             $table->increments('id');
             $table->uuid('user_id');
             $table->uuid('post_id');
-            $table->tinyInteger('rating')->nullable();
+            $table->tinyInteger('upvote')->nullable();
+            $table->tinyInteger('downvote')->nullable();
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
