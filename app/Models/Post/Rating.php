@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Rating extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     public $table = 'post_ratings';
 
