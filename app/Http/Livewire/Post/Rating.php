@@ -21,20 +21,32 @@ class Rating extends Component
         return view('livewire.post.ratings');
     }
 
+    public function getUpdatedRating(): int
+    {
+        $allUpvotesAfterVoteCast = PostRatings::where('upvote', 1)->where('post_id', $this->post_id)->count();
+        $allDownvotesAfterVoteCast = PostRatings::where('downvote', 1)->where('post_id', $this->post_id)->count();
+
+        return $allUpvotesAfterVoteCast - $allDownvotesAfterVoteCast;
+    }
+
+    public function hasUpvoted()
+    {
+        return PostRatings::where('upvote', 1)->where('post_id', $this->post_id)->where('user_id', auth()->id())->first();
+    }
+
+    public function hasDownvoted()
+    {
+        return PostRatings::where('downvote', 1)->where('post_id', $this->post_id)->where('user_id', auth()->id())->first();
+    }
+
     public function upvote($upvote)
     {
-        $hasUpvotedPost = PostRatings::where('upvote', 1)->where('post_id', $this->post_id)->where('user_id', auth()->id())->first();
-        $hasDownvotedPost = PostRatings::where('downvote', 1)->where('post_id', $this->post_id)->where('user_id', auth()->id())->first();
-
-
-        if ($hasDownvotedPost) {
-            $rating = PostRatings::find($hasDownvotedPost->id);
-            $rating->delete();
+        if ($rating = $this->hasDownvoted()) {
+            PostRatings::find($rating->id)->delete();
         }
 
-        if ($hasUpvotedPost) {
-            $rating = PostRatings::find($hasUpvotedPost->id);
-            $rating->delete();
+        if ($rating = $this->hasUpvoted()) {
+            PostRatings::find($rating->id)->delete();
         } else {
             PostRatings::create([
                 'post_id' => $this->post_id,
@@ -43,25 +55,17 @@ class Rating extends Component
             ]);
         }
 
-        $allUpvotesAfterVoteCast = PostRatings::where('upvote', 1)->where('post_id', $this->post_id)->count();
-        $allDownvotesAfterVoteCast = PostRatings::where('downvote', 1)->where('post_id', $this->post_id)->count();
-
-        $this->rating_sum = $allUpvotesAfterVoteCast - $allDownvotesAfterVoteCast;
+        $this->rating_sum = $this->getUpdatedRating();
     }
 
     public function downvote($downvote)
     {
-        $hasUpvotedPost = PostRatings::where('upvote', 1)->where('post_id', $this->post_id)->where('user_id', auth()->id())->first();
-        $hasDownvotedPost = PostRatings::where('downvote', 1)->where('post_id', $this->post_id)->where('user_id', auth()->id())->first();
-
-        if ($hasUpvotedPost) {
-            $rating = PostRatings::find($hasUpvotedPost->id);
-            $rating->delete();
+       if ($rating = $this->hasUpvoted()) {
+            PostRatings::find($rating->id)->delete();
         }
 
-        if ($hasDownvotedPost) {
-            $rating = PostRatings::find($hasDownvotedPost->id);
-            $rating->delete();
+        if ($rating = $this->hasDownvoted()) {
+            PostRatings::find($rating->id)->delete();
         } else {
             PostRatings::create([
                 'post_id' => $this->post_id,
@@ -70,9 +74,6 @@ class Rating extends Component
             ]);
         }
 
-        $allUpvotesAfterVoteCast = PostRatings::where('upvote', 1)->where('post_id', $this->post_id)->count();
-        $allDownvotesAfterVoteCast = PostRatings::where('downvote', 1)->where('post_id', $this->post_id)->count();
-
-        $this->rating_sum = $allUpvotesAfterVoteCast - $allDownvotesAfterVoteCast;
+        $this->rating_sum = $this->getUpdatedRating();
     }
 }
