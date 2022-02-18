@@ -27,8 +27,15 @@ class PostController extends Controller
 
     public function show($post_id)
     {
-        $post = Post::where('id', $post_id)->withCount('comments')->first();
-        $comments = Comment::where('post_id', $post_id)->whereNull('reply_id')->with('author', 'replies.author')->paginate(8);
+        $post = Post::where('id', $post_id)
+            ->withCount('comments', 'upvotes', 'downvotes')
+            ->first();
+
+        $comments = Comment::where('post_id', $post_id)
+            ->whereNull('reply_id')
+            ->with('author', 'replies.author')
+            ->paginate(8);
+
         return view('post.show', compact('post', 'comments'));
     }
 
