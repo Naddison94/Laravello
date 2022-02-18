@@ -55,6 +55,8 @@ class Rating extends Component
             ]);
         }
 
+        setUserActivity();
+
         $this->rating_sum = $this->getUpdatedRating();
     }
 
@@ -73,6 +75,8 @@ class Rating extends Component
                 'downvote' => $downvote
             ]);
         }
+
+        setUserActivity();
 
         $this->rating_sum = $this->getUpdatedRating();
     }
