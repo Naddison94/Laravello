@@ -34,6 +34,7 @@ class PostController extends Controller
         $comments = Comment::where('post_id', $post_id)
             ->whereNull('reply_id')
             ->with('author', 'replies.author')
+            ->withCount('upvotes', 'downvotes')
             ->paginate(8);
 
         return view('post.show', compact('post', 'comments'));

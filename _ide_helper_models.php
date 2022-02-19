@@ -111,9 +111,9 @@ namespace App\Models\Post{
 /**
  * App\Models\Post\Ratings
  *
- * @method static \Illuminate\Database\Eloquent\Builder|Rating newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Rating newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Rating query()
+ * @method static \Illuminate\Database\Eloquent\Builder|PostCommentRating newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PostCommentRating newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PostCommentRating query()
  */
 	class Ratings extends \Eloquent {}
 }

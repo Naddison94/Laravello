@@ -66,7 +66,7 @@
                         <div class='flex text-gray-700 font-normal text-sm rounded-md mb-2 mr-4 items-center'>Comments:<div class="ml-1 text-gray-400 font-thin text-ms">{{ $post->comments_count }}</div></div>
                     </div>
 
-                    @livewire('post.ratings', [
+                    @livewire('post.rating', [
                     'post_id' => $post->id,
                     'upvotes' => $post->upvotes_count,
                     'downvotes' => $post->downvotes_count

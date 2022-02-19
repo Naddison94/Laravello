@@ -30,6 +30,13 @@
         <h3 class="mb-4 text-lg font-semibold text-gray-900 ">{{ $post->comments->count() }} Comments</h3>
         <div class="space-y-4">
             @foreach($comments as $comment)
+
+                @livewire('post.comment.rating', [
+                'comment_id' => $comment->id,
+                'upvotes' => $comment->upvotes_count,
+                'downvotes' => $comment->downvotes_count
+                ])
+
             <div class="flex">
                 <div class="flex-shrink-0 mr-3">
                     <a href="{{ route ('user.profile.show', ['id' => $comment->author]) }}">

@@ -3,10 +3,8 @@
 namespace App\Models\Post;
 
 use App\Models\User\User;
-use App\Traits\Uuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Comment extends Model
 {
@@ -26,7 +24,6 @@ class Comment extends Model
         'comment'
     ];
 
-
     public function author()
     {
         return $this->hasOne(User::class, 'id', 'user_id');
@@ -45,5 +42,15 @@ class Comment extends Model
     public function post()
     {
         return $this->hasOne(Post::class, 'id', 'post_id');
+    }
+
+    public function upvotes()
+    {
+        return $this->hasMany(PostCommentRating::class)->where('upvote', '=', 1);
+    }
+
+    public function downvotes()
+    {
+        return $this->hasMany(PostCommentRating::class)->where('downvote', '=', 1);
     }
 }

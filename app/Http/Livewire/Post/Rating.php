@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Post;
 
-use App\Models\Post\Rating as PostRatings;
+use App\Models\Post\PostCommentRating as PostRatings;
 use Livewire\Component;
 
 class Rating extends Component
@@ -18,7 +18,7 @@ class Rating extends Component
 
     public function render()
     {
-        return view('livewire.post.ratings');
+        return view('livewire.post.rating');
     }
 
     public function getUpdatedRating(): int
