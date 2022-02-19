@@ -18,15 +18,15 @@ class CommentController extends controller
             'comment' => 'required:comments|max:255'
         ]);
 
-        $comment = new Comment;
-        $comment->user_id = Auth::id();
-        $comment->post_id = $post_id;
-        $comment->comment = $request->comment;
+        Comment::create([
+            'post_id' => $post_id,
+            'user_id' => Auth::id(),
+            'comment' => $request->comment
+        ]);
 
-        if ($comment->save() ) {
-            setUserActivity();
-            return redirect(route('post.show', ['id' => $post_id]))->with('success', 'Comment added.');
-        }
+        setUserActivity();
+
+        return redirect(route('post.show', ['id' => $post_id]))->with('success', 'Comment added.');
     }
 
     public function reply($comment_id, Request $request)
@@ -37,7 +37,7 @@ class CommentController extends controller
 
         $validator = Validator::make($request->all(), $rules);
 
-        if($validator->fails()) {
+        if ($validator->fails()) {
             session()->flash('comment_id', $comment_id);
             $request->flash();
             return back()->with('error', 'The reply must not be greater than 255 characters');
@@ -45,16 +45,16 @@ class CommentController extends controller
 
         $post_id = Comment::find($comment_id)->value('post_id');
 
-        $comment = new Comment;
-        $comment->user_id = Auth::id();
-        $comment->post_id = $post_id;
-        $comment->reply_id = $comment_id;
-        $comment->comment = $request->reply;
+        Comment::create([
+            'post_id' => $post_id,
+            'user_id' => Auth::id(),
+            'reply_id' => $comment_id,
+            'comment' => $request->reply
+        ]);
 
-        if ($comment->save() ) {
-            setUserActivity();
-            return redirect(route('post.show', ['id' => $post_id]))->with('success', 'Reply added.');
-        }
+        setUserActivity();
+
+        return redirect(route('post.show', ['id' => $post_id]))->with('success', 'Reply added.');
     }
 
     public function delete($comment_id)

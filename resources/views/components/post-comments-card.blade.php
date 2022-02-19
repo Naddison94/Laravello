@@ -41,13 +41,11 @@
                         <strong class="hover:underline">{{$comment->author->name}}</strong>
                     </a>
 
-
                     @if(Auth::id() == $comment->user_id)
-                        <a class="no-underline hover:underline text-red-500 float-right" href="{{ route('post.comment.delete', ['id' => $comment->id]) }}">
-{{--                            <label class="text-red-500">delete</label>--}}
-                            <div class="h-6 w-6">
+                        <a href="{{ route('post.comment.delete', ['id' => $comment->id]) }}">
+                            <svg class="float-right h-6 w-6">
                                 @include('components.icons.bin')
-                            </div>
+                            </svg>
                         </a>
                     @endif
                     <span class="text-xs text-gray-400">
@@ -55,7 +53,11 @@
                     </span>
                     <div>
                         <p class="text-sm">
-                            {{ $comment->comment }}
+                            @if ($comment->deleted_at)
+                                <em>Commented has been removed</em>
+                            @else
+                                {{ $comment->comment }}
+                            @endif
                         </p>
                     </div>
                     <div>
@@ -76,27 +78,29 @@
                                             </div>
 
                                             <div class="flex-1 bg-gray-100 rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
-                                                @if(Auth::id() == $reply->user_id)
-                                                    <a class="no-underline hover:underline text-red-500 float-right" href="{{ route('post.comment.delete', ['id' => $reply->id]) }}">
-{{--                                                        <label class="text-red-500">Delete</label>--}}
-                                                        <div class="h-6 w-6">
-                                                            @include('components.icons.bin')
-                                                        </div>
+                                                @if(Auth::id() == $reply->user_id && !$reply->deleted_at)
+                                                    <a  href="{{ route('post.comment.delete', ['id' => $reply->id]) }}">
+                                                        <svg class="float-right h-6 w-6">
+                                                        @include('components.icons.bin')
+                                                        </svg>
                                                     </a>
                                                 @endif
                                                 <a href="{{ route ('user.profile.show', ['id' => $post->author->id]) }}">
                                                     <strong class="hover:underline">{{ $reply->author->name }}</strong> <span class="text-xs text-gray-400">{{ $reply->created_at->diffForHumans() }}</span>
                                                 </a>
                                                 <p class="text-xs sm:text-sm">
-                                                    {{ $reply->comment }}
+                                                    @if ($reply->deleted_at)
+                                                        <em>Commented has been removed</em>
+                                                    @else
+                                                        {{ $reply->comment }}
+                                                    @endif
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
-
                                 @endforeach
-
                             </div>
+
                             <div x-data="{ open: false }">
                                 <button x-on:click="open = ! open">
                                     <div class="text-sm text-gray-500 font-semibold">

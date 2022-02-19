@@ -56,15 +56,16 @@ class PostController extends Controller
             $fileName = $request->file('image')->getClientOriginalName();
         }
 
-        $post = new Post;
-        $post->id = Str::uuid()->toString();
-        $post->user_id = Auth::id();
-        $post->category_id = $request->category_id;
-        $post->title = $request->title;
-        $post->body = $request->body;
-        $post->img = $fileName;
+        $post = Post::create([
+            'id' => Str::uuid()->toString(),
+            'user_id' => Auth::id(),
+            'category_id' => $request->category_id,
+            'title' => $request->title,
+            'body' => $request->body,
+            'img' => $fileName,
+        ]);
 
-        if ($post->save() && $fileName != false) {
+        if ($fileName != false) {
             $request->image->move(public_path('/user/' . $post->author->id . '/post/' . $post->id . DIRECTORY_SEPARATOR), $fileName);
         }
 

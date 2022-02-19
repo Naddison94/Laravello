@@ -10,9 +10,21 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Comment extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     public $table = 'post_comments';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'post_id',
+        'user_id',
+        'comment'
+    ];
+
 
     public function author()
     {
