@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Post;
 
-use App\Models\Post\PostCommentRating as PostRatings;
+use App\Models\Post\Rating as PostRatings;
 use Livewire\Component;
 
 class Rating extends Component

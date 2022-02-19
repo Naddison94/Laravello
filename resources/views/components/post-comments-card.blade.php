@@ -30,13 +30,6 @@
         <h3 class="mb-4 text-lg font-semibold text-gray-900 ">{{ $post->comments->count() }} Comments</h3>
         <div class="space-y-4">
             @foreach($comments as $comment)
-
-                @livewire('post.comment.rating', [
-                'comment_id' => $comment->id,
-                'upvotes' => $comment->upvotes_count,
-                'downvotes' => $comment->downvotes_count
-                ])
-
             <div class="flex">
                 <div class="flex-shrink-0 mr-3">
                     <a href="{{ route ('user.profile.show', ['id' => $comment->author]) }}">
@@ -48,7 +41,7 @@
                         <strong class="hover:underline">{{$comment->author->name}}</strong>
                     </a>
 
-                    @if(Auth::id() == $comment->user_id)
+                    @if(Auth::id() == $comment->user_id && !$comment->deleted_at)
                         <a href="{{ route('post.comment.delete', ['id' => $comment->id]) }}">
                             <svg class="float-right h-6 w-6">
                                 @include('components.icons.bin')
@@ -86,7 +79,7 @@
 
                                             <div class="flex-1 bg-gray-100 rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
                                                 @if(Auth::id() == $reply->user_id && !$reply->deleted_at)
-                                                    <a  href="{{ route('post.comment.delete', ['id' => $reply->id]) }}">
+                                                    <a href="{{ route('post.comment.delete', ['id' => $reply->id]) }}">
                                                         <svg class="float-right h-6 w-6">
                                                         @include('components.icons.bin')
                                                         </svg>
@@ -126,6 +119,14 @@
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <div class="mt-16">
+                    @livewire('post.comment.rating', [
+                    'comment_id' => $comment->id,
+                    'upvotes' => $comment->upvotes_count,
+                    'downvotes' => $comment->downvotes_count
+                    ])
                 </div>
             </div>
             @endforeach
