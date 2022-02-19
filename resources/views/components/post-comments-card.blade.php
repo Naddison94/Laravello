@@ -54,7 +54,7 @@
                     <div>
                         <p class="text-sm">
                             @if ($comment->deleted_at)
-                                <em>Commented has been removed</em>
+                                <em>Comment has been removed</em>
                             @else
                                 {{ $comment->comment }}
                             @endif
@@ -90,7 +90,7 @@
                                                 </a>
                                                 <p class="text-xs sm:text-sm">
                                                     @if ($reply->deleted_at)
-                                                        <em>Commented has been removed</em>
+                                                        <em>Comment has been removed</em>
                                                     @else
                                                         {{ $reply->comment }}
                                                     @endif
@@ -119,9 +119,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="mt-16">
                     @livewire('post.comment.rating', [
                     'comment_id' => $comment->id,
                     'upvotes' => $comment->upvotes_count,

@@ -13,7 +13,7 @@
                         <h3 class="text-lg font-semibold">Metrics</h3>
                         <h3 class="text-lg font-semibold">Users</h3>
                     </div>
-                    <div class="flex justify-left items-center bg-gray-50 ">
+                    <div class="flex justify-left items-center bg-gray-50 shadow-lg">
                         <div class="grid grid-cols-2 gap-2 w-1/2 p-2">
                             <div class="bg-gray-800 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-600 text-blue-500 font-medium group">
                               @include('components.icons.admin-dasboard.users')

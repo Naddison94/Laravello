@@ -1,4 +1,4 @@
-<div class='flex text-gray-700 font-normal text-sm rounded-md items-center pl-1 pr-1'>
+<div class='flex text-gray-700 font-normal text-sm rounded-md items-center pl-1 pr-1 justify-end'>
     <div class="hover:text-green-600 text-grey-darker text-2xl">
         <a wire:click.prevent="upvote(1)" href="#">+</a>
     </div>
