@@ -35,7 +35,6 @@
                                         </button>
                                     </x-slot>
 
-
                                     <x-slot name="content">
                                         <a class="block p-4 text-center text-gray-700 hover:bg-green-500 hover:text-white" href="{{ route('post.edit', ['id' => $post->id]) }}">edit</a>
                                         <a class="block p-4 text-center text-gray-700 hover:bg-red-500 hover:text-white" href="{{ route('post.delete', ['id' => $post->id]) }}">delete</a>
@@ -47,11 +46,13 @@
                 </header>
 
                 <div class="border-b border-gray-100"></div>
-                <a href="{{ route('post.show', ['id' => $post->id]) }}">
                     @if($post->img)
-                        <div class="text-gray-400 font-medium text-sm m-2 p-2"><img alt="img" class="" src="/user/{{ $post->author->id }}/post/{{ $post->id }}/{{ $post->img }}"></div>
+                        <div class="text-gray-400 font-medium text-sm m-2 p-2">
+                            <a href="{{ route('post.show', ['id' => $post->id]) }}">
+                                <img alt="img" class="" src="/user/{{ $post->author->id }}/post/{{ $post->id }}/{{ $post->img }}">
+                            </a>
+                        </div>
                     @endif
-                </a>
                 <a class="text-gray-600 font-semibold text-lg mb-2 mx-3 px-2 hover:underline" href="{{ route('post.show', ['id' => $post->id]) }}">
                    {{ $post->title }}
                 </a>
