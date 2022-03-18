@@ -36,8 +36,8 @@
                                     </x-slot>
 
                                     <x-slot name="content">
-                                        <a class="block p-4 text-center text-gray-700 hover:bg-green-500 hover:text-white" href="{{ route('post.edit', ['id' => $post->id]) }}">edit</a>
-                                        <a class="block p-4 text-center text-gray-700 hover:bg-red-500 hover:text-white" href="{{ route('post.delete', ['id' => $post->id]) }}">delete</a>
+                                        <a class="block p-4 text-center text-gray-700 hover:bg-green-500 hover:text-white" href="{{ route('post.edit', ['id' => $post->id]) }}">Edit</a>
+                                        <a class="block p-4 text-center text-gray-700 hover:bg-red-500 hover:text-white" href="{{ route('post.delete', ['id' => $post->id]) }}">Delete</a>
                                     </x-slot>
                                 </x-dropdown>
                             </div>
