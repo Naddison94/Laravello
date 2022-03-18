@@ -7,15 +7,15 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="flex justify-center items-center">
-                <div class="container mx-auto">
-                    <div class="absolute">
-                        <form>
-                            @include('components.posts-filter-sidebar')
-                        </form>
-                    </div>
-                    @foreach($posts as $post)
-                        <div class="flex justify-center">
+            <div class="flex">
+                <div class="h-screen sticky top-3">
+                    <form>
+                        @include('components.posts-filter-sidebar')
+                    </form>
+                </div>
+                <div class="justify-center items-center">
+                @foreach($posts as $post)
+                        <div>
                             @include('components.post-card-v2')
                         </div>
                     @endforeach

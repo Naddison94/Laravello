@@ -47,9 +47,9 @@
 
                 <div class="border-b border-gray-100"></div>
                     @if($post->img)
-                        <div class="text-gray-400 font-medium text-sm m-2 p-2">
+                        <div class="flex justify-center m-2 p-2">
                             <a href="{{ route('post.show', ['id' => $post->id]) }}">
-                                <img alt="img" class="" src="/user/{{ $post->author->id }}/post/{{ $post->id }}/{{ $post->img }}">
+                                <img alt="img" src="/user/{{ $post->author->id }}/post/{{ $post->id }}/{{ $post->img }}">
                             </a>
                         </div>
                     @endif
