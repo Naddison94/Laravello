@@ -32,6 +32,7 @@
             <!-- Page Content -->
             <main>
                 @livewireScripts
+                @livewire('livewire-ui-modal')
                 @include('components.success-message')
                 @include('components.error-message')
                 {{ $slot }}
