@@ -73,8 +73,12 @@
                                                 commented
                                             @endif
                                             <a class="text-indigo-500 no-underline hover:underline" href="#"><strong>{{ $activity->comment }}</strong></a> on the post
-                                            <a class="text-red-500 decoration-red no-underline hover:underline" href="{{ route('post.show', ['id' => $activity->post->id]) }}">
+                                            @if($activity->post)
+                                                <a class="text-red-500 decoration-red no-underline hover:underline" href="{{ route('post.show', ['id' => $activity->post->id]) }}">
                                                 <strong>{{ $activity->post->title }}</strong>
+                                            @else
+                                                <strong>Post removed</strong>
+                                            @endif
                                             </a>
                                             {{ $activity->created_at->diffForHumans() }}
                                         </label>
