@@ -4,18 +4,18 @@
             <div class='w-full'>
                 <header class="flex justify-between leading-tight p-2 md:p-4 bg-white">
                     <div class="flex flex-row">
-                        <a class="flex items-center no-underline hover:underline text-black" href="{{ route ('user.profile.show', ['id' => $post->author->id]) }}">
+                        <a class="flex items-center no-underline hover:underline text-black" href="{{ route('user.profile.show', ['id' => $post->author->id]) }}">
                             <img alt="avatar" class="block rounded-full sm:w-14 sm:h-14" src="{{ getUserAvatar($post->author) }}">
                         </a>
 
                         <div class="flex flex-col mb-2 ml-4 mt-1">
-                            <a class="flex items-center no-underline hover:underline text-black" href="{{ route ('user.profile.show', ['id' => $post->author->id]) }}">
+                            <a class="flex items-center no-underline hover:underline text-black" href="{{ route('user.profile.show', ['id' => $post->author->id]) }}">
                                 <div class='text-gray-600 text-sm font-semibold'>{{ $post->author->name }}</div>
                             </a>
 
                             <div class='flex w-full mt-1'>
                                 <div class='text-blue-700 font-base text-xs mr-1 hover:underline'>
-                                    {{ $post->category->title }}
+                                    <a href="{{ route('post.index', ['category[]' => $post->category->id]) }}">{{ $post->category->title }}</a>
                                 </div>
 
                                 <div class='text-gray-400 font-thin text-xs'>

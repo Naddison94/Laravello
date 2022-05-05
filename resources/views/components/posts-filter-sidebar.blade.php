@@ -5,9 +5,8 @@
         </div>
     </div>
 
-    <span
-        class="font-medium text-gray-900">Category Filter
-    </span>
+    <span class="font-medium text-gray-900">Category Filter</span>
+
     <div class="space-y-2">
         @foreach($categories as $category)
             <div class="flex items-center">
@@ -26,6 +25,7 @@
                 <label class="ml-3 min-w-0 flex-1 text-gray-500">{{ $category->title }}</label>
             </div>
         @endforeach
+
         <x-button>
             {{ __('Search') }}
         </x-button>
