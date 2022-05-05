@@ -30,6 +30,10 @@
                     <x-nav-link a href="{{ route ('post.index') }}" :active="request()->routeIs('post.index')">
                         {{ __('Posts') }}
                     </x-nav-link>
+
+                    <x-nav-link a href="{{ route ('group.index') }}" :active="request()->routeIs('group.index')">
+                        {{ __('Groups') }}
+                    </x-nav-link>
                 </div>
             </div>
 
