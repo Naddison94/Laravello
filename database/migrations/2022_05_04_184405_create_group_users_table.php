@@ -17,7 +17,7 @@ class CreateGroupUsersTable extends Migration
             $table->uuid('id')->primary();
             $table->uuid('user_id');
             $table->uuid('group_id');
-            $table->tinyInteger('group_role_id')->nullable();
+            $table->uuid('group_role_id')->nullable();
             $table->uuid('deleted_by')->nullable();
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
