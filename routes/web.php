@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\TaskController;
+use App\Http\Controllers\Group\GroupController;
 use App\Http\Controllers\Post\CommentController;
 use App\Http\Controllers\Post\PostController;
 use App\Http\Controllers\User\ProfileController;
@@ -74,6 +75,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/comment/{id}/reply', [CommentController::class, 'reply'])->name('post.comment.reply');
     Route::get('/comment/delete/{id}', [CommentController::class, 'delete'])->name('post.comment.delete');
     Route::post('/comment/destroy/{id}', [CommentController::class, 'destroy'])->name('post.comment.destroy');
+
+    // middleware to make sure you have access to the group
+    Route::get('/groups', [GroupController::class, 'index'])->name('group.index');
 });
 
 
