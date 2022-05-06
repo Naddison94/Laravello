@@ -16,6 +16,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::latest()
+            ->where('public', true)
             ->with('author')
             ->withCount('comments', 'upvotes', 'downvotes')
             ->filter()
