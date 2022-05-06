@@ -16,13 +16,24 @@ class GroupUserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('group_users')->insert([
-            'id' => str::uuid(),
-            'user_id' => 'dd9920eb-1531-4eaa-ab8a-fbaaeb831d2c',
-            'group_id' => 'dd9920eb-1532-4eaa-ab8a-fbbaeb831d3c',
-            'group_user_role_id' => 'dd9920eb-1531-4eaa-ab8a-fbaaeb831d2d',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+        DB::table('group_users')->insert(
+        [
+            [
+                'id' => str::uuid(),
+                'user_id' => 'dd9920eb-1531-4eaa-ab8a-fbaaeb831d2c',
+                'group_id' => 'dd9920eb-1532-4eaa-ab8a-fbbaeb831d3c',
+                'group_user_role_id' => 'dd9920eb-1531-4eaa-ab8a-fbaaeb831d2d',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'id' => str::uuid(),
+                'user_id' => 'dd9920eb-1531-4eaa-ab8a-fbaaeb831d2c',
+                'group_id' => 'dd9920eb-1542-4eaa-ab8a-fbbaeb831d3d',
+                'group_user_role_id' => 'dd9920eb-1531-4eaa-ab8a-fbaaeb831d3b',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]
         ]);
     }
 }
