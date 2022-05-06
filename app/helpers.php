@@ -60,3 +60,8 @@ function getMonthlyMetrics($collection, $currentMonth)
 
     return $metrics;
 }
+
+function getGroupImg($group)
+{
+    return $group->img ? "/group/$group->id/img/$group->img" : 'https://picsum.photos/32/32/?random';
+}

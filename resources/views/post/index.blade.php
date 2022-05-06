@@ -16,6 +16,7 @@
                             </button>
                         </a>
                     </div>
+
                     <div class="h-screen sticky top-3">
                         <form>
                             @include('components.posts-filter-sidebar')
@@ -23,8 +24,8 @@
                     </div>
                 </div>
 
-                <div class="justify-center items-center">
-                @foreach($posts as $post)
+                <div class="justify-center items-center w-1/2">
+                    @foreach($posts as $post)
                         <div>
                             @include('components.post-card-v2')
                         </div>
