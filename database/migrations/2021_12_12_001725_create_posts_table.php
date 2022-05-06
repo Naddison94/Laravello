@@ -18,6 +18,7 @@ class CreatePostsTable extends Migration
             $table->uuid('user_id');
             $table->uuid('group_id')->nullable();
             $table->integer('category_id')->nullable();
+            $table->boolean('public')->default(true);
             $table->string('title');
             $table->text('body')->nullable();
             $table->string('img')->nullable();

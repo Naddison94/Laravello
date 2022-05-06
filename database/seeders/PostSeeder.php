@@ -15,15 +15,32 @@ class PostSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('posts')->insert([
-            'id' => 'dd9920eb-1531-4eaa-ab8a-fbaaeb831d2b',
-            'user_id' => 'dd9920eb-1531-4eaa-ab8a-fbaaeb831d2c',
-            'category_id' => 1,
-            'title' => 'First post, seeded!',
-            'body' => 'This is the body of the post',
-            'img' => 'kakashi-rin.jpg',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+        DB::table('posts')->insert(
+        [
+            [
+                'id' => 'dd9920eb-1531-4eaa-ab8a-fbaaeb831d2b',
+                'user_id' => 'dd9920eb-1531-4eaa-ab8a-fbaaeb831d2c',
+                'group_id' => null,
+                'category_id' => 1,
+                'public' => true,
+                'title' => 'First post, seeded!',
+                'body' => 'This is the body of the post',
+                'img' => 'kakashi-rin.jpg',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'id' => 'dd9920eb-1531-4eaa-ab8a-fbaaeb831d2k',
+                'user_id' => 'dd9920eb-1531-4eaa-ab8a-fbaaeb831d2c',
+                'group_id' => 'dd9920eb-1531-4eaa-ab8a-fbaaeb831d2c',
+                'category_id' => 2,
+                'public' => false,
+                'title' => 'Look at this group post',
+                'body' => 'This is the body of the post',
+                'img' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]
         ]);
     }
 }

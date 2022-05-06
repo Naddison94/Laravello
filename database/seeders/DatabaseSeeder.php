@@ -25,6 +25,9 @@ class DatabaseSeeder extends Seeder
             TaskPrioritySeeder::class,
             TaskSeeder::class,
             TaskCommentSeeder::class,
+            GroupSeeder::class,
+            GroupUserSeeder::class,
+            GroupUserRoleSeeder::class,
         ]);
     }
 }
