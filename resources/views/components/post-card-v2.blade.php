@@ -57,6 +57,12 @@
                    {{ $post->title }}
                 </a>
 
+                @if ($post->group)
+                    <div class='text-blue-700 font-base text-xs mx-3 px-2 hover:underline'>
+                        <a href="{{ route('group.show', ['id' => $post->group->id]) }}">{{ $post->group->name }}</a>
+                    </div>
+                @endif
+
                 @if(Route::is('post.show') && $post->body)
                     <div class='text-gray-500 font-thin text-sm mb-6 mx-3 px-2'>{{ $post->body }}</div>
                 @endif
