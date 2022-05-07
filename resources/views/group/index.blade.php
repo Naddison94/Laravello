@@ -39,38 +39,38 @@
                             <div class="p-4 border-b-2">
                                 <input type="text" name="search" class="w-full py-1 text-gray-900 rounded-full focus:outline-none" placeholder="search groups" value="{{ app('request')->input('search') }}">
 
-                                <div class="pt-4">
-                                    <x-button>
-                                        {{ __('Search') }}
-                                    </x-button>
-                                </div>
+{{--                                <div class="pt-4">--}}
+{{--                                    <x-button>--}}
+{{--                                        {{ __('Search') }}--}}
+{{--                                    </x-button>--}}
+{{--                                </div>--}}
                             </div>
 
                             <div>
                                 <p class="text-gray-900 text-2xl text-center">
-                                    My groups
+                                    My groups - maybe make this alpineJs expand/collapse?
                                 </p>
 
                                 @foreach($groups as $group)
                                     <div class="border-t-2 p-4 flex">
-
-{{--                                        <a class="flex items-center no-underline hover:underline text-black" href="{{ route('group.show', ['id' => $group->id]) }}">--}}
-                                            <img alt="avatar" class="block sm:w-14 sm:h-14" src="  {{ getGroupImg($group) }}">
-{{--                                        </a>--}}
-                                        <p class="pl-1">{{ $group->name }}</p>
+                                        <a href="{{ route('group.show', ['id' => $group->id]) }}">
+                                            <img alt="avatar" class="sm:w-14 sm:h-14" src="{{ getGroupAvatar($group) }}">
+                                        </a>
+                                        <a class="flex items-center no-underline hover:underline text-black pl-1" href="{{ route('group.show', ['id' => $group->id]) }}">
+                                            {{ $group->name }}
+                                        </a>
                                     </div>
                                 @endforeach
-
+                                {{ $groups->links() }}
                             </div>
-
                         </div>
                     </div>
 
-                    <div class="top-3 max-w-sm flex flex-wrap mt-4">
-                        <div class="bg-white p-4 top-3 shadow-md rounded-2xl ">
-                            <label class="w-full py-1 text-gray-900 rounded-full focus:outline-none">Recently active groups</label>
-                        </div>
-                    </div>
+{{--                    <div class="top-3 max-w-sm flex flex-wrap mt-4">--}}
+{{--                        <div class="bg-white p-4 top-3 shadow-md rounded-2xl ">--}}
+{{--                            <label class="w-full py-1 text-gray-900 rounded-full focus:outline-none">Recently active groups</label>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
                     <div class="top-3 max-w-sm flex flex-wrap mt-4">
                         <div class="bg-white p-4 top-3 shadow-md rounded-2xl ">
