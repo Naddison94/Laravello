@@ -61,7 +61,14 @@ function getMonthlyMetrics($collection, $currentMonth)
     return $metrics;
 }
 
-function getGroupImg($group)
+function getGroupAvatar($group)
 {
-    return $group->img ? "/group/$group->id/img/$group->img" : 'https://picsum.photos/32/32/?random';
+    return $group->avatar ? "/group/$group->id/avatar/$group->avatar" : 'https://picsum.photos/32/32/?random';
+}
+
+function getGroupBanner($group)
+{
+    return $group->banner
+        ? "/group/$group->id/banner/$group->banner"
+        : 'https://images.unsplash.com/photo-1605379399642-870262d3d051?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80';
 }
