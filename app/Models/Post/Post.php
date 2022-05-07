@@ -2,6 +2,7 @@
 
 namespace App\Models\Post;
 
+use App\Models\Group\Group;
 use App\Models\User\User;
 use App\Traits\Uuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -29,6 +30,9 @@ class Post extends Model
 
     public function scopeFilter($query)
     {
+        // if group else
+
+
         $like = env('DB_CONNECTION') == 'pgsql' ? 'ilike' : 'like';
 
         if (request('search')) $query->where('title', $like, '%' . request('search') . '%');
@@ -59,5 +63,10 @@ class Post extends Model
     public function category()
     {
         return $this->hasOne(Category::class, 'id', 'category_id');
+    }
+
+    public function group()
+    {
+        return $this->belongsTo(Group::class, 'group_id', 'id');
     }
 }
