@@ -12,10 +12,9 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard.show')" :active="request()->routeIs('dashboard.show')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-
+{{--                    <x-nav-link :href="route('dashboard.show')" :active="request()->routeIs('dashboard.show')">--}}
+{{--                        {{ __('Dashboard') }}--}}
+{{--                    </x-nav-link>--}}
 
                     @if(Session('admin') === true)
                         <x-nav-link a href="{{ route ('admin.dashboard.show') }}" :active="request()->routeIs('admin.dashboard.show')">
