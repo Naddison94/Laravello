@@ -15,9 +15,11 @@ class CreateGroupsTable extends Migration
     {
         Schema::create('groups', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->text('description')->nullable();
-            $table->string('img')->nullable();
+            $table->string('avatar')->nullable();
+            $table->string('banner')->nullable();
+            $table->json('settings')->nullable();
             $table->uuid('deleted_by')->nullable();
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
