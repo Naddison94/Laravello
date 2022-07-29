@@ -21,6 +21,25 @@ class GroupSeeder extends Seeder
                 'id' => 'dd9920eb-1532-4eaa-ab8a-fbbaeb831d3c',
                 'name' => 'Test Group',
                 'description' => 'Test description',
+                'settings' => json_encode([
+                    'public' => true,
+                    'invite_only' => false,
+                    'rules' => [
+                        'Be nice',
+                        'Be cool'
+                    ],
+                    'links' => [
+                        'www.google.com',
+                    ],
+                    'tags' => [
+                        'kek',
+                        'Noice'
+                    ],
+                    'roles' => [
+                        'Moderator',
+                        'Pleb'
+                    ],
+                ]),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
@@ -28,6 +47,25 @@ class GroupSeeder extends Seeder
                 'id' => 'dd9920eb-1542-4eaa-ab8a-fbbaeb831d3d',
                 'name' => 'Test Group 2',
                 'description' => 'Test description 2',
+                'settings' => json_encode([
+                    'public' => false,
+                    'invite_only' => true,
+                    'rules' => [
+                        'Be bad',
+                        'Be not cool'
+                    ],
+                    'links' => [
+                        'www.doop.com',
+                    ],
+                    'tags' => [
+                        'lel',
+                        'heh'
+                    ],
+                    'roles' => [
+                        'Moderator',
+                        'Pleb'
+                    ],
+                ]),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]
