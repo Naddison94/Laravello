@@ -76,8 +76,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/comment/delete/{id}', [CommentController::class, 'delete'])->name('post.comment.delete');
     Route::post('/comment/destroy/{id}', [CommentController::class, 'destroy'])->name('post.comment.destroy');
 
-    // middleware to make sure you have access to the group
+    // middleware to make sure you have access to the group?
     Route::get('/groups', [GroupController::class, 'index'])->name('group.index');
+    Route::get('/group/{id}', [GroupController::class, 'show'])->name('group.show');
+
+    // middleware for group owner
+    // edit group
 });
 
 
