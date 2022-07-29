@@ -27,7 +27,6 @@ class DatabaseSeeder extends Seeder
             TaskCommentSeeder::class,
             GroupSeeder::class,
             GroupUserSeeder::class,
-            GroupUserRoleSeeder::class,
         ]);
     }
 }
