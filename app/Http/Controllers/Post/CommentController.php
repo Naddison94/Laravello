@@ -43,10 +43,11 @@ class CommentController extends controller
             return back()->with('error', 'The reply must not be greater than 255 characters');
         }
 
-        $post_id = Comment::find($comment_id)->value('post_id');
+        // find the comment the user is replying to
+        $comment = Comment::find($comment_id);
 
         Comment::create([
-            'post_id' => $post_id,
+            'post_id' => $comment->post_id,
             'user_id' => Auth::id(),
             'reply_id' => $comment_id,
             'comment' => $request->reply
@@ -54,7 +55,7 @@ class CommentController extends controller
 
         setUserActivity();
 
-        return redirect(route('post.show', ['id' => $post_id]))->with('success', 'Reply added.');
+        return redirect(route('post.show', ['id' => $comment->post_id]))->with('success', 'Reply added.');
     }
 
     public function delete($comment_id)
