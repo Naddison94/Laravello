@@ -86,7 +86,9 @@
                             <h3 class="text-gray-600 text-sm font-semibold mb-4">Roles</h3>
                             <ul>
                                 @foreach ($settings->roles as $role)
-                                    <li> {{ $role }} </li>
+                                    <li>
+                                        <p @isset($role->colour)style="color:{{ $role->colour }}"@endif>{{ $role->title }}</p>
+                                    </li>
                                 @endforeach
                             </ul>
                         </div>
