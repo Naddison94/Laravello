@@ -27,7 +27,42 @@
     </form>
 
     <div class="p-4 antialiased mx-auto max-w-screen-sm">
-        <h3 class="mb-4 text-lg font-semibold text-gray-900 ">{{ $post->comments->count() }} Comments</h3>
+        <h3 class="mb-4 text-lg font-semibold text-gray-900 ">
+            {{ $post->comments->count() }} Comments
+        </h3>
+
+        <div>
+{{--            Sort by:--}}
+{{--            <select name="comment_filter" onchange="location = this.value;">--}}
+{{--                <option value="{{ route('post.show', ['id' => $post->id, 'comment_filter' => 'top']) }}">--}}
+{{--                    New--}}
+{{--                </option>--}}
+{{--                <option value="{{ route('post.show', ['id' => $post->id]) }}">--}}
+{{--                    Old--}}
+{{--                </option>--}}
+{{--                <option value="{{ route('post.show', ['id' => $post->id]) }}">--}}
+{{--                    Top--}}
+{{--                </option>--}}
+{{--            </select>--}}
+
+{{--            <div class="hidden sm:flex sm:items-center sm:ml-6">--}}
+{{--                <x-dropdown  >--}}
+{{--                    <x-slot name="trigger">--}}
+{{--                        <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">--}}
+{{--                          Sort by--}}
+{{--                        </button>--}}
+{{--                    </x-slot>--}}
+
+{{--                    <x-slot name="content">--}}
+{{--                        <a href="{{ route('post.show', ['id' => $post->id]) }}" class="block px-4 py-2 text-sm text-gray-300 text-gray-700 hover:bg-gray-400 hover:text-white">--}}
+{{--                            test--}}
+{{--                        </a>--}}
+{{--                    </x-slot>--}}
+{{--                </x-dropdown>--}}
+{{--            </div>--}}
+
+        </div>
+
         <div class="space-y-4">
             @foreach($comments as $comment)
             <div class="flex">

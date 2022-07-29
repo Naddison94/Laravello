@@ -45,14 +45,24 @@
                     </div>
                 </header>
 
-                <div class="border-b border-gray-100"></div>
-                    @if($post->img)
-                        <div class="flex justify-center m-2 p-2">
-                            <a href="{{ route('post.show', ['id' => $post->id]) }}">
-                                <img alt="img" src="/user/{{ $post->author->id }}/post/{{ $post->id }}/{{ $post->img }}">
-                            </a>
-                        </div>
-                    @endif
+                <div class="border-b border-gray-100">
+
+                </div>
+
+                @if (Route::is('post.show') && $post->img)
+                    <div class="flex justify-center m-2 p-2">
+                        <a href="/user/{{ $post->author->id }}/post/{{ $post->id }}/{{ $post->img }}" target="_blank">
+                            <img alt="img" src="/user/{{ $post->author->id }}/post/{{ $post->id }}/{{ $post->img }}">
+                        </a>
+                    </div>
+                @elseif ($post->img)
+                    <div class="flex justify-center m-2 p-2">
+                        <a href="{{ route('post.show', ['id' => $post->id]) }}">
+                            <img alt="img" src="/user/{{ $post->author->id }}/post/{{ $post->id }}/{{ $post->img }}">
+                        </a>
+                    </div>
+                @endif
+
                 <a class="text-gray-600 font-semibold text-lg mb-2 mx-3 px-2 hover:underline" href="{{ route('post.show', ['id' => $post->id]) }}">
                    {{ $post->title }}
                 </a>

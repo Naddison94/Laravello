@@ -26,31 +26,22 @@
                         </svg>
                     </div>
                 </div>
-                make this a component and replce others
                 <!-- end search bar -->
             </div>
 
-            <main class="grid grid-cols-1 lg:grid-cols-2 gap-6 my-12 mx-12 w-2xl container px-2 mx-auto">
-
-                <aside class="">
-                    <div class="flex flex-wrap items-center justify-center">
-                        <div class="container">
-                            <div class="h-32 overflow-hidden rounded" >
-                                <a href="{{ route('group.show', ['id' => $group->id]) }}">
-                                    <img alt="banner" src="{{ getGroupBanner($group) }}">
-                                </a>
-                            </div>
-                        </div>
+            <main class="grid grid-cols-1 lg:grid-cols-2 gap-6 my-12 w-2xl container mx-auto">
+                <aside>
+                    <div class="h-32 overflow-hidden " >
+                        <img class="w-full" src="{{ getGroupBanner($group) }}" alt="" />
                     </div>
 
-                    <div class="bg-white shadow rounded-lg p-4">
-                        <div class="flex flex-col gap-1 text-center items-center">
-                            <div class="inline-flex">
+                    <div class="flex justify-center -mt-12 bg-white">
+                            <img class="h-32 w-32 bg-white p-2 rounded-full" src="{{ getGroupAvatar($group) }}" alt="avatar"/>
 
-                                <a href="{{ route('group.show', ['id' => $group->id]) }}">
-                                    <img alt="avatar" class="w-20 h-20" src="{{ getGroupAvatar($group) }}">
-                                </a>
-                            </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg p-4">
+                        <div class="flex flex-col gap-1 text-center items-center">
                             <p class="font-semibold">{{ $group->name }}</p>
                             <div class="text-sm leading-normal text-gray-400 flex justify-center items-center">
                                 {{ $group->description }}
@@ -66,36 +57,37 @@
                                 <span class="text-gray-400">Members</span>
                             </div>
                         </div>
+
+                        <div class="">
+                            Join group
+                        </div>
                     </div>
 
-                    <div class="bg-white shadow mt-6  rounded-lg p-6 grid grid-cols-3">
+                    <div class="bg-white shadow mt-6 rounded-lg p-6 grid grid-cols-3">
                         <div class="grid">
                             <h3 class="text-gray-600 text-sm font-semibold mb-4">Rules</h3>
-                            <ul class="flex">
-                                13zxgwEG
-
-                                <br>
-                                dasdasd
+                            <ul>
+                                @foreach ($settings->rules as $rule)
+                                    <li> {{ $rule }} </li>
+                                @endforeach
                             </ul>
                         </div>
 
                         <div class="grid">
                             <h3 class="text-gray-600 text-sm font-semibold mb-4">Links</h3>
-                            <ul class="flex">
-                                1312123
-
-                                <br>
-                                123123
+                            <ul>
+                                @foreach ($settings->links as $link)
+                                    <li> {{ $link }} </li>
+                                @endforeach
                             </ul>
                         </div>
 
                         <div class="grid">
                             <h3 class="text-gray-600 text-sm font-semibold mb-4">Roles</h3>
-                            <ul class="flex">
-                                blueberry
-
-                                <br>
-                                admin
+                            <ul>
+                                @foreach ($settings->roles as $role)
+                                    <li> {{ $role }} </li>
+                                @endforeach
                             </ul>
                         </div>
 

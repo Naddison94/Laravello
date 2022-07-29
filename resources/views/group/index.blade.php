@@ -38,17 +38,11 @@
                         <div class="bg-white w-full top-3 shadow-md rounded-2xl">
                             <div class="p-4 border-b-2">
                                 <input type="text" name="search" class="w-full py-1 text-gray-900 rounded-full focus:outline-none" placeholder="search groups" value="{{ app('request')->input('search') }}">
-
-{{--                                <div class="pt-4">--}}
-{{--                                    <x-button>--}}
-{{--                                        {{ __('Search') }}--}}
-{{--                                    </x-button>--}}
-{{--                                </div>--}}
                             </div>
 
                             <div>
                                 <p class="text-gray-900 text-2xl text-center">
-                                    My groups - maybe make this alpineJs expand/collapse?
+                                    My groups
                                 </p>
 
                                 @foreach($groups as $group)
@@ -73,8 +67,10 @@
 {{--                    </div>--}}
 
                     <div class="top-3 max-w-sm flex flex-wrap mt-4">
-                        <div class="bg-white p-4 top-3 shadow-md rounded-2xl ">
-                            <label class="w-full py-1 text-gray-900 rounded-full focus:outline-none">Create group</label>
+                        <div class="bg-white p-4 top-3 shadow-md rounded-2xl w-full">
+                            <p class="py-1 text-gray-900 rounded-full focus:outline-none text-center">
+                                Create group
+                            </p>
                         </div>
                     </div>
                 </div>
