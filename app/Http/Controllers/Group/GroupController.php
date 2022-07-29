@@ -41,6 +41,8 @@ class GroupController extends Controller
     {
         $group = Group::find($group_id);
 
+        $settings = (json_decode($group->settings));
+
         $groupUsers = GroupUser::where('group_id', $group_id)
             ->with('user')
             ->inRandomOrder()
@@ -53,6 +55,6 @@ class GroupController extends Controller
 
         $categories = Category::all();
 
-        return view('group.show', compact('group', 'groupUsers', 'posts', 'categories'));
+        return view('group.show', compact('group', 'settings', 'groupUsers', 'posts', 'categories'));
     }
 }
