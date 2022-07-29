@@ -78,6 +78,11 @@ Route::middleware(['auth'])->group(function () {
 
     // middleware to make sure you have access to the group
     Route::get('/groups', [GroupController::class, 'index'])->name('group.index');
+
+    Route::get('/group/{id}', [GroupController::class, 'show'])->name('group.show');
+
+    // middleware for group owner
+    // edit group
 });
 
 
