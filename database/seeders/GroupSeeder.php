@@ -24,20 +24,14 @@ class GroupSeeder extends Seeder
                 'settings' => json_encode([
                     'public' => true,
                     'invite_only' => false,
-                    'rules' => [
-                        'Be nice',
-                        'Be cool'
-                    ],
-                    'links' => [
-                        'www.google.com',
-                    ],
-                    'tags' => [
-                        'kek',
-                        'Noice'
-                    ],
+                    'custom_colours' => ['background' => '#286ec9', 'text' => '#c21d49'],
+                    'rules' => ['Be nice', 'Be cool'],
+                    'links' => ['www.google.com'],
+                    'tags' => ['kek', 'Noice'],
                     'roles' => [
-                        'Moderator',
-                        'Pleb'
+                        ['title' => 'Moderator', 'display_order' => 1, 'admin' => true],
+                        ['title' => 'Dude', 'display_order' => 2, 'add_post' => true, 'comment' => true, 'invite' => true, 'colour' => '#c21d49'],
+                        ['title' => 'Lurker', 'display_order' => 3]
                     ],
                 ]),
                 'created_at' => Carbon::now(),
