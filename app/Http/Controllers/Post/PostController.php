@@ -62,6 +62,8 @@ class PostController extends Controller
             'id' => Str::uuid()->toString(),
             'user_id' => Auth::id(),
             'category_id' => $request->category_id,
+            'public' => $request->has('public'),
+            'group_id' => $request->has('group_id') ? $request->group_id : null,
             'title' => $request->title,
             'body' => $request->body,
             'img' => $fileName,
