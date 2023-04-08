@@ -45,6 +45,13 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="md:w-full px-3 mb-6 md:mb-0">
+                                <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="public">
+                                    Public
+                                </label>
+
+                                <input type="checkbox" id="public" name="public" checked>
+                            </div>
                         </div>
                         <div class="flex items-center justify-center mt-4">
                             <x-button class="ml-4">
