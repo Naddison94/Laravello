@@ -30,9 +30,6 @@ class Post extends Model
 
     public function scopeFilter($query)
     {
-        // if group else
-
-
         $like = env('DB_CONNECTION') == 'pgsql' ? 'ilike' : 'like';
 
         if (request('search')) $query->where('title', $like, '%' . request('search') . '%');
