@@ -26,12 +26,15 @@ class GroupSeeder extends Seeder
                     'invite_only' => false,
                     'custom_colours' => ['background' => '#286ec9', 'text' => '#c21d49'],
                     'rules' => ['Be nice', 'Be cool'],
-                    'links' => ['www.google.com'],
+                    'links' => [
+                        ['link' => 'https://www.google.com', 'custom_name' => 'Google Yo', 'colour' => '#57188f'],
+                        ['link' => 'https://www.reddit.com', 'custom_name' => 'Reddit Yo', 'colour' => '#e07722']
+                    ],
                     'tags' => ['kek', 'Noice'],
                     'roles' => [
-                        ['title' => 'Moderator', 'display_order' => 1, 'admin' => true],
-                        ['title' => 'Dude', 'display_order' => 2, 'add_post' => true, 'comment' => true, 'invite' => true, 'colour' => '#c21d49'],
-                        ['title' => 'Lurker', 'display_order' => 3]
+                        ['title' => 'Moderator', 'display_order' => 1, 'admin' => true, 'colour' => '#d1b40d'],
+                        ['title' => 'Dude', 'display_order' => 2, 'admin' => false, 'add_post' => true, 'comment' => true, 'invite' => true, 'colour' => '#c21d49'],
+                        ['title' => 'Lurker', 'display_order' => 3, 'admin' => false, 'add_post' => false, 'comment' => true, 'invite' => false, 'colour' => '#33b80f']
                     ],
                 ]),
                 'created_at' => Carbon::now(),
@@ -49,15 +52,14 @@ class GroupSeeder extends Seeder
                         'Be not cool'
                     ],
                     'links' => [
-                        'www.doop.com',
+                        ['link' => 'https://www.google.com', 'custom_name' => 'boop', 'colour' => '#57188f']
                     ],
                     'tags' => [
-                        'lel',
-                        'heh'
+                        'lel', 'heh'
                     ],
                     'roles' => [
-                        'Moderator',
-                        'Pleb'
+                        ['title' => 'Moderator', 'display_order' => 1, 'admin' => true, 'colour' => '#d1b40d'],
+                        ['title' => 'pleb', 'display_order' => 2, 'admin' => false, 'add_post' => true, 'comment' => true, 'invite' => true, 'colour' => '#c21d49']
                     ],
                 ]),
                 'created_at' => Carbon::now(),
