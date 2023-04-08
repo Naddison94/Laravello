@@ -13,6 +13,7 @@ class CreateTaskStatusesTable extends Migration
      */
     public function up()
     {
+        //todo change this to constants on the tasks modal
         Schema::create('task_statuses', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
