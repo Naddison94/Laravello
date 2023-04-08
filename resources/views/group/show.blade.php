@@ -36,24 +36,27 @@
                     </div>
 
                     <div class="flex justify-center -mt-12 bg-white">
+                        <a href="{{ route('group.show', ['id' => $group->id]) }}">
                             <img class="h-32 w-32 bg-white p-2 rounded-full" src="{{ getGroupAvatar($group) }}" alt="avatar"/>
-
+                        </a>
                     </div>
 
                     <div class="bg-white rounded-lg p-4">
                         <div class="flex flex-col gap-1 text-center items-center">
-                            <p class="font-semibold">{{ $group->name }}</p>
+                            <a href="{{ route('group.show', ['id' => $group->id]) }}">
+                                <p class="font-semibold">{{ $group->name }}</p>
+                            </a>
                             <div class="text-sm leading-normal text-gray-400 flex justify-center items-center">
                                 {{ $group->description }}
                             </div>
                         </div>
                         <div class="flex justify-center items-center gap-2 my-3">
                             <div class="font-semibold text-center mx-4">
-                                <p class="text-black">102</p>
+                                <p class="text-black">{{ $posts->count() }}</p>
                                 <span class="text-gray-400">Posts</span>
                             </div>
                             <div class="font-semibold text-center mx-4">
-                                <p class="text-black">102</p>
+                                <p class="text-black">{{ $groupUsers->count() }}</p>
                                 <span class="text-gray-400">Members</span>
                             </div>
                         </div>
@@ -77,7 +80,13 @@
                             <h3 class="text-gray-600 text-sm font-semibold mb-4">Links</h3>
                             <ul>
                                 @foreach ($settings->links as $link)
-                                    <li> {{ $link }} </li>
+                                    <li>
+                                        <p class="hover:underline" @isset($link->colour)style="color:{{ $link->colour }}"@endif>
+                                            <a href="{{ $link->link }}">
+                                                {{ $link->custom_name }}
+                                            </a>
+                                        </p>
+                                    </li>
                                 @endforeach
                             </ul>
                         </div>
