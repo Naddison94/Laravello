@@ -78,9 +78,11 @@ Route::middleware(['auth'])->group(function () {
 
     // middleware to make sure you have access to the group
     Route::get('/groups', [GroupController::class, 'index'])->name('group.index');
-
     Route::get('/group/{id}', [GroupController::class, 'show'])->name('group.show');
-
+    // create post on group index
+    Route::get('groups/post/create', [PostController::class, 'create'])->name('groups.post.create');
+    // create post for specific group
+    Route::get('group/{id}/post/create', [PostController::class, 'create'])->name('group.post.create');
     // middleware for group owner
     // edit group
 });

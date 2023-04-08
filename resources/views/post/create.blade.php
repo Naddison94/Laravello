@@ -45,13 +45,30 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="md:w-full px-3 mb-6 md:mb-0">
-                                <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="public">
-                                    Public
-                                </label>
+                            @if(Route::is('groups.post.create'))
+                                <div class="w-1/2 px-3 mb-6 md:mb-0">
+                                    <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="category">
+                                        Post to
+                                    </label>
+                                    <select class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" name="category_id" id="category">
+                                        @foreach(Auth::user()->groups()->get() as $group)
+                                            <option value="{{ $group->id }}"
+                                                {{ (collect(old('group_id'))->contains($group->id)) ? 'selected' : '' }}  />
+                                            {{ $group->name }}
+                                        @endforeach
+                                    </select>
+                                </div>
 
-                                <input type="checkbox" id="public" name="public" checked>
-                            </div>
+                                <div class="md:w-full px-3 mb-6 md:mb-0">
+                                    <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="public">
+                                        Public
+                                    </label>
+
+                                    <input type="checkbox" id="public" name="public">
+                                </div>
+
+                            @endif
+
                         </div>
                         <div class="flex items-center justify-center mt-4">
                             <x-button class="ml-4">

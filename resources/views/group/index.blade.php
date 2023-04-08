@@ -10,7 +10,7 @@
             <div class="flex">
                 <div>
                     <div class="p-2 bg-white border-b border-gray-200 rounded-2xl text-center mb-3 shadow-sm">
-                        <a href="{{ route('post.create') }}">
+                        <a href="{{ route('groups.post.create') }}">
                             <button>
                                 Submit a post
                             </button>
