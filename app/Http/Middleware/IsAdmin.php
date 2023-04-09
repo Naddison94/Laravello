@@ -2,17 +2,19 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User\Admin;
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class IsAdmin
 {
     public function handle($request, Closure $next)
     {
-        if (Session('admin') === true) {
+        if (Admin::where('user_id', Auth::id())->first()) {
             return $next($request);
         }
 
-        Session()->flash('error', 'You do not have admin access.');
+        Session()->flash('error', 'Access denied. You do not have the required permission level to perform this action.');
 
         return redirect('dashboard');
     }

@@ -36,10 +36,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        if (Admin::where('user_id', Auth::id())->first()) {
-            Session::put('admin', true);
-        }
-
         setUserActivity();
 
         return redirect()->intended(RouteServiceProvider::HOME);

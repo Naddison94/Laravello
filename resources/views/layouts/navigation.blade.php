@@ -16,7 +16,7 @@
 {{--                        {{ __('Dashboard') }}--}}
 {{--                    </x-nav-link>--}}
 
-                    @if(Session('admin') === true)
+                    @if(Auth::user()->isAdmin)
                         <x-nav-link a href="{{ route ('admin.dashboard.show') }}" :active="request()->routeIs('admin.dashboard.show')">
                             {{ __('Admin Dashboard') }}
                         </x-nav-link>
