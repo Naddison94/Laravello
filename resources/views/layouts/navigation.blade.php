@@ -38,6 +38,24 @@
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
+
+                <div>
+                    <x-dropdown align="right">
+                        <x-slot name="trigger">
+                            <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                                @include('components.icons.notification-bell')
+                            </button>
+                        </x-slot>
+
+                        <x-slot name="content">
+                            temp
+    {{--                        <a class="block p-4 text-center text-gray-700 hover:bg-green-500 hover:text-white" href="{{ route('post.edit', ['id' => $post->id]) }}">Edit</a>--}}
+    {{--                        <a class="block p-4 text-center text-gray-700 hover:bg-red-500 hover:text-white" href="{{ route('post.delete', ['id' => $post->id]) }}">Delete</a>--}}
+                        </x-slot>
+                    </x-dropdown>
+
+                </div>
+
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
