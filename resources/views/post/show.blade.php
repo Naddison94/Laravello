@@ -10,7 +10,10 @@
             <div class="flex justify-center items-center">
                 <div class="container mx-auto">
                     <div class="flex justify-left">
-                        @include('components.post-card-v2')
+                        <div class="h-screen sticky top-3">
+                            @include('components.post-card-v2')
+                        </div>
+
                         <div class="flex justify-right w-2/3">
                             @include('components.post-comments-card')
                         </div>
